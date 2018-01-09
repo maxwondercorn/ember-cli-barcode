@@ -1,0 +1,26 @@
+@import "bootstrap";
+
+label {
+  display: block;
+}
+
+select, input {
+  width: 105px;
+}
+
+.barcode {
+  padding: 5px;
+  text-align: center;
+}
+.params {
+  padding-left: 35px;
+}
+
+.display {
+  margin-top: 25px;
+}
+
+.github {
+  padding: 10px;
+  padding-right: 20px;
+}
