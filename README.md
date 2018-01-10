@@ -1,12 +1,13 @@
 [![Latest NPM release][npm-badge]][npm-badge-url]
 [![TravisCI Build Status][travis-badge]][travis-badge-url]
-<!-- [![CircleCI Build Status][circle-badge]][circle-badge-url] -->
-<!-- [![Test Coverage][coveralls-badge]][coveralls-badge-url] -->
-<!-- [![Code Climate][codeclimate-badge]][codeclimate-badge-url] -->
-[![Ember Observer Score][ember-observer-badge]][ember-observer-badge-url]
 [![License][license-badge]][license-badge-url]
 [![Dependencies][dependencies-badge]][dependencies-badge-url] 
 [![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
+<!-- [![Maintainability][maintanabilty-badge]][maintanabilty-url] -->
+<!-- [![CircleCI Build Status][circle-badge]][circle-badge-url] -->
+<!-- [![Test Coverage][coveralls-badge]][coveralls-badge-url] -->
+<!-- [![Code Climate][codeclimate-badge]][codeclimate-badge-url] -->
+<!-- [![Ember Observer Score][ember-observer-badge]][ember-observer-badge-url] -->
 
 
 [npm-badge]: https://img.shields.io/npm/v/ember-cli-barcode.svg
@@ -27,10 +28,12 @@
 [dependencies-badge-url]: https://david-dm.org/maxwondercorn/ember-cli-barcode
 [devDependencies-badge]: https://img.shields.io/david/dev/maxwondercorn/ember-cli-barcode.svg
 [devDependencies-badge-url]: https://david-dm.org/maxwondercorn/ember-cli-barcode#info=devDependencies
+[maintanabilty-badge]: https://api.codeclimate.com/v1/badges/f1c7cd432536e28aacdf/maintainability
+[maintanabilty-url]: https://codeclimate.com/github/maxwondercorn/ember-cli-barcode/maintainability
 
 # ember-cli-barcode
 
-An ember-cli addon to render barcodes in Ember applications using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](http://GitHub-Mark-32px.png)
+An ember-cli addon to render barcodes in Ember applications using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
 
 
 ## Installation
