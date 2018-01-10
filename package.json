@@ -15,12 +15,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ashleygwilliams/my_package.git"
+    "url": "https://github.com/maxwondercorn/ember-cli-barcode"
+  },
+  "ember-addon": {
+    "demoURL": "https://maxwondercorn.github.io/ember-cli-barcode/"
   },
   "scripts": {
     "build": "ember build",
     "start": "ember serve",
-    "test": "ember try:each"
+    "test": "ember try:each",
+    "deploy": "ember build && ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" && git push origin gh-pages:gh-pages"
   },
   "dependencies": {
     "ember-cli-babel": "^6.6.0",
