@@ -16,10 +16,11 @@ jobs:
 
     working_directory: ~/repo
 
-    pre:
-      - npm install -g bower
-      - npm install
-      - bower install
+    dependencies:
+      pre:
+        - npm install -g bower
+        - npm install
+        - bower install
 
 
     steps:
