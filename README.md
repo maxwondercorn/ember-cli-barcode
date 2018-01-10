@@ -22,8 +22,8 @@
 [codeclimate-badge-url]: https://codeclimate.com/github/maxwondercorn/ember-cli-barcode
 [ember-observer-badge]: http://emberobserver.com/badges/ember-cli-barcode.svg
 [ember-observer-badge-url]: http://emberobserver.com/addons/ember-cli-barcode
-[license-badge]: https://img.shields.io/npm/l/ember-cli-barcode.svg
-[license-badge-url]: LICENSE
+[license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
+[license-badge-url]: https://github.com/maxwondercorn/ember-cli-barcode/blob/master/LICENSE
 [dependencies-badge]: https://img.shields.io/david/maxwondercorn/ember-cli-barcode.svg
 [dependencies-badge-url]: https://david-dm.org/maxwondercorn/ember-cli-barcode
 [devDependencies-badge]: https://img.shields.io/david/dev/maxwondercorn/ember-cli-barcode.svg
