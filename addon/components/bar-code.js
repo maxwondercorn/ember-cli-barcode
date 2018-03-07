@@ -5,9 +5,6 @@ import { isBlank } from '@ember/utils';
 
 /* global JsBarcode */
 
-// used to pass this into callback
-let self;
-
 export default Component.extend({
   tagName: 'svg',
   thisId: null,
@@ -47,23 +44,14 @@ export default Component.extend({
   didRender() {
     this._super(...arguments);
 
-    self = this;
-
     // if options object is passed in, use it
     let options = this.get('options') || this.get('defaults');
   
     // set the call back on options
-    options['valid'] = this.cb
+    options['valid'] = (status) => this.valid && this.valid(status);
 
     // now render the barcode
     JsBarcode(`#${this.get('thisId')}`, get(this, 'value'), options);
   },
-
-  // call back function with valid status
-  cb: function(status) {
-    if (self.valid !== undefined)
-      self.valid(status)
-  },
-
 
 });
