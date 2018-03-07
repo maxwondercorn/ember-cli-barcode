@@ -18,7 +18,7 @@ export default Component.extend({
       mod43:        this.get('mod43') || false,   // only used with code39 barcodes
       width:        this.get('width') || 2,
       height:       this.get('height') || 100,
-      displayValue: this.get('displayValue') || true,
+      displayValue: isBlank(this.get('displayValue')) ? true : this.get('displayValue'),
       fontOptions:  this.get('fontOptions') || "",
       font:         this.get('font') || "monospace",
       textAlign:    this.get('textAlign') || "center",
