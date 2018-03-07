@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import { get } from '@ember/object';
 import { computed } from '@ember/object';
+import { isBlank } from '@ember/utils';
 
 /* global JsBarcode */
 
@@ -29,11 +30,11 @@ export default Component.extend({
       fontSize:     this.get('fontSize') || 20,
       background:   this.get('background') || "#ffffff",
       lineColor:    this.get('lineColor') || "#000000",
-      margin:       this.get('margin') || 10,
-      marginTop:    this.get('marginTop') || undefined,
-      marginBottom: this.get('marginBottom') || undefined,
-      marginLeft:   this.get('marginLeft') || undefined,
-      marginRight:  this.get('marginRight') || undefined,
+      margin:       isBlank(this.get('margin')) ? 10 : this.get('margin'),
+      marginTop:    isBlank(this.get('marginTop')) ? undefined : this.get('marginTop'),
+      marginBottom: isBlank(this.get('marginBottom')) ? undefined : this.get('marginBottom'),
+      marginLeft:   isBlank(this.get('marginLeft')) ? undefined : this.get('marginLeft'),
+      marginRight:  isBlank(this.get('marginRight')) ? undefined : this.get('marginRight'),
       flat:         this.get('flat') || false,
       lastChar:     this.get('lastChar') || ''
     }
