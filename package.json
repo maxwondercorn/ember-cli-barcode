@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-barcode",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "description": "Ember barcode generator using the JSBarcode library.",
   "keywords": [
     "ember-addon",
@@ -18,7 +18,8 @@
     "url": "https://github.com/maxwondercorn/ember-cli-barcode"
   },
   "ember-addon": {
-    "demoURL": "https://maxwondercorn.github.io/ember-cli-barcode/"
+    "demoURL": "https://maxwondercorn.github.io/ember-cli-barcode/",
+    "configPath": "tests/dummy/config"
   },
   "scripts": {
     "build": "ember build",
@@ -54,8 +55,5 @@
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
-  },
-  "ember-addon": {
-    "configPath": "tests/dummy/config"
   }
 }

@@ -35,6 +35,8 @@
 
 An ember-cli addon to render barcodes in Ember applications using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
 
+## Version Compatibilty
+ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.0
 
 ## Installation
 ```
@@ -45,7 +47,7 @@ An ember-cli addon to render barcodes in Ember applications using the [JsBarcode
 The simpliest form to render a barcode is to pass in a value using the defaults options.  This will generate a CODE128 barcode:
 
 ```
-{{{bar-code value="abc123456"}}
+{{bar-code value="abc123456"}}
 ```
 
 Which renders:
