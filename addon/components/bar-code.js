@@ -1,11 +1,9 @@
 import Component from '@ember/component';
 import { get } from '@ember/object';
 import { computed } from '@ember/object';
+import { isBlank } from '@ember/utils';
 
 /* global JsBarcode */
-
-// used to pass this into callback
-let self;
 
 export default Component.extend({
   tagName: 'svg',
@@ -20,7 +18,7 @@ export default Component.extend({
       mod43:        this.get('mod43') || false,   // only used with code39 barcodes
       width:        this.get('width') || 2,
       height:       this.get('height') || 100,
-      displayValue: this.get('displayValue') || true,
+      displayValue: isBlank(this.get('displayValue')) ? true : this.get('displayValue'),
       fontOptions:  this.get('fontOptions') || "",
       font:         this.get('font') || "monospace",
       textAlign:    this.get('textAlign') || "center",
@@ -29,11 +27,11 @@ export default Component.extend({
       fontSize:     this.get('fontSize') || 20,
       background:   this.get('background') || "#ffffff",
       lineColor:    this.get('lineColor') || "#000000",
-      margin:       this.get('margin') || 10,
-      marginTop:    this.get('marginTop') || undefined,
-      marginBottom: this.get('marginBottom') || undefined,
-      marginLeft:   this.get('marginLeft') || undefined,
-      marginRight:  this.get('marginRight') || undefined,
+      margin:       isBlank(this.get('margin')) ? 10 : this.get('margin'),
+      marginTop:    isBlank(this.get('marginTop')) ? undefined : this.get('marginTop'),
+      marginBottom: isBlank(this.get('marginBottom')) ? undefined : this.get('marginBottom'),
+      marginLeft:   isBlank(this.get('marginLeft')) ? undefined : this.get('marginLeft'),
+      marginRight:  isBlank(this.get('marginRight')) ? undefined : this.get('marginRight'),
       flat:         this.get('flat') || false,
       lastChar:     this.get('lastChar') || ''
     }
@@ -46,23 +44,14 @@ export default Component.extend({
   didRender() {
     this._super(...arguments);
 
-    self = this;
-
     // if options object is passed in, use it
     let options = this.get('options') || this.get('defaults');
   
     // set the call back on options
-    options['valid'] = this.cb
+    options['valid'] = (status) => this.valid && this.valid(status);
 
     // now render the barcode
     JsBarcode(`#${this.get('thisId')}`, get(this, 'value'), options);
   },
-
-  // call back function with valid status
-  cb: function(status) {
-    if (self.valid !== undefined)
-      self.valid(status)
-  },
-
 
 });
