@@ -18,7 +18,8 @@
     "url": "https://github.com/maxwondercorn/ember-cli-barcode"
   },
   "ember-addon": {
-    "demoURL": "https://maxwondercorn.github.io/ember-cli-barcode/"
+    "demoURL": "https://maxwondercorn.github.io/ember-cli-barcode/",
+    "configPath": "tests/dummy/config"
   },
   "scripts": {
     "build": "ember build",
@@ -54,8 +55,5 @@
   },
   "engines": {
     "node": "^4.5 || 6.* || >= 7.*"
-  },
-  "ember-addon": {
-    "configPath": "tests/dummy/config"
   }
 }
