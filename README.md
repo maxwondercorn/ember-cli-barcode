@@ -35,7 +35,7 @@
 
 An ember-cli addon to render barcodes in Ember applications using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
 
-## Version Compatibilty
+## Version Compatibility
 ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.0
 
 ## Installation
@@ -44,7 +44,7 @@ ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for E
 ```
 ## Usage
 
-The simpliest form to render a barcode is to pass in a value using the defaults options.  This will generate a CODE128 barcode:
+The simplest form to render a barcode is to pass in a value using the default options which generate a CODE128 barcode:
 
 ```
 {{bar-code value="abc123456"}}
@@ -57,7 +57,7 @@ Which renders:
 &nbsp; 
 
 
-By default, barcodes will be rendered using the `svg` element.  You can change the element to `img` or `canvas` using the tagName property:
+By default, barcodes are rendered using the `svg` element.  The element can be changed to `img` or `canvas` using the tagName property:
 
 ```
 {{bar-code
@@ -71,13 +71,13 @@ By default, barcodes will be rendered using the `svg` element.  You can change t
   tagName="canvas"}}
 ```
 
-Use the `img` tag if you want the ability to copy or save the barcode displayed on the page.
+Use the `img` tag if you want the ability to right-click copy or save the displayed barcode.
 
 ## Options
 
-All JsBarcode [options](https://github.com/lindell/JsBarcode/wiki/Options#format) are supported by the addon. See [Barcode Specifications](http://www.makebarcode.com/specs/speclist.html) for details on each format.  A few examples are below.  See the [demo](https://github.com/lindell/JsBarcode/wiki/Options#format) application for more.
+All JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) are supported by the addon. See [Barcode Specifications](http://www.makebarcode.com/specs/speclist.html) for details on each format.  A few examples are below.  See the [demo](https://github.com/lindell/JsBarcode/wiki/Options#format) application for more.
 
-Chage the barcode format by passing the format name into the component.  To display a UPC barcode:
+Change the barcode format by passing the format name into the component.  To display a UPC barcode:
 
 ```
   {{bar-code
@@ -89,7 +89,7 @@ Chage the barcode format by passing the format name into the component.  To disp
 &nbsp; 
 
 
-The color of the barcode or it's background can be chaged:
+The color of the barcode or it's background can be changed:
 
 ```
   {{bar-code
@@ -113,9 +113,9 @@ Or the background color can be changed:
 
 &nbsp; 
 
-Any valid html or hexadecimal color can be used for the `lineColor` or `background` options. The component blockform is not supported.
+Any valid html or hexadecimal color can be used for the `lineColor` or `background` options. The component does not support the Ember component blockform.
 
-If you have many options, instead of passing a large number of parameters you can pass an object using the `options` parameter.  The options parameter will override any other parameters set on the component.
+If you have many options, pass an object using the `options` parameter instead of passing a large number of individual parameters.  The `options` will override any other parameters set on the component.
 
 ```
   // app/controllers/application.js
@@ -145,7 +145,7 @@ If you have many options, instead of passing a large number of parameters you ca
 
 ## EAN13 and UPC
 
-The `flat` option is supported for both EAN13 and UPC barcodes defaulting to `false` if not specided.  Additionally the `lastChar` option is supported for EAN13 barcodes with a default value of ''.
+The `flat` option is supported for both EAN13 and UPC barcodes defaulting to `false` if not specified  Additionally the `lastChar` option is supported for EAN13 barcodes with a default value of ''.
 
 ## Invalid Barcode Values
 If you pass an invalid value based on the format, the barcode will not render.  To capture invalid values assign an action to the `vaild` property.
@@ -153,7 +153,7 @@ If you pass an invalid value based on the format, the barcode will not render.  
 
 ```
 // app/templates/application.hbs
-// invalid code for form EAN8
+// pass invalid code for EAN8 barcodes
 {{barcode format="EAN8"  value="9638" valid=(action 'checkValid')}}
 
 {{if validCode "Valid" "Invalid"}}
@@ -163,7 +163,6 @@ If you pass an invalid value based on the format, the barcode will not render.  
 ```
 // app/controllers/application.js
 import Controller from '@ember/controller';
-
 
 export default Controller.extend({
   validCode: false,
@@ -177,11 +176,10 @@ export default Controller.extend({
 });
 ```
 
-IF you have have multiple barcodes in a template and want to check the validity of each indvidually, you would need
-a dedicated action and controller property for each barcode.
+IF you have have multiple barcodes in a template and want to check the validity of each individually, you would need a dedicated action and controller property for each barcode.
 
 ## More
-The dummy application allows you to experiment with many of the barcode options. As you select different barcode formats a predifined valid code is selected for rendering. scandit.com has a nice <a src="https://www.scandit.com/types-barcodes-choosing-right-barcode/">summary</a> of different barcode formats.
+The dummy application allows you to experiment with many of the barcode options. As you select different barcode formats a predefined valid code is selected for rendering. scandit.com has a nice <a src="https://www.scandit.com/types-barcodes-choosing-right-barcode/">summary</a> of different barcode formats.
 
 ## Running
 
