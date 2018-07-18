@@ -20,6 +20,5 @@
     "tests"
   ],
   "dependencies": {
-    "JsBarcode": "jsbarcode#^3.8.0"
   }
 }
