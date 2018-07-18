@@ -3,12 +3,11 @@
 [![License][license-badge]][license-badge-url]
 [![Dependencies][dependencies-badge]][dependencies-badge-url] 
 [![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
+[![Ember Observer Score](https://emberobserver.com/badges/ember-cli-barcode.svg)](https://emberobserver.com/addons/ember-cli-barcode)
 <!-- [![Maintainability][maintanabilty-badge]][maintanabilty-url] -->
 <!-- [![CircleCI Build Status][circle-badge]][circle-badge-url] -->
 <!-- [![Test Coverage][coveralls-badge]][coveralls-badge-url] -->
 <!-- [![Code Climate][codeclimate-badge]][codeclimate-badge-url] -->
-<!-- [![Ember Observer Score][ember-observer-badge]][ember-observer-badge-url] -->
-
 
 [npm-badge]: https://img.shields.io/npm/v/ember-cli-barcode.svg
 [npm-badge-url]: https://www.npmjs.com/package/ember-cli-barcode
@@ -36,7 +35,7 @@
 An ember-cli addon to render barcodes in Ember applications using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
 
 ## Version Compatibility
-ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.0
+ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.0.  Version 2.x forward has removed the need for Bower - thanks @donaldwasserman
 
 ## Installation
 ```
@@ -101,7 +100,7 @@ The color of the barcode or it's background can be changed:
 &nbsp; 
 
 
-Or the background color can be changed:
+background color changed:
 ```
   {{bar-code
     value="abc123456"
