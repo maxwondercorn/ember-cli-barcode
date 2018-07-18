@@ -184,16 +184,13 @@ The dummy application allows you to experiment with many of the barcode options.
 
 To run the dummy application
 
-* `bower install`
-* `npm install`
+* `npm install` or `yarn`
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ## Tests
 
-Testing requires jsbarcode.js be installed as a bower component
-
-* `bower install`
+* `npm install` or `yarn`
 * `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
