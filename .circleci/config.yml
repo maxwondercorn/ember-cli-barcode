@@ -18,9 +18,7 @@ jobs:
 
     dependencies:
       pre:
-        - npm install -g bower
         - npm install
-        - bower install
 
 
     steps:
