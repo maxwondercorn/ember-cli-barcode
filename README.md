@@ -35,7 +35,9 @@
 An ember-cli addon to render barcodes in Ember applications using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
 
 ## Version Compatibility
-ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.0.  Version 2.x onward no longer requires Bower - thanks @donaldwasserman
+ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.x.  ember-cli-barcode version 2.0 onward no longer requires Bower - thanks @donaldwasserman
+
+After upgrading to 2.x, if jsbarcode was your only Bower dependency you can remove bower.json from your project and delete the bower_components directory. If you have other Bower dependencies, remove the jsbarcode dependency from bower.json
 
 ## Installation
 ```
