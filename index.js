@@ -1,20 +1,23 @@
 /* eslint-env node */
 'use strict';
 
+var path = require('path');
+var Funnel = require('broccoli-funnel');
+var MergeTrees = require('broccoli-merge-trees');
+
 module.exports = {
   name: 'ember-cli-barcode',
 
-  included(app) {
+  included() {
     this._super.included.apply(this, arguments);
-
-    app.import({
-      production: app.bowerDirectory + '/JsBarcode/dist/JsBarcode.all.min.js',
-      development: app.bowerDirectory + '/JsBarcode/dist/JsBarcode.all.js',
-      test: app.bowerDirectory + '/JsBarcode/dist/JsBarcode.all.js'
-    });
+    this.import('vendor/JsBarcode.all.js')
   },
 
-  isDevelopingAddon() {
-    // return true;
+  treeForVendor(vendorTree) {
+    var barcodeTree = new Funnel(path.dirname(require.resolve('jsbarcode/dist/JsBarcode.all.js')), {
+      files: ['JsBarcode.all.js']
+    });
+
+    return new MergeTrees([vendorTree, barcodeTree]);
   }
 };
