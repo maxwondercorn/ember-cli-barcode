@@ -1,14 +1,13 @@
 [![Latest NPM release][npm-badge]][npm-badge-url]
 [![TravisCI Build Status][travis-badge]][travis-badge-url]
 [![License][license-badge]][license-badge-url]
-[![Dependencies][dependencies-badge]][dependencies-badge-url]
+[![Dependencies][dependencies-badge]][dependencies-badge-url] 
 [![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
+[![Ember Observer Score](https://emberobserver.com/badges/ember-cli-barcode.svg)](https://emberobserver.com/addons/ember-cli-barcode)
 <!-- [![Maintainability][maintanabilty-badge]][maintanabilty-url] -->
 <!-- [![CircleCI Build Status][circle-badge]][circle-badge-url] -->
 <!-- [![Test Coverage][coveralls-badge]][coveralls-badge-url] -->
 <!-- [![Code Climate][codeclimate-badge]][codeclimate-badge-url] -->
-<!-- [![Ember Observer Score][ember-observer-badge]][ember-observer-badge-url] -->
-
 
 [npm-badge]: https://img.shields.io/npm/v/ember-cli-barcode.svg
 [npm-badge-url]: https://www.npmjs.com/package/ember-cli-barcode
@@ -36,7 +35,9 @@
 An ember-cli addon to render barcodes in Ember applications using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
 
 ## Version Compatibility
-ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.0
+ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.x.  ember-cli-barcode version 2.0 onward no longer requires Bower - thanks @donaldwasserman
+
+After upgrading to 2.x, if jsbarcode was your only Bower dependency you can remove bower.json from your project and delete the bower_components directory. If you have other Bower dependencies, remove the jsbarcode dependency from bower.json
 
 ## Installation
 ```
@@ -86,7 +87,7 @@ Change the barcode format by passing the format name into the component.  To dis
 ```
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/upc.png "UPC Barcode")
 
-&nbsp;
+&nbsp; 
 
 
 The color of the barcode or it's background can be changed:
@@ -98,10 +99,10 @@ The color of the barcode or it's background can be changed:
 ```
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/redlines.png "Colored Barcode")
 
-&nbsp;
+&nbsp; 
 
 
-Or the background color can be changed:
+background color changed:
 ```
   {{bar-code
     value="abc123456"
@@ -111,7 +112,7 @@ Or the background color can be changed:
 
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/background.png "Barcode with colored background")
 
-&nbsp;
+&nbsp; 
 
 Any valid html or hexadecimal color can be used for the `lineColor` or `background` options. The component does not support the Ember component blockform.
 
@@ -206,12 +207,13 @@ The dummy application allows you to experiment with many of the barcode options.
 
 To run the dummy application
 
-* `npm install`
+* `npm install` or `yarn`
 * `ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ## Tests
 
+* `npm install` or `yarn`
 * `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
