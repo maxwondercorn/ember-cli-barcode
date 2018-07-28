@@ -54,8 +54,8 @@ The simplest form to render a barcode is to pass in a value using the default op
 Which renders:
 
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/abc123456.png "CODE128 Barcode")
-  
-&nbsp; 
+
+&nbsp;
 
 
 By default, barcodes are rendered using the `svg` element.  The element can be changed to `img` or `canvas` using the tagName property:
@@ -141,7 +141,7 @@ If you have many options, pass an object using the `options` parameter instead o
 ```
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/linecolorff3399.png "Barcode line color ff3399")
 
-&nbsp; 
+&nbsp;
 
 
 ## EAN13 and UPC
@@ -178,6 +178,27 @@ export default Controller.extend({
 ```
 
 IF you have have multiple barcodes in a template and want to check the validity of each individually, you would need a dedicated action and controller property for each barcode.
+
+## Configuration
+By default, this addon provides the `JsBarcode.all` javascript file. If you are looking to slim your build and only need a specific version(s) provided by the upstream package,
+you can pass an array of which options to include, or the string `'all'` in `ember-cli-build.js`:
+
+```js
+// ember-cli-build.js
+
+module.exports = function(defaults) {
+  let app = new EmberAddon(defaults, {
+    'ember-cli-barcode': {
+      included: ['codabar', 'code128', 'code39']
+    }
+  });
+
+  return app.toTree();
+};
+
+```
+
+Acceptable array values include: `codabar`, `code128`, `code39`, `ean-upc`, `itf-14`, `itf`, `msi`, `pharmacode`.
 
 ## More
 The dummy application allows you to experiment with many of the barcode options. As you select different barcode formats a predefined valid code is selected for rendering. scandit.com has a nice <a src="https://www.scandit.com/types-barcodes-choosing-right-barcode/">summary</a> of different barcode formats.
