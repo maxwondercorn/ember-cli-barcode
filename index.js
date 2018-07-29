@@ -39,10 +39,10 @@ function processOptions(options) {
     }
     if (!Array.isArray(included)) {
       throw new SilentError('ember-cli-barcode `options` property is not an array, `all` or falsy');
-      return all;
+      // return all;
     }
     if (included.length === includedFiles.length && included.every(containsMatchingFile)) {
-      console.log('bad match');
+      // console.log('bad match');
       return all;
     }
     return included.map(f => {
