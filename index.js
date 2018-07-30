@@ -18,41 +18,21 @@ function findHostShim() {
   return app;
 }
 
-
 const defaultOptions = {
   included: false
 }
 
 const includedFiles = ['codabar', 'code128', 'code39', 'ean-upc', 'itf-14', 'itf', 'msi', 'pharmacode'];
 
-function containsMatchingFile(name) {
-  return includedFiles.includes(name);
-}
-
-function processOptions(options) {
-  let {included} = options;
-  let all = ['all']
-  // Check against passed options parameters so that the build doesn't blow up
-  if (included) {
-    if (included === 'all') {
-      return all;
-    }
-    if (!Array.isArray(included)) {
-      throw new SilentError('ember-cli-barcode `options` property is not an array, `all` or falsy');
-      return all;
-    }
-    if (included.length === includedFiles.length && included.every(containsMatchingFile)) {
-      console.log('bad match');
-      return all;
-    }
-    return included.map(f => {
-      if (containsMatchingFile(f)) {
-        return f;
-      }
-    });
-
+function generateFilePath(file) {
+  if (file = 'all') {
+    return 'JsBarcode.all.min.js';
   }
-  return all;
+  if (!includedFiles.includes(file)) {
+    throw new SilentError('ember-cli-barcode file option is not a valid JsBarcode option, `all` or `falsy`');
+    return false;
+  }
+  return `barcodes/JsBarcode.${file}.min.js`;
 }
 
 function generateJSbarcodePaths(options) {
@@ -62,16 +42,11 @@ function generateJSbarcodePaths(options) {
   if (options.includes('all')) {
     return ['JsBarcode.all.min.js']
   }
-  return options.map(opt => {
-    if (containsMatchingFile(opt)) {
-      return `barcodes/JsBarcode.${opt}.min.js`;
+  return options.map(file => {
+    if (includedFiles.includes(file)) {
+      return`barcodes/JsBarcode.${file}.min.js`
     }
   });
-}
-
-function generateFiles(options) {
-  let included = processOptions(options);
-  return generateJSbarcodePaths(included);
 }
 
 module.exports = {
@@ -82,10 +57,8 @@ module.exports = {
     let findHost = this._findHost || findHostShim;
     let app = findHost.call(this);
     let options = Object.assign(defaultOptions, app.options['ember-cli-barcode']);
-    let filesToInclude = generateFiles(options);
-    filesToInclude.forEach(file => {
-      this.import(`vendor/ember-cli-barcode/${file}`);
-    });
+    let file = generateFilePath(options['include']);
+    this.import(`vendor/ember-cli-barcode/${file}`);
   },
 
   treeForVendor(vendorTree) {

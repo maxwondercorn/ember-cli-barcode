@@ -1,7 +1,7 @@
 [![Latest NPM release][npm-badge]][npm-badge-url]
 [![TravisCI Build Status][travis-badge]][travis-badge-url]
 [![License][license-badge]][license-badge-url]
-[![Dependencies][dependencies-badge]][dependencies-badge-url] 
+[![Dependencies][dependencies-badge]][dependencies-badge-url]
 [![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
 [![Ember Observer Score](https://emberobserver.com/badges/ember-cli-barcode.svg)](https://emberobserver.com/addons/ember-cli-barcode)
 <!-- [![Maintainability][maintanabilty-badge]][maintanabilty-url] -->
@@ -87,7 +87,7 @@ Change the barcode format by passing the format name into the component.  To dis
 ```
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/upc.png "UPC Barcode")
 
-&nbsp; 
+&nbsp;
 
 
 The color of the barcode or it's background can be changed:
@@ -99,7 +99,7 @@ The color of the barcode or it's background can be changed:
 ```
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/redlines.png "Colored Barcode")
 
-&nbsp; 
+&nbsp;
 
 
 background color changed:
@@ -112,7 +112,7 @@ background color changed:
 
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/background.png "Barcode with colored background")
 
-&nbsp; 
+&nbsp;
 
 Any valid html or hexadecimal color can be used for the `lineColor` or `background` options. The component does not support the Ember component blockform.
 
@@ -180,8 +180,8 @@ export default Controller.extend({
 IF you have have multiple barcodes in a template and want to check the validity of each individually, you would need a dedicated action and controller property for each barcode.
 
 ## Configuration
-By default, this addon provides the `JsBarcode.all` javascript file. If you are looking to slim your build and only need a specific version(s) provided by the upstream package,
-you can pass an array of which options to include, or the string `'all'` in `ember-cli-build.js`:
+By default, this addon provides the `JsBarcode.all` javascript file. If you are looking to slim your build and only need a specific version provided by the upstream package,
+you can pass the the type of file you'd like to include via the `include` option. If you supply `all` or a falsy value, the addon will include the default all package.
 
 ```js
 // ember-cli-build.js
@@ -189,7 +189,7 @@ you can pass an array of which options to include, or the string `'all'` in `emb
 module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     'ember-cli-barcode': {
-      included: ['codabar', 'code128', 'code39']
+      include: 'code128'
     }
   });
 
@@ -197,8 +197,16 @@ module.exports = function(defaults) {
 };
 
 ```
-
-Acceptable array values include: `codabar`, `code128`, `code39`, `ean-upc`, `itf-14`, `itf`, `msi`, `pharmacode`.
+### Supported Options
+* `all`
+* `codabar`
+* `code128`
+* `code39`  
+* `ean-upc`
+* `itf-14`
+* `itf`
+* `msi`
+* `pharmacode`.
 
 ## More
 The dummy application allows you to experiment with many of the barcode options. As you select different barcode formats a predefined valid code is selected for rendering. scandit.com has a nice <a src="https://www.scandit.com/types-barcodes-choosing-right-barcode/">summary</a> of different barcode formats.
