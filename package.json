@@ -9,6 +9,10 @@
   ],
   "license": "MIT",
   "author": "Max Wondercorn aka Gregg Martell",
+  "contributors": [
+    "christopher-noq <> (https://github.com/christopher-noq?tab=repositories)",
+    "donaldwasserman <> (http://donaldwasserman.com)"
+  ],
   "directories": {
     "doc": "doc",
     "test": "tests"
