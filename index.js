@@ -3,7 +3,7 @@
 
 var path = require('path');
 var Funnel = require('broccoli-funnel');
-var MergeTrees = require('broccoli-merge-trees');
+// var MergeTrees = require('broccoli-merge-trees');
 var SilentError = require('silent-error'); // From ember-cli
 
 // For ember-cli < 2.7 findHost doesnt exist so we backport from that version
@@ -61,13 +61,13 @@ module.exports = {
     this.import(`vendor/ember-cli-barcode/${file}`);
   },
 
-  treeForVendor(vendorTree) {
+  treeForVendor(/* vendorTree */) {
     let paths = generateJSbarcodePaths(includedFiles);
     paths.push('JsBarcode.all.min.js');
     var barcodeTree = new Funnel(path.dirname(require.resolve('jsbarcode/dist/JsBarcode.all.min.js')), {
       destDir: 'ember-cli-barcode',
       files: paths
     });
-    return new MergeTrees([vendorTree, barcodeTree]);
+    return barcodeTree;
   }
 };
