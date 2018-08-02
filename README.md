@@ -43,6 +43,24 @@ After upgrading to 2.x, if jsbarcode was your only Bower dependency you can remo
 ```
   $ ember install ember-cli-barcode
 ```
+
+Configure the addon options below in `ember-cli-build.js`.  See the configuration section for slimming your build
+
+```js
+// ember-cli-build.js
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+
+module.exports = function (defaults) {
+  let app = new EmberApp(defaults, {
+    'ember-cli-barcode': {
+      include: 'all'
+    }
+  });
+
+  return app.toTree();
+};
+
+```
 ## Usage
 
 The simplest form to render a barcode is to pass in a value using the default options which generate a CODE128 barcode:
@@ -181,7 +199,7 @@ IF you have have multiple barcodes in a template and want to check the validity 
 
 ## Configuration
 By default, this addon provides the `JsBarcode.all` javascript file. If you are looking to slim your build and only need a specific version provided by the upstream package,
-you can pass the the type of file you'd like to include via the `include` option. If you supply `all` or a falsy value, the addon will include the default all package.
+you can pass the type of file you'd like to include via the `include` option. If you supply `all` or a falsy value, the addon will include the default all package.
 
 ```js
 // ember-cli-build.js
