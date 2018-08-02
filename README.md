@@ -155,7 +155,7 @@ If you pass an invalid value based on the format, the barcode will not render.  
 ```
 // app/templates/application.hbs
 // pass invalid code for EAN8 barcodes
-{{barcode format="EAN8"  value="9638" valid=(action 'checkValid')}}
+{{bar-code format="EAN8"  value="9638" valid=(action 'checkValid')}}
 
 {{if validCode "Valid" "Invalid"}}
 ```
@@ -185,9 +185,10 @@ you can pass the the type of file you'd like to include via the `include` option
 
 ```js
 // ember-cli-build.js
+const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function(defaults) {
-  let app = new EmberAddon(defaults, {
+module.exports = function (defaults) {
+  let app = new EmberApp(defaults, {
     'ember-cli-barcode': {
       include: 'code128'
     }

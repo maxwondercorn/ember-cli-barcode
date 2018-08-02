@@ -25,12 +25,12 @@ const defaultOptions = {
 const includedFiles = ['codabar', 'code128', 'code39', 'ean-upc', 'itf-14', 'itf', 'msi', 'pharmacode'];
 
 function generateFilePath(file) {
-  if (file = 'all') {
+  if (file === 'all') {
     return 'JsBarcode.all.min.js';
   }
   if (!includedFiles.includes(file)) {
     throw new SilentError('ember-cli-barcode file option is not a valid JsBarcode option, `all` or `falsy`');
-    return false;
+    // return false; // dead code
   }
   return `barcodes/JsBarcode.${file}.min.js`;
 }
