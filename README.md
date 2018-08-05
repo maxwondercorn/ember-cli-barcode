@@ -32,10 +32,15 @@
 
 # ember-cli-barcode
 
-An ember-cli addon to render barcodes in Ember applications using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
+A ember-cli addon to render barcodes using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
+
+## Alt Text
+The `alt` attribute is automatically set on the generated barcodes using the display value.  See [Alt Text](#Alt-Text) for details.
 
 ## Version Compatibility
-ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.x.  ember-cli-barcode version 2.0 onward no longer requires Bower - thanks @donaldwasserman
+ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.x.  
+
+Version 2.0 onward no longer requires Bower but you need to add configuration to `ember-cli-build.js` - thanks @donaldwasserman
 
 After upgrading to 2.x, if jsbarcode was your only Bower dependency you can remove bower.json from your project and delete the bower_components directory. If you have other Bower dependencies, remove the jsbarcode dependency from bower.json
 
@@ -44,7 +49,7 @@ After upgrading to 2.x, if jsbarcode was your only Bower dependency you can remo
   $ ember install ember-cli-barcode
 ```
 
-Configure the addon options below in `ember-cli-build.js`.  See the configuration section for slimming your build
+Configure the addon options below in `ember-cli-build.js`.  See the [build configuration](#Build-Configuration) section for slimming your build
 
 ```js
 // ember-cli-build.js
@@ -63,9 +68,9 @@ module.exports = function (defaults) {
 ```
 ## Usage
 
-The simplest form to render a barcode is to pass in a value using the default options which generate a CODE128 barcode:
+The simplest form to render a barcode is to pass in a value and the default options will be used to generate a CODE128 barcode:
 
-```
+```hbs
 {{bar-code value="abc123456"}}
 ```
 
@@ -78,13 +83,13 @@ Which renders:
 
 By default, barcodes are rendered using the `svg` element.  The element can be changed to `img` or `canvas` using the tagName property:
 
-```
+```hbs
 {{bar-code
   value="A45689"
   tagName="img"}}
 ```
 
-```
+```hbs
 {{bar-code
   value="A45689"
   tagName="canvas"}}
@@ -98,7 +103,7 @@ All JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#form
 
 Change the barcode format by passing the format name into the component.  To display a UPC barcode:
 
-```
+```hbs
   {{bar-code
     value="123456789999"
     format="UPC"}}
@@ -110,7 +115,7 @@ Change the barcode format by passing the format name into the component.  To dis
 
 The color of the barcode or it's background can be changed:
 
-```
+```hbs
   {{bar-code
     value="abc123456"
     lineColor="red"}}
@@ -121,7 +126,7 @@ The color of the barcode or it's background can be changed:
 
 
 background color changed:
-```
+```hbs
   {{bar-code
     value="abc123456"
     lineColor="#ffffff"
@@ -134,9 +139,9 @@ background color changed:
 
 Any valid html or hexadecimal color can be used for the `lineColor` or `background` options. The component does not support the Ember component blockform.
 
-If you have many options, pass an object using the `options` parameter instead of passing a large number of individual parameters.  The `options` will override any other parameters set on the component.
+If you have many options, pass an object using the `options` property instead of a large number of individual properties.  The `options` will override any other properties set on the component.
 
-```
+```js
   // app/controllers/application.js
   myOptions: {
     format: "UPC",
@@ -144,7 +149,7 @@ If you have many options, pass an object using the `options` parameter instead o
     lineColor: "#ff3399",
   }
 ```
-```
+```hbs
   {{!-- app/templates/application.hbs --}}
   {{bar-code
     value="11223344"
@@ -161,6 +166,7 @@ If you have many options, pass an object using the `options` parameter instead o
 
 &nbsp;
 
+Alternatively, you can globally set any option for your application using `config/enviroment.js`.  See [Runtime Configuration](#Runtime-Configuration) for details.
 
 ## EAN13 and UPC
 
@@ -170,7 +176,7 @@ The `flat` option is supported for both EAN13 and UPC barcodes defaulting to `fa
 If you pass an invalid value based on the format, the barcode will not render.  To capture invalid values assign an action to the `vaild` property.
 
 
-```
+```hbs
 // app/templates/application.hbs
 // pass invalid code for EAN8 barcodes
 {{bar-code format="EAN8"  value="9638" valid=(action 'checkValid')}}
@@ -179,7 +185,7 @@ If you pass an invalid value based on the format, the barcode will not render.  
 ```
 
 
-```
+```js
 // app/controllers/application.js
 import Controller from '@ember/controller';
 
@@ -195,9 +201,30 @@ export default Controller.extend({
 });
 ```
 
-IF you have have multiple barcodes in a template and want to check the validity of each individually, you would need a dedicated action and controller property for each barcode.
+IF you have have multiple barcodes in a template and want to check the validity of each individually, you need a dedicated action and controller property for each barcode.
 
-## Configuration
+## Alt Text
+ember-cli-barcode adds the `alt` attribute to the SVG, img and canvas tags. The default text generated is based on the barcode's value:
+
+```
+barcode value <value>
+```
+
+where `<value>` is the value passed into the component. You can override the text using the altText property
+
+```hbs
+{{bar-code value="9638A3" altText="ticket"}}
+```
+
+which would generate the following alternative attribute text
+
+```
+ticket 9638A3
+```
+
+altText can be overridden globally by configuring it in the `config/enviroment.js`.  See
+
+## Build Configuration
 By default, this addon provides the `JsBarcode.all` javascript file. If you are looking to slim your build and only need a specific version provided by the upstream package,
 you can pass the type of file you'd like to include via the `include` option. If you supply `all` or a falsy value, the addon will include the default all package.
 
@@ -227,8 +254,66 @@ module.exports = function (defaults) {
 * `msi`
 * `pharmacode`.
 
+## Runtime Configuration
+Barcode options may be configured globally in `config/enviroement.js`. Global option properties can be overridden on individual components by setting the property on the components invocation.  See the sample configuration setting below
+
+See JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) for the values that may be globally set.  Additionally, you can set the text prefix for the `alt` attribute by assigning a value to `altText`
+
+```js
+/* eslint-env node */
+const pjson = require('../package.json');
+
+module.exports = function(environment) {
+   let ENV = {
+    modulePrefix: 'myProject',
+    environment,
+    rootURL: '/',
+    locationType: 'auto',
+    EmberENV: {
+      FEATURES: {
+      },
+      EXTEND_PROTOTYPES: {
+
+      }
+    },
+
+    APP: {
+    }
+
+    // ember-cli-barcode
+    barcode: {
+      format: 'code39',
+      mod43: false,
+      width: 3,
+      height: 200,
+      displayValue: false,
+      fontOptions: '',
+      font: 'Arial',
+      textAlign: 'left',
+      textPosition: 'top',
+      textMargin: 2,
+      fontSize: 20,
+      background: '#ffffff',
+      lineColor: '#000000',
+      margin: 10,
+      marginTop: 20,
+      marginBottom: 30,
+      marginLeft: 5,
+      marginRight: 13,
+      flat: false,
+      lastChar: 'Q',
+      altText: 'Ticket'  // alt prefix text
+    }
+  };
+        
+      // ...
+
+  return ENV;
+};
+```
+
 ## More
-The dummy application allows you to experiment with many of the barcode options. As you select different barcode formats a predefined valid code is selected for rendering. scandit.com has a nice <a src="https://www.scandit.com/types-barcodes-choosing-right-barcode/">summary</a> of different barcode formats.
+The dummy application allows you to experiment with many of the barcode options. As you select different barcode formats a predefined valid code is selected for rendering. scandit.com has a nice <a src="https://www.scandit.com/types-barcodes-choosing-right-barcode/">summary</a> of the different barcode formats.
 
 ## Running
 
