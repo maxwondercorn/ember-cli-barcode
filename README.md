@@ -2,7 +2,7 @@
 [![TravisCI Build Status][travis-badge]][travis-badge-url]
 [![License][license-badge]][license-badge-url]
 [![Dependencies][dependencies-badge]][dependencies-badge-url]
-[![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
+[![Dev Dependencies][devdependencies-badge]][devdependencies-badge-url]
 [![Ember Observer Score](https://emberobserver.com/badges/ember-cli-barcode.svg)](https://emberobserver.com/addons/ember-cli-barcode)
 
 [npm-badge]: https://img.shields.io/npm/v/ember-cli-barcode.svg
@@ -15,44 +15,46 @@
 [license-badge-url]: https://github.com/maxwondercorn/ember-cli-barcode/blob/master/LICENSE
 [dependencies-badge]: https://img.shields.io/david/maxwondercorn/ember-cli-barcode.svg
 [dependencies-badge-url]: https://david-dm.org/maxwondercorn/ember-cli-barcode
-[devDependencies-badge]: https://img.shields.io/david/dev/maxwondercorn/ember-cli-barcode.svg
-[devDependencies-badge-url]: https://david-dm.org/maxwondercorn/ember-cli-barcode#info=devDependencies
+[devdependencies-badge]: https://img.shields.io/david/dev/maxwondercorn/ember-cli-barcode.svg
+[devdependencies-badge-url]: https://david-dm.org/maxwondercorn/ember-cli-barcode#info=devDependencies
 
 # ember-cli-barcode
 
-A ember-cli addon to render barcodes using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
+A ember-cli addon to render barcodes using the [JsBarcode](https://github.com/lindell/JsBarcode) library. See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
 
-The addon adds attributes and elements to the generated barcodes to provide accessibility.  See the [Accessibility](#Accessibility) section below.
+The addon adds attributes and elements to the generated barcodes to provide accessibility. See the [Accessibility](#Accessibility) section below.
 
 ## Version Compatibility
-ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.x.  
+
+ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.x.
 
 Version 2.x onward no longer requires Bower but you need to add configuration to `ember-cli-build.js` - thanks @donaldwasserman
 
 After upgrading to 2.x, if jsbarcode was your only Bower dependency you can remove bower.json from your project and delete the bower_components directory. If you have other Bower dependencies, remove the jsbarcode dependency from bower.json
 
 ## Installation
+
 ```
   $ ember install ember-cli-barcode
 ```
 
-Configure the addon options below in `ember-cli-build.js`.  See the [build configuration](#Build-Configuration) section for slimming your build
+Configure the addon options below in `ember-cli-build.js`. See the [build configuration](#Build-Configuration) section for slimming your build
 
 ```js
 // ember-cli-build.js
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require("ember-cli/lib/broccoli/ember-app");
 
-module.exports = function (defaults) {
+module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    'ember-cli-barcode': {
-      include: 'all'
+    "ember-cli-barcode": {
+      include: "all"
     }
   });
 
   return app.toTree();
 };
-
 ```
+
 ## Usage
 
 The simplest form to render a barcode is to pass in a value and the default options will be used to generate a CODE128 barcode:
@@ -67,8 +69,7 @@ Which renders:
 
 &nbsp;
 
-
-By default, barcodes are rendered using the `svg` element.  The element can be changed to `img` or `canvas` using the tagName property:
+By default, barcodes are rendered using the `svg` element. The element can be changed to `img` or `canvas` using the tagName property:
 
 ```hbs
 {{bar-code
@@ -86,19 +87,19 @@ Use the `img` tag if you want the ability to right-click copy or save the displa
 
 ## Options
 
-All JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) are supported by the addon. See [Barcode Specifications](http://www.makebarcode.com/specs/speclist.html) for details on each format.  A few examples are below.  See the [demo](https://github.com/lindell/JsBarcode/wiki/Options#format) application for more.
+All JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) are supported by the addon. See [Barcode Specifications](http://www.makebarcode.com/specs/speclist.html) for details on each format. A few examples are below. See the [demo](https://github.com/lindell/JsBarcode/wiki/Options#format) application for more.
 
-Change the barcode format by passing the format name into the component.  To display a UPC barcode:
+Change the barcode format by passing the format name into the component. To display a UPC barcode:
 
 ```hbs
   {{bar-code
     value="123456789999"
     format="UPC"}}
 ```
+
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/upc.png "UPC Barcode")
 
 &nbsp;
-
 
 The color of the barcode or it's background can be changed:
 
@@ -107,12 +108,13 @@ The color of the barcode or it's background can be changed:
     value="abc123456"
     lineColor="red"}}
 ```
+
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/redlines.png "Colored Barcode")
 
 &nbsp;
 
-
 background color changed:
+
 ```hbs
   {{bar-code
     value="abc123456"
@@ -126,7 +128,7 @@ background color changed:
 
 Any valid html or hexadecimal color can be used for the `lineColor` or `background` options. The component does not support the Ember component blockform.
 
-If you have many options, pass an object using the `options` property instead of a large number of individual properties.  The `options` will override any other properties set on the component.
+If you have many options, pass an object using the `options` property instead of a large number of individual properties. The `options` will override any other properties set on the component.
 
 ```js
   // app/controllers/application.js
@@ -136,6 +138,7 @@ If you have many options, pass an object using the `options` property instead of
     lineColor: "#ff3399",
   }
 ```
+
 ```hbs
   {{!-- app/templates/application.hbs --}}
   {{bar-code
@@ -149,19 +152,20 @@ If you have many options, pass an object using the `options` property instead of
     options=myOptions
     lineColor="blue"}}
 ```
+
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/linecolorff3399.png "Barcode line color ff3399")
 
 &nbsp;
 
-Alternatively, you can globally set any option for your application using `config/enviroment.js`.  See [Runtime Configuration](#Runtime-Configuration) for details.
+Alternatively, you can globally set any option for your application using `config/enviroment.js`. See [Runtime Configuration](#Runtime-Configuration) for details.
 
 ## EAN13 and UPC
 
-The `flat` option is supported for both EAN13 and UPC barcodes defaulting to `false` if not specified  Additionally the `lastChar` option is supported for EAN13 barcodes with a default value of ''.
+The `flat` option is supported for both EAN13 and UPC barcodes defaulting to `false` if not specified Additionally the `lastChar` option is supported for EAN13 barcodes with a default value of ''.
 
 ## Invalid Barcode Values
-If you pass an invalid value based on the format, the barcode will not render.  To capture invalid values assign an action to the `vaild` property.
 
+If you pass an invalid value based on the format, the barcode will not render. To capture invalid values assign an action to the `vaild` property.
 
 ```hbs
 // app/templates/application.hbs
@@ -171,37 +175,34 @@ If you pass an invalid value based on the format, the barcode will not render.  
 {{if validCode "Valid" "Invalid"}}
 ```
 
-
 ```js
 // app/controllers/application.js
-import Controller from '@ember/controller';
+import Controller from "@ember/controller";
 
 export default Controller.extend({
   validCode: false,
 
   actions: {
-      checkValid (status) {
-        this.set('validCode', status)
-      },
+    checkValid(status) {
+      this.set("validCode", status);
+    }
   }
-
 });
 ```
 
 IF you have have multiple barcodes in a template and want to check the validity of each individually, you need a dedicated action and controller property for each barcode.
 
 ## Accessibility
-ember-cli-barcode adds the `alt` attribute, other attributes or other elements to the barcode image for website accessibly.  This Medium [post](https://medium.com/statuscode/getting-started-with-website-accessibility-5586c7febc92) by Carie Fisher discuses the whys of website accessibility.
 
+ember-cli-barcode adds the `alt` attribute, other attributes or other elements to the barcode image for website accessibly. This Medium [post](https://medium.com/statuscode/getting-started-with-website-accessibility-5586c7febc92) by Carie Fisher discuses the whys of website accessibility.
 
-
-The default text generated is based on the barcode's value:
+The default text generated for accessibility is based on the barcode's value:
 
 ```js
-"barcode value <value>"
+"barcode value <value>";
 ```
 
-where `<value>` is the value passed into the component. You can override the text portion on each component invocation by setting the altText property or globally using the [runtime configuration](#Runtime-Configuration) options.
+where `<value>` is the value passed into the component. You can override the text used on each component invocation by setting the `altText` and `excludeAltValue` properties or globally using the [runtime configuration](#Runtime-Configuration) options.
 
 ```hbs
 {{bar-code value="9638A3" altText="ticket barcode"}}
@@ -213,13 +214,24 @@ generates the following alternative attribute text
 ticket barcode 9638A3
 ```
 
+Excluding the value
+
+```hbs
+{{bar-code value="9638A3" altText="ticket barcode" excludeAltValue=true}}
+```
+
+generates the following text
+```
+ticket barcode
+```
+
 Assuming the component declaration
 
 ```hbs
 {{bar-code value="BCD10"}}
 ```
 
- the markup generated for each "image" type would be
+the markup generated for each "image" type would be
 
 ### svg:
 
@@ -245,41 +257,44 @@ Assuming the component declaration
 ```
 
 ## Build Configuration
+
 By default, this addon provides the `JsBarcode.all` javascript file. If you are looking to slim your build and only need a specific version provided by the upstream package,
 you can pass the type of file you'd like to include via the `include` option. If you supply `all` or a falsy value, the addon will include the default all package.
 
 ```js
 // ember-cli-build.js
-const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const EmberApp = require("ember-cli/lib/broccoli/ember-app");
 
-module.exports = function (defaults) {
+module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    'ember-cli-barcode': {
-      include: 'code128'
+    "ember-cli-barcode": {
+      include: "code128"
     }
   });
 
   return app.toTree();
 };
-
 ```
+
 ### Supported Options
-* `all`
-* `codabar`
-* `code128`
-* `code39`  
-* `ean-upc`
-* `itf-14`
-* `itf`
-* `msi`
-* `pharmacode`.
+
+- `all`
+- `codabar`
+- `code128`
+- `code39`
+- `ean-upc`
+- `itf-14`
+- `itf`
+- `msi`
+- `pharmacode`.
 
 ## Runtime Configuration
-Barcode options may be configured globally in `config/enviroement.js`. Global option properties can be overridden on individual components by setting the property on the components invocation.  See the sample configuration setting below.
 
-You can configure the alt text value by configure `altText`. 
+Barcode options may be configured globally in `config/enviroement.js`. Global option properties can still be overridden on individual components by setting the property on the components invocation. The options should use the key `barcode`. See the sample configuration setting below.
 
-See JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) for the values that may be globally set.  Additionally, you can set the text prefix for the `alt` attribute by assigning a value to `altText`
+You can configure the alt text value by configure `altText`.
+
+See JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) for the values that may be globally set. Additionally, you can set the text prefix for the `alt` attribute by assigning a value to `altText`
 
 ```js
 /* eslint-env node */
@@ -302,9 +317,10 @@ module.exports = function(environment) {
     APP: {
     }
 
-    // ember-cli-barcode
+    // ember-cli-barcode options
     barcode: {
       altText: 'Ticket',  // accessibility text
+      excludeAltValue: true, // don't include value in
       format: 'code128',
       mod43: false,
       width: 3,
@@ -327,7 +343,7 @@ module.exports = function(environment) {
       lastChar: 'Q'
     }
   };
-        
+
       // ...
 
   return ENV;
@@ -335,23 +351,23 @@ module.exports = function(environment) {
 ```
 
 ## More
+
 The dummy application allows you to experiment with many of the barcode options. As you select different barcode formats a predefined valid code is selected for rendering. scandit.com has a nice <a src="https://www.scandit.com/types-barcodes-choosing-right-barcode/">summary</a> of the different barcode formats.
 
 ## Running
 
 To run the dummy application
 
-* `npm install` or `yarn`
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+- `npm install` or `yarn`
+- `ember serve`
+- Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ## Tests
 
-* `npm install` or `yarn`
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
+- `npm install` or `yarn`
+- `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
+- `ember test`
+- `ember test --server`
 
 For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
 
