@@ -292,9 +292,7 @@ module.exports = function(defaults) {
 
 Barcode options may be configured globally in `config/enviroement.js`. Global option properties can still be overridden on individual components by setting the property on the components invocation. The options should use the key `barcode`. See the sample configuration setting below.
 
-You can configure the alt text value by configure `altText`.
-
-See JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) for the values that may be globally set. Additionally, you can set the text prefix for the `alt` attribute by assigning a value to `altText`
+See JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) for the values that may be globally set.
 
 ```js
 /* eslint-env node */
@@ -319,8 +317,8 @@ module.exports = function(environment) {
 
     // ember-cli-barcode options
     barcode: {
-      altText: 'Ticket',  // accessibility text
-      excludeAltValue: true, // don't include value in
+      altText: 'Ticket',  // override accessibility text
+      excludeAltValue: true, // exclue value in accessibility text
       format: 'code128',
       mod43: false,
       width: 3,
