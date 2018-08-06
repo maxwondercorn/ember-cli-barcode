@@ -10,6 +10,7 @@ export default Component.extend({
   tagName: "svg",
   thisId: null,
   altText: "barcode value",
+  excludeAltValue: false,
   svgns: "http://www.w3.org/2000/svg",
 
   // get config from enviroment.js
@@ -90,9 +91,11 @@ export default Component.extend({
     // do after render because svg is cleared by jsbarcode
     // https://medium.com/statuscode/getting-started-with-website-accessibility-5586c7febc92
 
-    let text = `${this.get("config").altText || this.get("altText")} ${this.get(
-      "value"
-    )}`;
+    let text = `${this.get("altText") || this.get("config").altText}`;
+
+    // exclude the value from the alt text?
+    if (!(this.get("excludeAltValue") || this.get("config").excludeAltValue))
+      text = `${text} ${this.get("value")}`;
 
     switch (this.element.nodeName) {
       // add alt text attribute
