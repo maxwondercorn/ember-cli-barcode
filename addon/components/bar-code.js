@@ -75,6 +75,7 @@ export default Component.extend({
 
   didRender() {
     this._super(...arguments);
+    let title;
 
     // if options object is passed in, use it
     let options = this.get("options") || this.get("defaults");
@@ -104,7 +105,7 @@ export default Component.extend({
       // http://a11y-style-guide.com/style-guide/section-media.html#kssref-media-svgs
       case "svg":
         this.element.setAttribute("aria-labelledby", "title");
-        let title = document.createElementNS(this.get("svgns"), "title");
+        title = document.createElementNS(this.get("svgns"), "title");
         title.innerHTML = text;
         this.element.appendChild(title);
         break;
