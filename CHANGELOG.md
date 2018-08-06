@@ -1,5 +1,12 @@
 # Change Log
 
+# Next Release
+
+Features
+* Add runtime configuration to globally override options
+* Added accessibility attributes and elements to the generated barcodes
+* Updated testing for accessibility attributes
+
 # 0.2.3 (2018-08-03)
 
 Bug Fixes
