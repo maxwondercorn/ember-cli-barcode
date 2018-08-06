@@ -9,18 +9,19 @@ import { getOwner } from "@ember/application";
 export default Component.extend({
   tagName: "svg",
   thisId: null,
-  altText: "barcode value" || this.get("config").altText,
+  altText: "barcode value",
+  svgns: "http://www.w3.org/2000/svg",
 
-  // jsbarcode options
-  // https://github.com/lindell/JsBarcode/wiki/Options#format
-
-  // get config from envorment.js
+  // get config from enviroment.js
   // https://stackoverflow.com/questions/42002664/accessing-ember-environment-config-env-from-addon
   config: computed(function() {
     return (
       getOwner(this).resolveRegistration("config:environment").barcode || {}
     );
   }),
+
+  // jsbarcode options
+  // https://github.com/lindell/JsBarcode/wiki/Options#format
 
   defaults: computed(function() {
     let c = this.get("config");
@@ -32,7 +33,9 @@ export default Component.extend({
       height: this.get("height") || c.height || 100,
 
       displayValue: isBlank(this.get("displayValue"))
-        ? isBlank(c.displayValue) ? true : c.displayValue
+        ? isBlank(c.displayValue)
+          ? true
+          : c.displayValue
         : true,
 
       fontOptions: this.get("fontOptions") || c.fontOptions || "",
@@ -77,15 +80,42 @@ export default Component.extend({
     let options = this.get("options") || this.get("defaults");
 
     // set the call back on options
-    options["valid"] = (status) => this.valid && this.valid(status);
-
-    // set alt attribute for accessability
-    this.element.setAttribute(
-      "alt",
-      `${this.get("altText")} ${this.get("value")}`
-    );
+    options["valid"] = status => this.valid && this.valid(status);
 
     // now render the barcode
     JsBarcode(`#${this.get("thisId")}`, get(this, "value"), options);
+
+    // add accessability to barcode
+    // do after render because svg is cleared by jsbarcode
+    // https://medium.com/statuscode/getting-started-with-website-accessibility-5586c7febc92
+
+    let text = `${this.get("config").altText || this.get("altText")} ${this.get(
+      "value"
+    )}`;
+
+    switch (this.element.nodeName) {
+      // add alt text attribute
+      // http://a11y-style-guide.com/style-guide/section-media.html#kssref-media-images
+      case "IMG":
+        this.element.setAttribute("alt", text);
+        break;
+
+      // add title and aria-labelledby attritubte
+      // http://a11y-style-guide.com/style-guide/section-media.html#kssref-media-svgs
+      case "svg":
+        this.element.setAttribute("aria-labelledby", "title");
+        let title = document.createElementNS(this.get("svgns"), "title");
+        title.innerHTML = text;
+        this.element.appendChild(title);
+        break;
+
+      // what do you do to canvas?
+      // https://www.w3.org/Talks/2014/0510-canvas-a11y/#1
+      // http://pauljadam.com/demos/canvas.html
+      case "CANVAS":
+        this.element.setAttribute("role", "img");
+        this.element.setAttribute("aria-label", text);
+        break;
+    }
   }
 });

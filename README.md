@@ -4,21 +4,11 @@
 [![Dependencies][dependencies-badge]][dependencies-badge-url]
 [![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
 [![Ember Observer Score](https://emberobserver.com/badges/ember-cli-barcode.svg)](https://emberobserver.com/addons/ember-cli-barcode)
-<!-- [![Maintainability][maintanabilty-badge]][maintanabilty-url] -->
-<!-- [![CircleCI Build Status][circle-badge]][circle-badge-url] -->
-<!-- [![Test Coverage][coveralls-badge]][coveralls-badge-url] -->
-<!-- [![Code Climate][codeclimate-badge]][codeclimate-badge-url] -->
 
 [npm-badge]: https://img.shields.io/npm/v/ember-cli-barcode.svg
 [npm-badge-url]: https://www.npmjs.com/package/ember-cli-barcode
 [travis-badge]: https://img.shields.io/travis/maxwondercorn/ember-cli-barcode/master.svg?label=TravisCI
 [travis-badge-url]: https://travis-ci.org/maxwondercorn/ember-cli-barcode
-[circle-badge]: https://circleci.com/gh/maxwondercorn/ember-cli-barcode/tree/master.svg?style=svg&circle-token={{CIRCLE_TOKEN}}
-[circle-badge-url]: https://circleci.com/gh/maxwondercorn/ember-cli-barcode/tree/master
-[coveralls-badge]: https://coveralls.io/repos/github/maxwondercorn/ember-cli-barcode/badge.svg?branch=master
-[coveralls-badge-url]: https://coveralls.io/github/maxwondercorn/ember-cli-barcode?branch=master
-[codeclimate-badge]: https://img.shields.io/codeclimate/github/maxwondercorn/ember-cli-barcode.svg
-[codeclimate-badge-url]: https://codeclimate.com/github/maxwondercorn/ember-cli-barcode
 [ember-observer-badge]: http://emberobserver.com/badges/ember-cli-barcode.svg
 [ember-observer-badge-url]: http://emberobserver.com/addons/ember-cli-barcode
 [license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
@@ -27,20 +17,17 @@
 [dependencies-badge-url]: https://david-dm.org/maxwondercorn/ember-cli-barcode
 [devDependencies-badge]: https://img.shields.io/david/dev/maxwondercorn/ember-cli-barcode.svg
 [devDependencies-badge-url]: https://david-dm.org/maxwondercorn/ember-cli-barcode#info=devDependencies
-[maintanabilty-badge]: https://api.codeclimate.com/v1/badges/f1c7cd432536e28aacdf/maintainability
-[maintanabilty-url]: https://codeclimate.com/github/maxwondercorn/ember-cli-barcode/maintainability
 
 # ember-cli-barcode
 
 A ember-cli addon to render barcodes using the [JsBarcode](https://github.com/lindell/JsBarcode) library.  See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
 
-## Alt Text
-The `alt` attribute is automatically set on the generated barcodes using the display value.  See [Alt Text](#Alt-Text) for details.
+The addon adds attributes and elements to the generated barcodes to provide accessibility.  See the [Accessibility](#Accessibility) section below.
 
 ## Version Compatibility
 ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.x.  
 
-Version 2.0 onward no longer requires Bower but you need to add configuration to `ember-cli-build.js` - thanks @donaldwasserman
+Version 2.x onward no longer requires Bower but you need to add configuration to `ember-cli-build.js` - thanks @donaldwasserman
 
 After upgrading to 2.x, if jsbarcode was your only Bower dependency you can remove bower.json from your project and delete the bower_components directory. If you have other Bower dependencies, remove the jsbarcode dependency from bower.json
 
@@ -203,26 +190,59 @@ export default Controller.extend({
 
 IF you have have multiple barcodes in a template and want to check the validity of each individually, you need a dedicated action and controller property for each barcode.
 
-## Alt Text
-ember-cli-barcode adds the `alt` attribute to the SVG, img and canvas tags. The default text generated is based on the barcode's value:
+## Accessibility
+ember-cli-barcode adds the `alt` attribute, other attributes or other elements to the barcode image for website accessibly.  This Medium [post](https://medium.com/statuscode/getting-started-with-website-accessibility-5586c7febc92) by Carie Fisher discuses the whys of website accessibility.
 
-```
-barcode value <value>
+
+
+The default text generated is based on the barcode's value:
+
+```js
+"barcode value <value>"
 ```
 
-where `<value>` is the value passed into the component. You can override the text using the altText property
+where `<value>` is the value passed into the component. You can override the text portion on each component invocation by setting the altText property or globally using the [runtime configuration](#Runtime-Configuration) options.
 
 ```hbs
-{{bar-code value="9638A3" altText="ticket"}}
+{{bar-code value="9638A3" altText="ticket barcode"}}
 ```
 
-which would generate the following alternative attribute text
+generates the following alternative attribute text
 
 ```
-ticket 9638A3
+ticket barcode 9638A3
 ```
 
-altText can be overridden globally by configuring it in the `config/enviroment.js`.  See
+Assuming the component declaration
+
+```hbs
+{{bar-code value="BCD10"}}
+```
+
+ the markup generated for each "image" type would be
+
+### svg:
+
+```html
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="transform: translate(0,0)" aria-labelledby="title">
+  ... svg data
+  <title>barcode value BCD10</title>
+</svg>
+```
+
+### image:
+
+```html
+<img  src="data:image/png;base64,iVBORw0KGgoAA6dOLEi..." alt="barcode value BCD10">
+```
+
+### canvas:
+
+```html
+<canvas role="img" aria-label="barcode value BCD10">
+   canvas data...
+</canvas>
+```
 
 ## Build Configuration
 By default, this addon provides the `JsBarcode.all` javascript file. If you are looking to slim your build and only need a specific version provided by the upstream package,
@@ -255,7 +275,9 @@ module.exports = function (defaults) {
 * `pharmacode`.
 
 ## Runtime Configuration
-Barcode options may be configured globally in `config/enviroement.js`. Global option properties can be overridden on individual components by setting the property on the components invocation.  See the sample configuration setting below
+Barcode options may be configured globally in `config/enviroement.js`. Global option properties can be overridden on individual components by setting the property on the components invocation.  See the sample configuration setting below.
+
+You can configure the alt text value by configure `altText`. 
 
 See JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) for the values that may be globally set.  Additionally, you can set the text prefix for the `alt` attribute by assigning a value to `altText`
 
@@ -282,7 +304,8 @@ module.exports = function(environment) {
 
     // ember-cli-barcode
     barcode: {
-      format: 'code39',
+      altText: 'Ticket',  // accessibility text
+      format: 'code128',
       mod43: false,
       width: 3,
       height: 200,
@@ -301,8 +324,7 @@ module.exports = function(environment) {
       marginLeft: 5,
       marginRight: 13,
       flat: false,
-      lastChar: 'Q',
-      altText: 'Ticket'  // alt prefix text
+      lastChar: 'Q'
     }
   };
         
