@@ -39,7 +39,7 @@ test("it renders a SVG barcode", function(assert) {
   // verify title element is set to correct text
   assert.equal(
     this.$("svg").find("title")[0].innerHTML,
-    "barcode value 1234567",
+    "Barcode value 1234567",
     "SVG title element has correct innerHTML"
   );
 });
@@ -59,7 +59,7 @@ test("it renders a IMG barcode", function(assert) {
   );
 
   // verify the alt attribute is set
-  assert.equal(this.$("img").attr("alt"), "barcode value 1234567");
+  assert.equal(this.$("img").attr("alt"), "Barcode value 1234567");
 });
 
 test("it renders a CANVAS barcode", function(assert) {
@@ -72,7 +72,7 @@ test("it renders a CANVAS barcode", function(assert) {
   assert.equal(this.$("canvas").length, 1);
 
   // verify canvas attributes are set
-  assert.equal(this.$("canvas").attr("aria-label"), "barcode value 1234567");
+  assert.equal(this.$("canvas").attr("aria-label"), "Barcode value 1234567");
   assert.equal(this.$("canvas").attr("role"), "img");
 });
 
@@ -98,6 +98,11 @@ test("it renders a blue colored barcode", function(assert) {
 
 test("it renders with options, not options", function(assert) {
   assert.expect(1);
+
+  // `getOwner(this).resolveRegistration('config:environment')` 
+  // then in your test
+  // 's `beforeEach()` you can do 
+  // `this.owner.resolveRegistration('config:environment').foo = 'bar'`
 
   this.set("code", "1234567");
 
