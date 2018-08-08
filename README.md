@@ -22,7 +22,7 @@
 
 A ember-cli addon to render barcodes using the [JsBarcode](https://github.com/lindell/JsBarcode) library. See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/)
 
-The addon adds attributes and elements to the generated barcodes to provide accessibility. See the [Accessibility](#Accessibility) section below.
+The addon adds accessibility attributes and elements to the generated barcodes. See the [Accessibility](#Accessibility) section below.
 
 ## Version Compatibility
 
@@ -199,33 +199,24 @@ ember-cli-barcode adds the `alt` attribute, other attributes or other elements t
 The default text generated for accessibility is based on the barcode's value:
 
 ```js
-"barcode value <value>";
+"Barcode value <value>";
 ```
 
-where `<value>` is the value passed into the component. You can override the text used on each component invocation by setting the `altText` and `excludeAltValue` properties or globally using the [runtime configuration](#Runtime-Configuration) options.
+where `<value>` is the value passed into the component. You can override the text used on an individual component invocation by setting the `altText` property. You can globally override all components and exclude the value from the text string using [runtime configuration](#Runtime-Configuration). There are additional accessibility options that can be set in runtime configuration.
 
 ```hbs
-{{bar-code value="9638A3" altText="ticket barcode"}}
+{{bar-code value="9638A3" altText="Ticket barcode"}}
 ```
 
 generates the following alternative attribute text
 
 ```
-ticket barcode 9638A3
+Ticket barcode 9638A3
 ```
 
 Excluding the value
 
-```hbs
-{{bar-code value="9638A3" altText="ticket barcode" excludeAltValue=true}}
-```
-
-generates the following text
-```
-ticket barcode
-```
-
-Assuming the component declaration
+Each element type, img, svg and canvas requires different attributes or additional elements to meet A11Y guidelines. Assuming the component declaration
 
 ```hbs
 {{bar-code value="BCD10"}}
@@ -238,20 +229,20 @@ the markup generated for each "image" type would be
 ```html
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="transform: translate(0,0)" aria-labelledby="title">
   ... svg data
-  <title>barcode value BCD10</title>
+  <title>Barcode value BCD10</title>
 </svg>
 ```
 
 ### image:
 
 ```html
-<img  src="data:image/png;base64,iVBORw0KGgoAA6dOLEi..." alt="barcode value BCD10">
+<img  src="data:image/png;base64,iVBORw0KGgoAA6dOLEi..." alt="Barcode value BCD10">
 ```
 
 ### canvas:
 
 ```html
-<canvas role="img" aria-label="barcode value BCD10">
+<canvas role="img" aria-label="Barcode value BCD10">
    canvas data...
 </canvas>
 ```
@@ -290,61 +281,46 @@ module.exports = function(defaults) {
 
 ## Runtime Configuration
 
-Barcode options may be configured globally in `config/enviroement.js`. Global option properties can still be overridden on individual components by setting the property on the components invocation. The options should use the key `barcode`. See the sample configuration setting below.
+Barcode options may be configured globally in `config/enviroement.js`. Global option properties can still be overridden on individual components by setting the property on the components invocation. See the sample configuration setting below.
 
 See JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#format) for the values that may be globally set.
 
+The following accessibility values may also be set in runtime configuration
+
+| Value Name      | Default | Description                                                                                                                                                                       |
+| --------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| altText         | null    | Globally sets text portion of the alt text attribute. Can also be set on the component                                                                                            |
+| excludeAltValue | false   | Do not include the barcode value in the alt text                                                                                                                                  |
+| ariaHidden      | false   | Adds the aria-hidden attribute to the image effectively hiding it from screen readers                                                                                             |
+| addTitle        | false   | Adds the title to img and canvas tags so they will show the text value on hover. svgs use the title element for accessibility so it's added by default, unless you set ariaHidden |
+
 ```js
-/* eslint-env node */
-const pjson = require('../package.json');
+// ember-cli-barcode options
+ENV["ember-cli-barcode"] = {
+  altText: "Ticket", // override accessibility text
+  addTitle: true, // add title to each barcode
 
-module.exports = function(environment) {
-   let ENV = {
-    modulePrefix: 'myProject',
-    environment,
-    rootURL: '/',
-    locationType: 'auto',
-    EmberENV: {
-      FEATURES: {
-      },
-      EXTEND_PROTOTYPES: {
-
-      }
-    },
-
-    APP: {
-    }
-
-    // ember-cli-barcode options
-    barcode: {
-      altText: 'Ticket',  // override accessibility text
-      excludeAltValue: true, // exclue value in accessibility text
-      format: 'code128',
-      mod43: false,
-      width: 3,
-      height: 200,
-      displayValue: false,
-      fontOptions: '',
-      font: 'Arial',
-      textAlign: 'left',
-      textPosition: 'top',
-      textMargin: 2,
-      fontSize: 20,
-      background: '#ffffff',
-      lineColor: '#000000',
-      margin: 10,
-      marginTop: 20,
-      marginBottom: 30,
-      marginLeft: 5,
-      marginRight: 13,
-      flat: false,
-      lastChar: 'Q'
-    }
-  };
-
-      // ...
-
-  return ENV;
+  // jsbarcode options
+  format: "code128",
+  mod43: false,
+  width: 3,
+  height: 200,
+  displayValue: false,
+  fontOptions: "",
+  font: "Arial",
+  textAlign: "left",
+  textPosition: "top",
+  textMargin: 2,
+  fontSize: 20,
+  background: "#ffffff",
+  lineColor: "#000000",
+  margin: 10,
+  marginTop: 20,
+  marginBottom: 30,
+  marginLeft: 5,
+  marginRight: 13,
+  flat: false,
+  lastChar: "Q"
 };
 ```
 

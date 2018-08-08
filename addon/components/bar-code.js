@@ -9,15 +9,18 @@ import { getOwner } from "@ember/application";
 export default Component.extend({
   tagName: "svg",
   thisId: null,
-  altText: "barcode value",
+  defaultText: "Barcode value",
+  altText: null,
   excludeAltValue: false,
   svgns: "http://www.w3.org/2000/svg",
 
   // get config from enviroment.js
   // https://stackoverflow.com/questions/42002664/accessing-ember-environment-config-env-from-addon
-  config: computed(function() {
+  cfg: computed(function() {
     return (
-      getOwner(this).resolveRegistration("config:environment").barcode || {}
+      getOwner(this).resolveRegistration("config:environment")[
+        "ember-cli-barcode"
+      ] || {}
     );
   }),
 
@@ -25,48 +28,48 @@ export default Component.extend({
   // https://github.com/lindell/JsBarcode/wiki/Options#format
 
   defaults: computed(function() {
-    let c = this.get("config");
+    let cfg = this.get("cfg");
 
     return {
-      format: this.get("format") || c.format || "CODE128",
-      mod43: this.get("mod43") || c.mod43 || false, // only used with code39 barcodes
-      width: this.get("width") || c.width || 2,
-      height: this.get("height") || c.height || 100,
+      format: this.get("format") || cfg.format || "CODE128",
+      mod43: this.get("mod43") || cfg.mod43 || false, // only used with code39 barcodes
+      width: this.get("width") || cfg.width || 2,
+      height: this.get("height") || cfg.height || 100,
 
       displayValue: isBlank(this.get("displayValue"))
-        ? isBlank(c.displayValue)
+        ? isBlank(cfg.displayValue)
           ? true
-          : c.displayValue
+          : cfg.displayValue
         : true,
 
-      fontOptions: this.get("fontOptions") || c.fontOptions || "",
-      font: this.get("font") || c.font || "monospace",
-      textAlign: this.get("textAlign") || c.textAlign || "center",
-      textPosition: this.get("textPosition") || c.textPosition || "bottom",
-      textMargin: this.get("textMargin") || c.textMargin || 2,
-      fontSize: this.get("fontSize") || c.fontSize || 20,
-      background: this.get("background") || c.background || "#ffffff",
-      lineColor: this.get("lineColor") || c.lineColor || "#000000",
+      fontOptions: this.get("fontOptions") || cfg.fontOptions || "",
+      font: this.get("font") || cfg.font || "monospace",
+      textAlign: this.get("textAlign") || cfg.textAlign || "center",
+      textPosition: this.get("textPosition") || cfg.textPosition || "bottom",
+      textMargin: this.get("textMargin") || cfg.textMargin || 2,
+      fontSize: this.get("fontSize") || cfg.fontSize || 20,
+      background: this.get("background") || cfg.background || "#ffffff",
+      lineColor: this.get("lineColor") || cfg.lineColor || "#000000",
       margin: isBlank(this.get("margin")) ? 10 : this.get("margin"),
 
       marginTop: isBlank(this.get("marginTop"))
-        ? c.marginTop || undefined
+        ? cfg.marginTop || undefined
         : this.get("marginTop"),
 
       marginBottom: isBlank(this.get("marginBottom"))
-        ? c.marginBottom || undefined
+        ? cfg.marginBottom || undefined
         : this.get("marginBottom"),
 
       marginLeft: isBlank(this.get("marginLeft"))
-        ? c.marginLeft || undefined
+        ? cfg.marginLeft || undefined
         : this.get("marginLeft"),
 
       marginRight: isBlank(this.get("marginRight"))
-        ? c.marginRight || undefined
+        ? cfg.marginRight || undefined
         : this.get("marginRight"),
 
-      flat: this.get("flat") || c.flat || false,
-      lastChar: this.get("lastChar") || c.lastChar || ""
+      flat: this.get("flat") || cfg.flat || false,
+      lastChar: this.get("lastChar") || cfg.lastChar || ""
     };
   }),
 
@@ -91,11 +94,20 @@ export default Component.extend({
     // do after render because svg is cleared by jsbarcode
     // https://medium.com/statuscode/getting-started-with-website-accessibility-5586c7febc92
 
-    let text = `${this.get("altText") || this.get("config").altText}`;
+    let cfg = this.get("cfg");
+
+    // if they want to hide them, apply and exit
+    if (cfg.ariaHidden) {
+      this.element.setAttribute("aria-hidden", "true");
+      return;
+    }
+
+    let text = `${this.get("altText") ||
+      cfg.altText ||
+      this.get("defaultText")}`;
 
     // exclude the value from the alt text?
-    if (!(this.get("excludeAltValue") || this.get("config").excludeAltValue))
-      text = `${text} ${this.get("value")}`;
+    if (!cfg.excludeAltValue) text = `${text} ${this.get("value")}`;
 
     switch (this.element.nodeName) {
       // add alt text attribute
@@ -120,6 +132,10 @@ export default Component.extend({
         this.element.setAttribute("role", "img");
         this.element.setAttribute("aria-label", text);
         break;
+    }
+    if (cfg.setTitle) {
+      // redundant on svg, but it doens't hurt
+      this.element.setAttribute("title", text);
     }
   }
 });
