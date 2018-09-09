@@ -7,6 +7,9 @@ module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     'ember-cli-bootstrap-sassy': {
       'glyphicons': false
+    },
+    'ember-cli-barcode': {
+      include: 'all'
     }
     // Add options here
   });
