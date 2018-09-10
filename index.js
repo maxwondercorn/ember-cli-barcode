@@ -22,7 +22,7 @@ const defaultOptions = {
   included: false
 }
 
-const includedFiles = ['codabar', 'code128', 'code39', 'ean-upc', 'itf-14', 'itf', 'msi', 'pharmacode'];
+const includedFiles = ['codabar', 'code128', 'code39', 'ean-upc', 'code39', 'itf', 'msi', 'pharmacode'];
 
 function generateFilePath(file) {
   if (file === 'all' || !file) {
