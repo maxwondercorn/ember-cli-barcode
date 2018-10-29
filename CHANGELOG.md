@@ -1,6 +1,6 @@
 # Change Log
 
-# Next Release
+# 0.3.0
 
 Features
 * Added accessibility attributes and elements to the generated barcodes
@@ -11,7 +11,10 @@ Bug Fixes
 * replaced itf-14 with code39 to match upstream
 * added undefined barcode error checking
 
-# 0.2.3 (2018-08-03)
+Other
+* Updated to latest version of jsbarcode 3.11.0
+
+## 0.2.3 (2018-08-03)
 
 Bug Fixes
 * Removed mergeTrees from index.js - bug with ember install from NPM - ember serve would fail on error (issue #9)
