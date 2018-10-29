@@ -3,9 +3,13 @@
 # Next Release
 
 Features
-* Add runtime configuration to globally override options
 * Added accessibility attributes and elements to the generated barcodes
+* Add runtime configuration to globally override options
 * Updated testing for accessibility attributes
+
+Bug Fixes
+* replaced itf-14 with code39 to match upstream
+* added undefined barcode error checking
 
 # 0.2.3 (2018-08-03)
 
