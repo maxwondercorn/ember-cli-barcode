@@ -1,6 +1,6 @@
 # Change Log
 
-# 0.3.0
+# 0.3.1
 
 Features
 * Added accessibility attributes and elements to the generated barcodes
