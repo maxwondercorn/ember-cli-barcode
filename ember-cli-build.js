@@ -8,9 +8,7 @@ module.exports = function(defaults) {
     'ember-cli-bootstrap-sassy': {
       'glyphicons': false
     },
-    'ember-cli-barcode': {
-      include: 'all'
-    }
+   
     // Add options here
   });
 
