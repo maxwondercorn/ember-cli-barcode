@@ -46,8 +46,6 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.locationType = 'hash';
     ENV.rootURL = '/ember-cli-barcode/';
-    ENV.locationType = 'hash';
-    ENV.rootURL = '/ember-cli-barcode/';
     // here you can enable a production-specific feature
   }
 
