@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 
-
 export default Controller.extend({
   format: "CODE128",
   width: 2,
@@ -16,6 +15,8 @@ export default Controller.extend({
   lineColor: "#000000",
   validCode: false,
   testValue: "96385074",
+
+  version: "0.3.2",
 
   demoOptions: computed('format', 'width', 'height', 'displayValue','fontSize','fontOption',
               'font', 'textAlign', 'textPosition', 'background', 'lineColor',
