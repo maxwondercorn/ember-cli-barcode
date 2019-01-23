@@ -34,7 +34,7 @@
   "dependencies": {
     "broccoli-funnel": "^2.0.1",
     "broccoli-merge-trees": "^3.0.1",
-    "ember-cli-babel": "^7.1.2",
+    "ember-cli-babel": "^7.4.0",
     "jsbarcode": "^3.11.0"
   },
   "devDependencies": {
@@ -44,7 +44,7 @@
     "ember-cli-bootstrap-sassy": "^0.5.8",
     "ember-cli-dependency-checker": "^2.2.1",
     "ember-cli-eslint": "^4.2.1",
-    "ember-cli-github-pages": "^0.2.0",
+    "ember-cli-github-pages": "^0.2.1",
     "ember-cli-htmlbars": "^2.0.5",
     "ember-cli-htmlbars-inline-precompile": "^1.0.5",
     "ember-cli-inject-live-reload": "^1.10.2",
@@ -59,7 +59,7 @@
     "ember-resolver": "^4.5.6",
     "ember-source": "^2.18.2",
     "loader.js": "^4.7.0",
-    "sass": "^1.14.3"
+    "sass": "^1.16.1"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
