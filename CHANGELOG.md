@@ -1,6 +1,11 @@
 # Change Log
 
-# 0.3.1
+# 0.3.2
+
+* Added angle bracket invocation example to readme
+* Added version number display to dummy app
+
+## 0.3.1
 
 Features
 * Added accessibility attributes and elements to the generated barcodes
