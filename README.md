@@ -48,6 +48,11 @@ The simplest form to render a barcode is to pass in a value and the default opti
 {{bar-code value="abc123456"}}
 ```
 
+Or using angle bracket invocation, available in Ember 3.4+
+```hbs
+<BarCode @value="abc123456" />
+```
+
 Which renders:
 
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/abc123456.png "CODE128 Barcode")
