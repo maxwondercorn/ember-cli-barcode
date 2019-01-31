@@ -1,6 +1,10 @@
 # Change Log
 
-# 0.3.3
+## 0.3.4
+
+* Correct angle bracket invocation example
+
+## 0.3.3
 
 * Updated dependencies
 * Updated some dev dependencies
