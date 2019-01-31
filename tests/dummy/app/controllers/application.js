@@ -16,7 +16,7 @@ export default Controller.extend({
   validCode: false,
   testValue: "96385074",
 
-  version: "0.3.2",
+  version: "0.3.3",
 
   demoOptions: computed('format', 'width', 'height', 'displayValue','fontSize','fontOption',
               'font', 'textAlign', 'textPosition', 'background', 'lineColor',
