@@ -1,6 +1,11 @@
 # Change Log
 
-# 0.3.2
+# 0.3.3
+
+* Updated dependencies
+* Updated some dev dependencies
+
+## 0.3.2
 
 * Added angle bracket invocation example to readme
 * Added version number display to dummy app
