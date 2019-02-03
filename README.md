@@ -50,7 +50,7 @@ The simplest form to render a barcode is to pass in a value and the default opti
 
 Or using angle bracket invocation, available in Ember 3.4+
 ```hbs
-<BarCode @value={{"abc123456"}} />
+<BarCode @value="abc123456" />
 ```
 
 Which renders:
