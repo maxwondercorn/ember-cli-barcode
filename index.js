@@ -1,9 +1,10 @@
 /* eslint-env node */
+/* eslint node/no-extraneous-require: 0 */
+// turn off extraneous-require because "silent-error" not in package.json
 'use strict';
 
 var path = require('path');
 var Funnel = require('broccoli-funnel');
-// var MergeTrees = require('broccoli-merge-trees');
 var SilentError = require('silent-error'); // From ember-cli
 
 // For ember-cli < 2.7 findHost doesnt exist so we backport from that version
@@ -30,7 +31,6 @@ function generateFilePath(file) {
   }
   if (!includedFiles.includes(file)) {
     throw new SilentError('ember-cli-barcode file option is not a valid JsBarcode option, `all` or `falsy`');
-    // return false; // dead code
   }
   return `barcodes/JsBarcode.${file}.min.js`;
 }

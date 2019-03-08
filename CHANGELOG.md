@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.3.5
+
+* Bumped ember version to 3.4.3
+* Updated dependicies
+
 ## 0.3.4
 
 * Correct angle bracket invocation example

@@ -32,7 +32,8 @@ Version 2.x onward no longer requires Bower but you need to add configuration to
 
 After upgrading to 2.x, if jsbarcode was your only Bower dependency you can remove bower.json from your project and delete the bower_components directory. If you have other Bower dependencies, remove the jsbarcode dependency from bower.json
 
-## Installation
+Installation
+------------------------------------------------------------------------------
 
 ```
   $ ember install ember-cli-barcode
