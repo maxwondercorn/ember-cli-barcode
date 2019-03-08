@@ -3,7 +3,7 @@
 ## 0.3.5
 
 * Bumped ember version to 3.4.3
-* Updated dependicies
+* Updated dependencies
 
 ## 0.3.4
 
