@@ -21,17 +21,23 @@
     </div>
     <div class="nav navbar-nav navbar-right">
       <a href="https://github.com/maxwondercorn/ember-cli-barcode">
-        <img class="github" alt="github" src="assets/images/GitHub-Mark-32px.png">
+        <img
+          class="github"
+          alt="github"
+          src="assets/images/GitHub-Mark-32px.png"
+         >
+
       </a>
     </div>
-
-  <div class="nav navbar-nav navbar-right">
-    v{{version}}
-    <a href="https://github.com/maxwondercorn/ember-cli-barcode"><img  class="github" src="assets/images/GitHub-Mark-32px.png"></a>
-  </div>
+    <div class="nav navbar-nav navbar-right">
+      v
+      {{version}}
+      <a href="https://github.com/maxwondercorn/ember-cli-barcode">
+        <img class="github" alt="" src="assets/images/GitHub-Mark-32px.png" >
+      </a>
+    </div>
   </div>
 </nav>
-
 <div class="container-fluid">
   <p class="lead">
     This demo shows a subset of jsbarcode's
@@ -41,7 +47,7 @@
     . Each barcode format has different rules on what characters (alpha, mumeric, etc) and lengths are allowed
     to generate a valid barcode. Valid barcode values are loaded when changing barcode formats.
   </p>
-  <hr>
+  <hr >
   <div class="row">
     <div class="col-md-1">
       <label class="text-info">
@@ -111,7 +117,7 @@
     </div>
     <div class="col-md-2"></div>
   </div>
-  <hr>
+  <hr >
   <div class="row display">
     <div class="col-md-9">
       <div class="pull-left barcode">
@@ -137,13 +143,13 @@
       options = {
       <div class="params">
         {{#each-in demoOptions as |name values|}}
-          {{name}}: "{{values}}",<br>
+          {{name}}: "{{values}}",<br >
         {{/each-in}}
       </div>
       }
     </div>
   </div>
-  <hr>
+  <hr >
   <div class="row">
     <div class="col-md-6">
       This section demonstrates the `valid` parameter. The EAN8 barcode value must be numeric and eight characters long. 
@@ -156,7 +162,7 @@
         Value
       </label>
       {{input type="text" value=testValue}}
-      <br>
+      <br >
       <span class="text-danger">
         {{if validCode "" "Code Invalid"}}
       </span>
