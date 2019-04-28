@@ -23,10 +23,12 @@ env:
 branches:
   only:
     - master
+    - update-deps
     # npm version tags
     - /^v\d+\.\d+\.\d+/
 
 jobs:
+  fail_fast: true
   allow_failures:
     - env: EMBER_TRY_SCENARIO=ember-canary
 
