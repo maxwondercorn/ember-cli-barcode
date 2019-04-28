@@ -27,7 +27,7 @@ The addon adds accessibility attributes and elements to the generated barcodes. 
 Compatibility
 ------------------------------------------------------------------------------
 
-* Ember.js v2.18 or above
+* Ember.js v2.4 or above
 * Ember CLI v2.13 or above
 
 

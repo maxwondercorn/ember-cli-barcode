@@ -23,7 +23,6 @@ env:
 branches:
   only:
     - master
-    - update-deps
     # npm version tags
     - /^v\d+\.\d+\.\d+/
 
