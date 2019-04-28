@@ -28,10 +28,6 @@ The addon adds accessibility attributes and elements to the generated barcodes. 
 
 ember-cli-barcode is compatible with Ember 2.4 onward and is passing tests for Ember 3.x.
 
-Version 2.x onward no longer requires Bower but you need to add configuration to `ember-cli-build.js` - thanks @donaldwasserman
-
-After upgrading to 2.x, if jsbarcode was your only Bower dependency you can remove bower.json from your project and delete the bower_components directory. If you have other Bower dependencies, remove the jsbarcode dependency from bower.json
-
 Installation
 ------------------------------------------------------------------------------
 
