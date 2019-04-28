@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.3.6
+
+* Bumped ember version to 3.8.2
+* Updated dependencies
+
 ## 0.3.5
 
 * Bumped ember version to 3.4.3
