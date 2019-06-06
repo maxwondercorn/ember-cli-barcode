@@ -42,31 +42,34 @@ By default all barcode types are added to your app. See the [build configuration
 
 ## Simple Usage
 
-The simplest form to render a barcode is to pass in a value and the default options will be used to generate a CODE128 barcode:
+The simplest form to render a barcode is to pass in a value and the default options will generate a CODE128 barcode:
+
+```handlebars
+<BarCode @value="abc123456" />
+```
+
+which renders:
+
+![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/abc123456.png "CODE128 Barcode")
+
+All examples use angle bracket invocation available in Ember 3.4+. The example above using classic component invocation would be:
 
 ```handlebars
 {{bar-code value="abc123456"}}
 ```
 
-Or using angle bracket invocation, available in Ember 3.4+
-```handlebars
-<BarCode @value="abc123456" />
-```
-
-Which renders:
-
-![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/abc123456.png "CODE128 Barcode")
-
 By default, barcodes are rendered using the `svg` element. The element can be changed to `img` or `canvas` using the tagName property:
 
 ```handlebars
-{{bar-code
-  value="A45689"
-  tagName="img"}}
+<BarCode
+  @value="A45689"
+  @tagName="img"
+/>
 
-{{bar-code
+<BarCode
   value="A45689"
-  tagName="canvas"}}
+  tagName="canvas"
+/>
 ```
 
 Use the `img` tag if you want the ability to right-click copy or save the displayed barcode.

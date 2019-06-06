@@ -16,7 +16,7 @@ module("Integration | Component | bar code", function(hooks) {
     this.set("code", "1234567");
 
     // will not dispaly - text value not set
-    await render(hbs`{{bar-code}}`);
+    await render(hbs`<BarCode />`);
     assert.equal(find("svg").getAttribute("style"), undefined);
   });
 
@@ -26,7 +26,7 @@ module("Integration | Component | bar code", function(hooks) {
     this.set("code", "1234567");
 
     // will display - text value is set
-    await render(hbs`{{bar-code value=code}}`);
+    await render(hbs`<BarCode @value={{this.code}} />`);
     assert.equal(find("svg").getAttribute("style"), "transform: translate(0,0)");
 
     // verify the aria-labelledby attribute is set
@@ -50,7 +50,7 @@ module("Integration | Component | bar code", function(hooks) {
     this.set("code", "1234567");
 
     // render barcode as a image
-    await render(hbs`{{bar-code tagName="img" value=code}}`);
+    await render(hbs`<BarCode @tagName="img" @value={{this.code}} />`);
     assert.equal(
       find("img").src
         .substr(0, 10),
@@ -67,7 +67,7 @@ module("Integration | Component | bar code", function(hooks) {
     this.set("code", "1234567");
 
     // render barcode as a canvas
-    await render(hbs`{{bar-code tagName="canvas" value=code}}`);
+    await render(hbs`<BarCode @tagName="canvas" @value={{this.code}} />`);
     assert.equal(findAll("canvas").length, 1);
 
     // verify canvas attributes are set
@@ -81,7 +81,7 @@ module("Integration | Component | bar code", function(hooks) {
     this.set("code", "1234567");
 
     // change barcode background to red
-    await render(hbs`{{bar-code value=code background="red"}}`);
+    await render(hbs`<BarCode @value={{this.code}} @background="red" />`);
     assert.equal(find("rect").getAttribute("style"), "fill:red;");
   });
 
@@ -91,7 +91,7 @@ module("Integration | Component | bar code", function(hooks) {
     this.set("code", "1234567");
 
     // change barcode color to blue
-    await render(hbs`{{bar-code value=code lineColor="blue"}}`);
+    await render(hbs`<BarCode @value={{this.code}} @lineColor="blue" />`);
     assert.equal(find("g").getAttribute("style"), "fill:blue;");
   });
 
@@ -112,7 +112,7 @@ module("Integration | Component | bar code", function(hooks) {
     });
 
     // render using options which overrides other options
-    await render(hbs`{{bar-code value=code options=options lineColor="green"}}`);
+    await render(hbs`<BarCode @value={{this.code}} @options={{this.options}} @lineColor="green" />`);
     assert.equal(find("g").getAttribute("style"), "fill:#eeeeeee;");
   });
 
@@ -137,6 +137,6 @@ module("Integration | Component | bar code", function(hooks) {
 
     this.set("code", "1234");
 
-    await render(hbs`{{bar-code value=code format="EAN8" valid=(action checkValid)}}`);
+    await render(hbs`<BarCode @value={{this.code}} @format="EAN8" @valid={{action checkValid}} />`);
   });
 });
