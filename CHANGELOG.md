@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.3.7
+
+* README and docs converted to angle brackets
+* tests converted to angle brackets
+
 ## 0.3.6
 
 * Bumped ember version to 3.8.2

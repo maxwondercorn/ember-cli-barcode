@@ -6,9 +6,10 @@ All JsBarcode's [options](https://github.com/lindell/JsBarcode/wiki/Options#form
 Change the barcode format by passing the format name into the component. To display a UPC barcode:
 
 ```handlebars
-  {{bar-code
-    value="123456789999"
-    format="UPC"}}
+  <BarCode
+    @value="123456789999"
+    @format="UPC"
+  />
 ```
 
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/upc.png "UPC Barcode")
@@ -18,9 +19,10 @@ Change the barcode format by passing the format name into the component. To disp
 The color of the barcode or it's background can be changed:
 
 ```handlebars
-  {{bar-code
-    value="abc123456"
-    lineColor="red"}}
+  <BarCode
+    @value="abc123456"
+    @lineColor="red"
+  />
 ```
 
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/redlines.png "Colored Barcode")
@@ -30,10 +32,11 @@ The color of the barcode or it's background can be changed:
 background color changed:
 
 ```handlebars
-  {{bar-code
-    value="abc123456"
-    lineColor="#ffffff"
-    background="#660033"}}
+  <BarCode
+    @value="abc123456"
+    @lineColor="#ffffff"
+    @background="#660033"
+  />
 ```
 
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/background.png "Barcode with colored background")
@@ -55,16 +58,18 @@ If you have many options, pass an object using the `options` property instead of
 
 ```html
   <!-- app/templates/application.hbs -->
-  {{bar-code
-    value="11223344"
-    options=myOptions}}
+  <BarCode
+    @value="11223344"
+    @options={{this.myOptions}}
+  />
 
   <!-- options override other settings -->
   <!-- line color will be ##ff3399 -->
-  {{bar-code
-    value="11223344"
-    options=myOptions
-    lineColor="blue"}}
+  <BarCode
+    @value="11223344"
+    @options={{this.myOptions}}
+    @lineColor="blue"
+  />
 ```
 
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/linecolorff3399.png "Barcode line color ff3399")
@@ -81,10 +86,10 @@ The `flat` option is supported for both EAN13 and UPC barcodes defaulting to `fa
 
 If you pass an invalid value based on the format, the barcode will not render. To capture invalid values assign an action to the `vaild` property.
 
-```javascript
+```handlebars
 // app/templates/application.hbs
 // pass invalid code for EAN8 barcodes
-{{bar-code format="EAN8"  value="9638" valid=(action 'checkValid')}}
+ <BarCode @format="EAN8" @value="9638" @valid={{action 'checkValid'}} />
 
 {{if validCode "Valid" "Invalid"}}
 ```
@@ -119,7 +124,7 @@ The default text generated for accessibility is based on the barcode's value:
 where `<value>` is the value passed into the component. You can override the text used on an individual component invocation by setting the `altText` property. You can globally override all components and exclude the value from the text string using [runtime configuration](#Runtime-Configuration). There are additional accessibility options that can be set in runtime configuration.
 
 ```handlebars
-{{bar-code value="9638A3" altText="Ticket barcode"}}
+ <BarCode @value="9638A3" @altText="Ticket barcode" />
 ```
 
 generates the following alternative attribute text
@@ -133,7 +138,7 @@ Excluding the value
 Each element type, img, svg and canvas requires different attributes or additional elements to meet A11Y guidelines. Assuming the component declaration
 
 ```handlebars
-{{bar-code value="BCD10"}}
+ <BarCode @value="BCD10" />
 ```
 
 the markup generated for each "image" type would be
@@ -150,7 +155,7 @@ the markup generated for each "image" type would be
 ### image:
 
 ```html
-<img  src="data:image/png;base64,iVBORw0KGgoAA6dOLEi..." alt="Barcode value BCD10">
+<img src="data:image/png;base64,iVBORw0KGgoAA6dOLEi..." alt="Barcode value BCD10">
 ```
 
 ### canvas:
