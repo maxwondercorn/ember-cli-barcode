@@ -1,0 +1,36 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - ember-cli-babel > broccoli-babel-transpiler > broccoli-persistent-filter > async-promise-queue > async > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > @babel/core > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > broccoli-babel-transpiler > @babel/core > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > @babel/core > @babel/helpers > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > broccoli-babel-transpiler > @babel/core > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > @babel/core > @babel/traverse > @babel/helper-function-name > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > broccoli-babel-transpiler > @babel/core > @babel/traverse > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > @babel/core > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > @babel/preset-env > @babel/plugin-transform-modules-amd > @babel/helper-module-transforms > @babel/helper-simple-access > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > broccoli-babel-transpiler > @babel/core > @babel/helpers > @babel/traverse > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > @babel/preset-env > @babel/plugin-transform-async-to-generator > @babel/helper-remap-async-to-generator > @babel/helper-wrap-function > @babel/helper-function-name > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > broccoli-babel-transpiler > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > @babel/preset-env > @babel/plugin-proposal-async-generator-functions > @babel/helper-remap-async-to-generator > @babel/helper-wrap-function > @babel/traverse > @babel/generator > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > broccoli-babel-transpiler > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'
+    - ember-cli-babel > @babel/preset-env > @babel/plugin-proposal-async-generator-functions > @babel/helper-remap-async-to-generator > @babel/helper-wrap-function > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2019-07-04T04:30:56.990Z'

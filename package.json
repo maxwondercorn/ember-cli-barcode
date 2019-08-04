@@ -32,13 +32,16 @@
     "start": "ember serve",
     "test": "ember test",
     "test:all": "ember try:each",
-    "deploy": "ember build && ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" && git push origin gh-pages:gh-pages"
+    "deploy": "ember build && ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" && git push origin gh-pages:gh-pages",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "broccoli-funnel": "^2.0.2",
     "broccoli-merge-trees": "^3.0.2",
     "ember-cli-babel": "^7.5.0",
-    "jsbarcode": "^3.11.0"
+    "jsbarcode": "^3.11.0",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@ember/jquery": "^0.6.0",
@@ -72,5 +75,6 @@
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
-  }
+  },
+  "snyk": true
 }
