@@ -1,5 +1,10 @@
 # Change Log
 
+## Not released
+
+* Updated dependencies
+* Move Snyk from dependencies to devDependencies
+
 ## 0.3.7
 
 * README and docs converted to angle brackets
