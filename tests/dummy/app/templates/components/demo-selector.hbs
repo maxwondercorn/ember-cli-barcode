@@ -1,5 +1,5 @@
-<select onchange={{action (mut value) value="target.value" }}>
-  {{#each items as |item|}}
+<select onchange={{action (mut @value) value="target.value" }}>
+  {{#each @items as |item|}}
     <option value={{item.value}} selected={{item.selected}}>{{item.value}}</option>
   {{/each}}
 </select>
