@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.3.9](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.8...v0.3.9) - 2019-10-04
+
+### Merged
+
+- Remove jQuery [`#17`](https://github.com/maxwondercorn/ember-cli-barcode/pull/17)
+
+### Commits
+
+- Removed Snyk [`5a15d36`](https://github.com/maxwondercorn/ember-cli-barcode/commit/5a15d366b0ba9c61bae4faebf41f127da6bca7b3)
+- Fixed broken test [`36795b8`](https://github.com/maxwondercorn/ember-cli-barcode/commit/36795b8e05739f75dcc545af2afbb7efe30a68ed)
+
 ## [v0.3.8](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.7...v0.3.8) - 2019-10-04
 
 ### Merged
@@ -17,6 +28,7 @@ All notable changes to this project will be documented in this file.
 - Updated the demo/dummy application, removed need for jquery [`265bd94`](https://github.com/maxwondercorn/ember-cli-barcode/commit/265bd94a197ebeba8eb3ccbe957e1639f0fbf2bc)
 - Updated dummy app to new features [`7ef65c0`](https://github.com/maxwondercorn/ember-cli-barcode/commit/7ef65c0e654cb8e9771716e7f8599441899d42d9)
 - fix: .snyk &amp; package.json to reduce vulnerabilities [`de214b8`](https://github.com/maxwondercorn/ember-cli-barcode/commit/de214b88099a0e0ce33cf327fdffb91c7ccb564f)
+- Ran codemods to remove jQuery [`c11f14b`](https://github.com/maxwondercorn/ember-cli-barcode/commit/c11f14bd5c18791401d910b1ce266dcfb8b58dcf)
 - Fixed tripple curly error in changelog template [`c18ade3`](https://github.com/maxwondercorn/ember-cli-barcode/commit/c18ade38ba09e5fbfa3a3ba1b5164c070d260274)
 - Added linting ignore to changelog template [`ecb7f2a`](https://github.com/maxwondercorn/ember-cli-barcode/commit/ecb7f2aa63225b81e545bf916bc6d203c6674a9d)
 - bumped addon display version dummy app [`eac9fde`](https://github.com/maxwondercorn/ember-cli-barcode/commit/eac9fdefa3d41a920786b68cc83e02df6e080f79)
