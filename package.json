@@ -34,7 +34,6 @@
     "test": "ember test",
     "test:all": "ember try:each",
     "deploy": "ember build && ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" && git push origin gh-pages:gh-pages",
-    "snyk-protect": "snyk protect",
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "auto-changelog": {
@@ -80,11 +79,9 @@
     "loader.js": "^4.7.0",
     "popper.js": "^1.15.0",
     "qunit-dom": "^0.9.0",
-    "sass": "^1.23.0",
-    "snyk": "^1.230.5"
+    "sass": "^1.23.0"
   },
   "engines": {
     "node": "8.* || >= 10.*"
-  },
-  "snyk": false
+  }
 }
