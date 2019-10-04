@@ -1,117 +1,66 @@
 {{! template-lint-disable self-closing-void-elements }}
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button
-        type="button"
-        class="navbar-toggle collapsed"
-        data-toggle="collapse"
-        data-target="#bs-example-navbar-collapse-1"
-        aria-expanded="false"
-      >
-        <span class="sr-only">
-          Toggle navigation
-        </span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span clxass="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">
-        ember-cli-barcode
-      </a>
-    </div>
-    <div class="nav navbar-nav navbar-right">
-      v
-      {{version}}
-      <a href="https://github.com/maxwondercorn/ember-cli-barcode">
-        <img class="github" alt="" src="assets/images/GitHub-Mark-32px.png" />
-      </a>
-    </div>
+{{! template-lint-disable no-inline-styles }}
+<nav class="navbar navbar-expand-lg bg-primary" style="color: #ffff;">
+  <a class="navbar-brand">
+    ember-cli-barcode
+  </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
+    v
+    {{version}}
+    <a href="https://github.com/maxwondercorn/ember-cli-barcode">
+      <img
+        class="github"
+        alt=""
+        src="assets/images/GitHub-Mark-Light-32px.png"
+      />
+    </a>
   </div>
 </nav>
 <div class="container-fluid">
-  <p class="lead">
+  <p class="container mt-4 mb-3 lead">
     This demo shows a subset of jsbarcode's
     <a href="https://github.com/lindell/JsBarcode/wiki/Options">
       options
     </a>
-    . Each barcode format has different rules on what characters (alpha, mumeric, etc) and lengths are allowed
-    to generate a valid barcode. Valid barcode values are loaded when changing barcode formats.
+    . Each barcode format has different rules on what characters and lengths are allowed
+    to generate a valid barcode. The demo loads valid barcode values when the barcode formats are changed.
   </p>
   <hr />
-  <div class="row">
-    <div class="col-md-1">
-      <label class="text-info">
-        Format
-      </label>
-      <DemoSelector @items={{this.formats}} @value={{this.format}} />
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="offset-md-1 col">
+        <SelectorGroup @label="Format" @items={{this.formats}} @value={{this.format}} />
+        <SelectorGroup @label="Width" @items={{this.widths}} @value={{this.width}} /> 
+        <SelectorGroup @label="Height" @items={{this.heights}} @value={{this.height}} /> 
+        <SelectorGroup @label="Value" @items={{this.dispalyValues}} @value={{this.displayValue}} /> 
+        <SelectorGroup @label="Font Size" @items={{this.fontSizes}} @value={{this.fontSize}} /> 
+        <SelectorGroup @label="Font Opt" @items={{this.fontOptions}} @value={{this.fontOption}} /> 
+        <SelectorGroup @label="Font" @items={{this.fonts}} @value={{this.font}} /> 
+        <SelectorGroup @label="Align" @items={{this.alignOptions}} @value={{this.textAlign}} /> 
+        <SelectorGroup @label="Position" @items={{this.positions}} @value={{this.textPosition}} /> 
+
+        <div class="form-group float-left">
+          <label class="text-info">
+            Background
+          </label>
+          <Input @class="normal-height" @type="text" @value={{this.background}} />
+        </div>
+
+        <div class="form-group float-left">
+          <label class="text-info">
+            Color
+          </label>
+          <Input @class="normal-height" @type="text" @value={{this.lineColor}} />
+        </div>
+      </div>
     </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Wdith
-      </label>
-      <DemoSelector @items={{this.widths}} @value={{this.width}} />
-    </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Height
-      </label>
-      <DemoSelector @items={{this.heights}} @value={{this.height}} />
-    </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Value
-      </label>
-      <DemoSelector @items={{this.dispalyValues}} @value={{displayValue}} />
-    </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Font Size
-      </label>
-      <DemoSelector @items={{this.fontSizes}} @value={{this.fontSize}} />
-    </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Font Opt
-      </label>
-      <DemoSelector @items={{this.fontOptions}} @value={{this.fontOption}} />
-    </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Fonts
-      </label>
-      <DemoSelector @items={{this.fonts}} @value={{this.font}} />
-    </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Align
-      </label>
-      <DemoSelector @items={{this.alignOptions}} @value={{this.textAlign}} />
-    </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Position
-      </label>
-      <DemoSelector @items={{this.positions}} @value={{this.textPosition}} />
-    </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Background
-      </label>
-      <Input @type="text" @value={{this.background}} />
-    </div>
-    <div class="col-md-1">
-      <label class="text-info">
-        Color
-      </label>
-      <Input @type="text" @value={{this.lineColor}} />
-    </div>
-    <div class="col-md-2"></div>
   </div>
   <hr />
-  <div class="row display">
-    <div class="col-md-9">
-      <div class="pull-left barcode">
+  <div class="row justify-content-center">
+    <div class="offset-lg-1 col-6">
+      <div class="float-left barcode">
         <label class="text-info">
           SVG
         </label>
@@ -121,7 +70,7 @@
           @options={{this.demoOptions}}
         />
       </div>
-      <div class="pull-left barcode">
+      <div class="float-left hide barcode">
         <label class="text-info">
           IMG
         </label>
@@ -131,7 +80,7 @@
           @options={{this.demoOptions}}
         />
       </div>
-      <div class="pull-left barcode">
+      <div class="float-left hide barcode">
         <label class="text-info">
           CANVAS
         </label>
@@ -142,25 +91,25 @@
         />
       </div>
     </div>
-    <div class="col-md-2 options">
+    <div class="options justify-content-center">
       options = {
       <div class="params">
         {{#each-in demoOptions as |name values|}}
           {{name}}:{{values}},<br />
         {{/each-in}}
       </div>
-      }
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
     </div>
   </div>
   <hr />
-  <div class="row">
-    <div class="col-md-6">
+  <div class="row mt-4 justify-content-center">
+    <div class="col-12 col-md-6">
       This section demonstrates the `valid` parameter. The EAN8 barcode value must be numeric and eight characters long. 
       Deleting and/or modifying the value will trigger the action when the code becomes invalid.
     </div>
   </div>
-  <div class="row display">
-    <div class="col-md-offset-1 col-md-2">
+  <div class="row mt-4 justify-content-center">
+    <div class="col-5 col-sm-2">
       <label class="text-info">
         Value
       </label>
@@ -170,11 +119,13 @@
         {{if validCode "" "Code Invalid"}}
       </span>
     </div>
-    <BarCode
-      @value={{this.testValue}}
-      @format="EAN8"
-      @tagName="svg"
-      @valid={{action "checkValid"}}
-    />
+    <div class="col-5 col-sm-2">
+      <BarCode
+        @value={{this.testValue}}
+        @format="EAN8"
+        @tagName="svg"
+        @valid={{action "checkValid"}}
+      />
+    </div>
   </div>
 </div>
