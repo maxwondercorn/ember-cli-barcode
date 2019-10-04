@@ -12,6 +12,8 @@ All notable changes to this project will be documented in this file.
 
 - updated dependencies [`bd6dad6`](https://github.com/maxwondercorn/ember-cli-barcode/commit/bd6dad6de7c4b5ad73267b9a9fe816970c8e6044)
 - Bumped to Ember v3.12 [`f45b4f4`](https://github.com/maxwondercorn/ember-cli-barcode/commit/f45b4f419fa3a1e7d85c021acdb275f71d6deee5)
+- Bumped to Ember v3.12 [`aa4ac29`](https://github.com/maxwondercorn/ember-cli-barcode/commit/aa4ac29e4dc65a831197cd441b1278c18e202299)
+- Updated the demo/dummy application, removed need for jquery [`265bd94`](https://github.com/maxwondercorn/ember-cli-barcode/commit/265bd94a197ebeba8eb3ccbe957e1639f0fbf2bc)
 - Updated dummy app to new features [`7ef65c0`](https://github.com/maxwondercorn/ember-cli-barcode/commit/7ef65c0e654cb8e9771716e7f8599441899d42d9)
 - fix: .snyk & package.json to reduce vulnerabilities [`de214b8`](https://github.com/maxwondercorn/ember-cli-barcode/commit/de214b88099a0e0ce33cf327fdffb91c7ccb564f)
 - bumped addon display version dummy app [`eac9fde`](https://github.com/maxwondercorn/ember-cli-barcode/commit/eac9fdefa3d41a920786b68cc83e02df6e080f79)
