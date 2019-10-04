@@ -1,11 +1,35 @@
-@import "bootstrap";
+@import 'ember-cli-bootstrap-4/bootstrap';
+
+body {
+  margin: 0 auto;
+  padding-bottom: 55px;
+}
 
 label {
   display: block;
 }
 
-select, input {
+select,
+input {
   width: 95px;
+}
+
+.hide {
+  display: inherit;
+}
+
+@media (max-width: 575.98px) {
+  .hide {
+    display: none;
+  }
+}
+
+.form-group {
+  padding: 0 5px;
+}
+
+.normal-height {
+  line-height: normal;
 }
 
 .barcode {
@@ -14,10 +38,6 @@ select, input {
 }
 .params {
   padding-left: 35px;
-}
-
-.display {
-  margin-top: 25px;
 }
 
 .github {

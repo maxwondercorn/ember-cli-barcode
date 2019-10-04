@@ -5,11 +5,10 @@ const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
-    'ember-cli-bootstrap-sassy': {
-      'glyphicons': false
-    },
-   
     // Add options here
+    'ember-cli-bootstrap-4': {
+      js: null
+    }
   });
 
   /*
