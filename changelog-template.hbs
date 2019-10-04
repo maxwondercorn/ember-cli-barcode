@@ -1,3 +1,4 @@
+{{! template-lint-disable }}
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -29,7 +30,7 @@ All notable changes to this project will be documented in this file.
     {{/each}}
   {{/if}}
 
-  {{#commit-list commits heading='### Commits'}}
+  {{#commit-list commits heading="### Commits"}}
     - {{#if breaking}}**Breaking change:** {{/if}}{{subject}} {{#if href}}[`{{shorthash}}`]({{href}}){{/if}}
   {{/commit-list}}
 
