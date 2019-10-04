@@ -36,9 +36,11 @@ module("Integration | Component | bar code", function(hooks) {
       "SVG title attribute is created"
     );
 
+    const title = document.getElementsByTagNameNS('http://www.w3.org/2000/svg', 'title')[0].textContent;
+
     // verify title element is set to correct text
     assert.equal(
-      this.$("svg").find("title")[0].innerHTML,
+      title,
       "Barcode value 1234567",
       "SVG title element has correct innerHTML"
     );
