@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [Unreleased](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.7...HEAD)
+## [v0.3.8](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.7...v0.3.8) - 2019-10-04
 
 ### Merged
 
+- Bump to Ember v3.12 [`#18`](https://github.com/maxwondercorn/ember-cli-barcode/pull/18)
 - [Snyk] Fix for 1 vulnerable dependencies [`#16`](https://github.com/maxwondercorn/ember-cli-barcode/pull/16)
 
 ### Commits
@@ -15,7 +16,9 @@ All notable changes to this project will be documented in this file.
 - Bumped to Ember v3.12 [`aa4ac29`](https://github.com/maxwondercorn/ember-cli-barcode/commit/aa4ac29e4dc65a831197cd441b1278c18e202299)
 - Updated the demo/dummy application, removed need for jquery [`265bd94`](https://github.com/maxwondercorn/ember-cli-barcode/commit/265bd94a197ebeba8eb3ccbe957e1639f0fbf2bc)
 - Updated dummy app to new features [`7ef65c0`](https://github.com/maxwondercorn/ember-cli-barcode/commit/7ef65c0e654cb8e9771716e7f8599441899d42d9)
-- fix: .snyk & package.json to reduce vulnerabilities [`de214b8`](https://github.com/maxwondercorn/ember-cli-barcode/commit/de214b88099a0e0ce33cf327fdffb91c7ccb564f)
+- fix: .snyk &amp; package.json to reduce vulnerabilities [`de214b8`](https://github.com/maxwondercorn/ember-cli-barcode/commit/de214b88099a0e0ce33cf327fdffb91c7ccb564f)
+- Fixed tripple curly error in changelog template [`c18ade3`](https://github.com/maxwondercorn/ember-cli-barcode/commit/c18ade38ba09e5fbfa3a3ba1b5164c070d260274)
+- Added linting ignore to changelog template [`ecb7f2a`](https://github.com/maxwondercorn/ember-cli-barcode/commit/ecb7f2aa63225b81e545bf916bc6d203c6674a9d)
 - bumped addon display version dummy app [`eac9fde`](https://github.com/maxwondercorn/ember-cli-barcode/commit/eac9fdefa3d41a920786b68cc83e02df6e080f79)
 
 ## [v0.3.7](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.6...v0.3.7) - 2019-06-06
@@ -117,7 +120,7 @@ All notable changes to this project will be documented in this file.
 
 ### Commits
 
-- use "all" option in dummy app [`cce1a4d`](https://github.com/maxwondercorn/ember-cli-barcode/commit/cce1a4d9febcceda3c7935863bad45e5f9e40f48)
+- use &quot;all&quot; option in dummy app [`cce1a4d`](https://github.com/maxwondercorn/ember-cli-barcode/commit/cce1a4d9febcceda3c7935863bad45e5f9e40f48)
 
 ## [v0.2.1](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.2.0...v0.2.1) - 2018-08-02
 
@@ -211,4 +214,4 @@ All notable changes to this project will be documented in this file.
 - fix to dependicies [`7961faf`](https://github.com/maxwondercorn/ember-cli-barcode/commit/7961fafb76e498f36c113297b93a9a2f2beab550)
 - fixed issue with license badge [`c05c37d`](https://github.com/maxwondercorn/ember-cli-barcode/commit/c05c37d7c11ac8eb5dfc1c6b37eb88f8eb49569a)
 - updated copyright [`0479b47`](https://github.com/maxwondercorn/ember-cli-barcode/commit/0479b4787b1e0f1fb0d6e86499dee9cbe5efa7d7)
-- improved select's spacing [`18923f9`](https://github.com/maxwondercorn/ember-cli-barcode/commit/18923f9f80bac781fbd218f178e6d46a7afc1288)
+- improved select&#x27;s spacing [`18923f9`](https://github.com/maxwondercorn/ember-cli-barcode/commit/18923f9f80bac781fbd218f178e6d46a7afc1288)
