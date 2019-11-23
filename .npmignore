@@ -24,6 +24,10 @@
 /tests/
 /yarn.lock
 .gitkeep
+/.vscode
+/.snyk
+/changelog-template.hbs
+/images
 
 # ember-try
 /.node_modules.ember-try/
