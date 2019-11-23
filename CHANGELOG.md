@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.3.11](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.10...v0.3.11) - 2019-11-23
+
+### Commits
+
+- Remove extraneous from npm package [`ea7ccb7`](https://github.com/maxwondercorn/ember-cli-barcode/commit/ea7ccb766d2a837c0706b7f6c6dbaef868a031d8)
+
 ## [v0.3.10](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.9...v0.3.10) - 2019-11-23
 
 ### Merged
