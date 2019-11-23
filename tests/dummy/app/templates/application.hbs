@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto"></ul>
     v
-    {{version}}
+    {{appVersion}}
     <a href="https://github.com/maxwondercorn/ember-cli-barcode">
       <img
         class="github"
@@ -124,7 +124,7 @@
         @value={{this.testValue}}
         @format="EAN8"
         @tagName="svg"
-        @valid={{action "checkValid"}}
+        @valid={{action this.checkValid}}
       />
     </div>
   </div>

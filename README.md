@@ -53,7 +53,7 @@ which renders:
 
 ![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/abc123456.png "CODE128 Barcode")
 
-All examples use angle bracket invocation available in Ember 3.4+. The example above using classic component invocation would be:
+The example above using classic component invocation would be:
 
 ```handlebars
 {{bar-code value="abc123456"}}
