@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v0.3.12](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.11...v0.3.12) - 2020-05-06
+
+### Merged
+
+- Bump jquery from 3.4.1 to 3.5.0 [`#21`](https://github.com/maxwondercorn/ember-cli-barcode/pull/21)
+- Bump acorn from 6.3.0 to 6.4.1 [`#20`](https://github.com/maxwondercorn/ember-cli-barcode/pull/20)
+
 ## [v0.3.11](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.10...v0.3.11) - 2019-11-23
 
 ### Commits
@@ -30,6 +37,7 @@ All notable changes to this project will be documented in this file.
 
 - Removed Snyk [`5a15d36`](https://github.com/maxwondercorn/ember-cli-barcode/commit/5a15d366b0ba9c61bae4faebf41f127da6bca7b3)
 - Fixed broken test [`36795b8`](https://github.com/maxwondercorn/ember-cli-barcode/commit/36795b8e05739f75dcc545af2afbb7efe30a68ed)
+- Ran codemods to remove jQuery [`c11f14b`](https://github.com/maxwondercorn/ember-cli-barcode/commit/c11f14bd5c18791401d910b1ce266dcfb8b58dcf)
 
 ## [v0.3.8](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.7...v0.3.8) - 2019-10-04
 
@@ -46,7 +54,6 @@ All notable changes to this project will be documented in this file.
 - Updated the demo/dummy application, removed need for jquery [`265bd94`](https://github.com/maxwondercorn/ember-cli-barcode/commit/265bd94a197ebeba8eb3ccbe957e1639f0fbf2bc)
 - Updated dummy app to new features [`7ef65c0`](https://github.com/maxwondercorn/ember-cli-barcode/commit/7ef65c0e654cb8e9771716e7f8599441899d42d9)
 - fix: .snyk & package.json to reduce vulnerabilities [`de214b8`](https://github.com/maxwondercorn/ember-cli-barcode/commit/de214b88099a0e0ce33cf327fdffb91c7ccb564f)
-- Ran codemods to remove jQuery [`c11f14b`](https://github.com/maxwondercorn/ember-cli-barcode/commit/c11f14bd5c18791401d910b1ce266dcfb8b58dcf)
 - Fixed tripple curly error in changelog template [`c18ade3`](https://github.com/maxwondercorn/ember-cli-barcode/commit/c18ade38ba09e5fbfa3a3ba1b5164c070d260274)
 - Added linting ignore to changelog template [`ecb7f2a`](https://github.com/maxwondercorn/ember-cli-barcode/commit/ecb7f2aa63225b81e545bf916bc6d203c6674a9d)
 - bumped addon display version dummy app [`eac9fde`](https://github.com/maxwondercorn/ember-cli-barcode/commit/eac9fdefa3d41a920786b68cc83e02df6e080f79)
@@ -71,11 +78,23 @@ All notable changes to this project will be documented in this file.
 
 ### Commits
 
-- fixed linting errors [`e53856d`](https://github.com/maxwondercorn/ember-cli-barcode/commit/e53856d78b95c7c52dbf238eb2c56638878e0ba9)
-- fixed spelling error [`eec7f6a`](https://github.com/maxwondercorn/ember-cli-barcode/commit/eec7f6a41c2d429408bf8a841b5b480d7960ae0d)
-- Merged update/ember [`57f1a65`](https://github.com/maxwondercorn/ember-cli-barcode/commit/57f1a654e81b306ecc5304e1d0f7f7d9eae6cb75)
+- upgraded to ember 3.4 [`5673b55`](https://github.com/maxwondercorn/ember-cli-barcode/commit/5673b55f9c1142f0f46aae7256f2d82603648712)
 - bumped ember to 3.4 and updated deps [`d3ec915`](https://github.com/maxwondercorn/ember-cli-barcode/commit/d3ec915fdccf5bb4e3287537af44046c69e17cb4)
+- updated deps for testing [`b1cf5e8`](https://github.com/maxwondercorn/ember-cli-barcode/commit/b1cf5e8de956775c983f0deba48d6baa7e417b59)
+- ugraded qunit tests [`61beaed`](https://github.com/maxwondercorn/ember-cli-barcode/commit/61beaed2afcc32c0aa38b1c4dea1c89fbd95854b)
+- Merged update/ember [`57f1a65`](https://github.com/maxwondercorn/ember-cli-barcode/commit/57f1a654e81b306ecc5304e1d0f7f7d9eae6cb75)
+- added 2.4, 2.8, 2.12 to tests [`f1ae56f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/f1ae56fd37ccd0d68362f9cb9fe0ba48f19e70c3)
+- refactored this.get [`563b646`](https://github.com/maxwondercorn/ember-cli-barcode/commit/563b6460a322195ada1967c7f94bc47621af267b)
+- dropped circle-ci config [`4e32be7`](https://github.com/maxwondercorn/ember-cli-barcode/commit/4e32be7e8d72e693637c6b5be1fc75ad3fd0f444)
+- fixed linting errors [`e53856d`](https://github.com/maxwondercorn/ember-cli-barcode/commit/e53856d78b95c7c52dbf238eb2c56638878e0ba9)
+- dropping last travis script test [`607622f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/607622f6d576a8969cf040d94d471b9499d5322a)
+- Added ember plugin to .eslintrc.js [`841d50f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/841d50f85d9c108ae42261c1d3f54a42edf3915b)
+- added eslint rule to index.js to prevent error [`77a45be`](https://github.com/maxwondercorn/ember-cli-barcode/commit/77a45be646531df50dc50c563e2380f91921efd4)
+- fixed extra travis-ci test issue? [`6809ae2`](https://github.com/maxwondercorn/ember-cli-barcode/commit/6809ae2faeb9a0cd00230914d5a44eeb00d3186c)
 - updated readme [`4533997`](https://github.com/maxwondercorn/ember-cli-barcode/commit/453399799b3609f47587ffc9e322b1acccc41c39)
+- test travis-ci error [`7803c2e`](https://github.com/maxwondercorn/ember-cli-barcode/commit/7803c2e0cf3f28352257c6124fd7c09efc3cbc1c)
+- fixed spelling error [`eec7f6a`](https://github.com/maxwondercorn/ember-cli-barcode/commit/eec7f6a41c2d429408bf8a841b5b480d7960ae0d)
+- added lint:js script [`957c865`](https://github.com/maxwondercorn/ember-cli-barcode/commit/957c86552a098feddbe2d33040f1de80631d5e4e)
 
 ## [v0.3.4](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.3...v0.3.4) - 2019-01-31
 
@@ -97,23 +116,11 @@ All notable changes to this project will be documented in this file.
 
 ### Commits
 
-- upgraded to ember 3.4 [`5673b55`](https://github.com/maxwondercorn/ember-cli-barcode/commit/5673b55f9c1142f0f46aae7256f2d82603648712)
 - updated babel [`12c12ef`](https://github.com/maxwondercorn/ember-cli-barcode/commit/12c12efa1fc99521caacbef36db1ce1f34882318)
-- updated deps for testing [`b1cf5e8`](https://github.com/maxwondercorn/ember-cli-barcode/commit/b1cf5e8de956775c983f0deba48d6baa7e417b59)
-- ugraded qunit tests [`61beaed`](https://github.com/maxwondercorn/ember-cli-barcode/commit/61beaed2afcc32c0aa38b1c4dea1c89fbd95854b)
-- added 2.4, 2.8, 2.12 to tests [`f1ae56f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/f1ae56fd37ccd0d68362f9cb9fe0ba48f19e70c3)
 - bumped dependicies [`14347c5`](https://github.com/maxwondercorn/ember-cli-barcode/commit/14347c5f2794c05e0043c9a3f1216a285e84a68e)
-- refactored this.get [`563b646`](https://github.com/maxwondercorn/ember-cli-barcode/commit/563b6460a322195ada1967c7f94bc47621af267b)
-- dropped circle-ci config [`4e32be7`](https://github.com/maxwondercorn/ember-cli-barcode/commit/4e32be7e8d72e693637c6b5be1fc75ad3fd0f444)
-- dropping last travis script test [`607622f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/607622f6d576a8969cf040d94d471b9499d5322a)
-- Added ember plugin to .eslintrc.js [`841d50f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/841d50f85d9c108ae42261c1d3f54a42edf3915b)
 - readme update angle bracket invocation [`3ff4875`](https://github.com/maxwondercorn/ember-cli-barcode/commit/3ff48759bc437e4029597057fb49ab13b7e62e41)
-- added eslint rule to index.js to prevent error [`77a45be`](https://github.com/maxwondercorn/ember-cli-barcode/commit/77a45be646531df50dc50c563e2380f91921efd4)
 - removed redudant ENV.locationType [`882cfb4`](https://github.com/maxwondercorn/ember-cli-barcode/commit/882cfb4fe19f661bcf744f74a504eb59f43ca30d)
 - Update CHANGELOG.md [`36c6250`](https://github.com/maxwondercorn/ember-cli-barcode/commit/36c6250fa588cb4fe6d285f9ed07d996f869d142)
-- test travis-ci error [`7803c2e`](https://github.com/maxwondercorn/ember-cli-barcode/commit/7803c2e0cf3f28352257c6124fd7c09efc3cbc1c)
-- fixed extra travis-ci test issue? [`6809ae2`](https://github.com/maxwondercorn/ember-cli-barcode/commit/6809ae2faeb9a0cd00230914d5a44eeb00d3186c)
-- added lint:js script [`957c865`](https://github.com/maxwondercorn/ember-cli-barcode/commit/957c86552a098feddbe2d33040f1de80631d5e4e)
 
 ## [v0.3.1](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.0...v0.3.1) - 2018-10-29
 
@@ -131,12 +138,18 @@ All notable changes to this project will be documented in this file.
 
 ### Commits
 
+- remove bower dependency [`ad55919`](https://github.com/maxwondercorn/ember-cli-barcode/commit/ad559196735f9aabd2434f2faedcea4688f02141)
 - updated dev deps [`05da5a6`](https://github.com/maxwondercorn/ember-cli-barcode/commit/05da5a6923dcb990113bd953f927fa55688c3992)
+- resolved conflicts [`57bfe4f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/57bfe4fb8fddad8c92f767cf1d5c92ac52a54ede)
+- resolve conflicts [`ce79946`](https://github.com/maxwondercorn/ember-cli-barcode/commit/ce799465ca6c0d1c7dc575cd2619e984ea0c6582)
 - removed workspace specific files [`1a2905a`](https://github.com/maxwondercorn/ember-cli-barcode/commit/1a2905a6cdd9618f052d824f2c5d7ba4f1fac0d9)
+- dynamic file builds [`8454ee9`](https://github.com/maxwondercorn/ember-cli-barcode/commit/8454ee921d1bcb1f395481dfdbc3c21f808e2c76)
+- switch to single includ [`5ab25b7`](https://github.com/maxwondercorn/ember-cli-barcode/commit/5ab25b76bca9c69bcf6b4522c34053e0ffe496a3)
 - updated readme [`5a731f6`](https://github.com/maxwondercorn/ember-cli-barcode/commit/5a731f6973479ca3f490e808fc44d29ff6af44d5)
 - Update CHANGELOG.md [`cdf926a`](https://github.com/maxwondercorn/ember-cli-barcode/commit/cdf926af63a70a3db7c84f5c03f48b8d593d1f0d)
-- replaced itf-14 with code39 to match upstream [`e21b295`](https://github.com/maxwondercorn/ember-cli-barcode/commit/e21b295cc656b25d9c560ac53841237fdaddebcb)
+- bump node versions to lts [`340db29`](https://github.com/maxwondercorn/ember-cli-barcode/commit/340db29696c9dcb85370461fa59cfba7991ac436)
 - added undefined error checking [`4172930`](https://github.com/maxwondercorn/ember-cli-barcode/commit/417293066a42d3ef24e453c20c3cf37441248a4b)
+- replaced itf-14 with code39 to match upstream [`e21b295`](https://github.com/maxwondercorn/ember-cli-barcode/commit/e21b295cc656b25d9c560ac53841237fdaddebcb)
 - resolve conflicts [`87f7f2f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/87f7f2f2d0dbfe5ffe7e98d1d597d37e043ce693)
 
 ## [v0.2.3](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.2.2...v0.2.3) - 2018-08-02
@@ -162,12 +175,8 @@ All notable changes to this project will be documented in this file.
 ### Commits
 
 - file cleanup [`0730bac`](https://github.com/maxwondercorn/ember-cli-barcode/commit/0730bac9f213a673f076e08bc8ebe404793df50f)
-- resolve conflicts [`ce79946`](https://github.com/maxwondercorn/ember-cli-barcode/commit/ce799465ca6c0d1c7dc575cd2619e984ea0c6582)
-- switch to single includ [`5ab25b7`](https://github.com/maxwondercorn/ember-cli-barcode/commit/5ab25b76bca9c69bcf6b4522c34053e0ffe496a3)
 - added contributers to package.json [`b1d3474`](https://github.com/maxwondercorn/ember-cli-barcode/commit/b1d347431e7bf78e889c75e1db3a545093ca0c5c)
 - removed unreachable code [`966413f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/966413f751051e6c65e03a5cb7c8140adf96dfb9)
-- resolved conflicts [`57bfe4f`](https://github.com/maxwondercorn/ember-cli-barcode/commit/57bfe4fb8fddad8c92f767cf1d5c92ac52a54ede)
-- dynamic file builds [`8454ee9`](https://github.com/maxwondercorn/ember-cli-barcode/commit/8454ee921d1bcb1f395481dfdbc3c21f808e2c76)
 - added directions for removing bower residue to readme [`928b2db`](https://github.com/maxwondercorn/ember-cli-barcode/commit/928b2dbb8546b6035137aaeff54a161b099cfda9)
 
 ## [v0.2.0](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.1.8...v0.2.0) - 2018-07-19
@@ -183,7 +192,6 @@ All notable changes to this project will be documented in this file.
 - fixed test after removal of bower.json [`b7ebb9e`](https://github.com/maxwondercorn/ember-cli-barcode/commit/b7ebb9ea040ba14d54862124518ae9bd6e1a13ce)
 - Removed bower references [`b77112a`](https://github.com/maxwondercorn/ember-cli-barcode/commit/b77112a08f7ff4fe8e15531ddb08ae8ede268521)
 - update readme for bower removal [`01b8301`](https://github.com/maxwondercorn/ember-cli-barcode/commit/01b8301b67815ec1eca3e9f55b449805e4e40203)
-- bump node versions to lts [`340db29`](https://github.com/maxwondercorn/ember-cli-barcode/commit/340db29696c9dcb85370461fa59cfba7991ac436)
 - comment on bower removal [`80fcc2a`](https://github.com/maxwondercorn/ember-cli-barcode/commit/80fcc2a8b19f00aa036c2bf5ffea867a186a8228)
 
 ## [v0.1.8](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.1.7...v0.1.8) - 2018-04-28
