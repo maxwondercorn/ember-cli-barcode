@@ -28,6 +28,7 @@
 /.snyk
 /changelog-template.hbs
 /images
+/CHANGELOG.md
 
 # ember-try
 /.node_modules.ember-try/
