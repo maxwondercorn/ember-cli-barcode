@@ -2,7 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
-## [v0.3.12](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.11...v0.3.12) - 2020-05-06
+## [v0.3.13](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.12...v0.3.13) - 2020-06-11
+
+### Merged
+
+- Bump websocket-extensions from 0.1.3 to 0.1.4 [`#22`](https://github.com/maxwondercorn/ember-cli-barcode/pull/22)
+
+### Commits
+
+- Update deps and devDeps [`28d8bac`](https://github.com/maxwondercorn/ember-cli-barcode/commit/28d8bacee89f89592be3f0835b8c245492d8c336)
+- Corrections based on updated ember linting rules [`7a83227`](https://github.com/maxwondercorn/ember-cli-barcode/commit/7a832271136e2d0409ae23948447214fe253ab8d)
+- Prettied up code [`5a13a54`](https://github.com/maxwondercorn/ember-cli-barcode/commit/5a13a54e34fa2731327bcea65aa83fd36d4d3b61)
+- Dummy app fix text color [`f054b98`](https://github.com/maxwondercorn/ember-cli-barcode/commit/f054b984723909d3a1f4e55ab1790167e0c80c86)
+- Added CHANGELOG.ms to npmignore [`a18caeb`](https://github.com/maxwondercorn/ember-cli-barcode/commit/a18caeb6e3914c1f674fd1044ab19b1052db0dce)
+
+## [v0.3.12](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.11...v0.3.12) - 2020-05-07
 
 ### Merged
 
