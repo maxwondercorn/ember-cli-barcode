@@ -54,8 +54,8 @@ export default Component.extend({
 
       return {
         format: this.format || cfg.format || 'CODE128',
-        mod43: this.mod43 || cfg.mod43 || false, // only used with code39 barcodes
-        width: this.width || cfg.width || 2,
+        mod43:  this.mod43 || cfg.mod43 || false, // only used with code39 barcodes
+        width:  this.width || cfg.width || 2,
         height: this.height || cfg.height || 100,
 
         displayValue: isBlank(this.displayValue)
@@ -64,15 +64,16 @@ export default Component.extend({
             : cfg.displayValue
           : true,
 
-        fontOptions: this.fontOptions || cfg.fontOptions || '',
-        font: this.font || cfg.font || 'monospace',
-        textAlign: this.textAlign || cfg.textAlign || 'center',
+        // prettier-ignore
+        fontOptions:  this.fontOptions || cfg.fontOptions || '',
+        font:         this.font || cfg.font || 'monospace',
+        textAlign:    this.textAlign || cfg.textAlign || 'center',
         textPosition: this.textPosition || cfg.textPosition || 'bottom',
-        textMargin: this.textMargin || cfg.textMargin || 2,
-        fontSize: this.fontSize || cfg.fontSize || 20,
-        background: this.background || cfg.background || '#ffffff',
-        lineColor: this.lineColor || cfg.lineColor || '#000000',
-        margin: isBlank(this.margin) ? 10 : this.margin,
+        textMargin:   this.textMargin || cfg.textMargin || 2,
+        fontSize:     this.fontSize || cfg.fontSize || 20,
+        background:   this.background || cfg.background || '#ffffff',
+        lineColor:    this.lineColor || cfg.lineColor || '#000000',
+        margin:       isBlank(this.margin) ? 10 : this.margin,
 
         marginTop: isBlank(this.marginTop)
           ? cfg.marginTop || undefined
