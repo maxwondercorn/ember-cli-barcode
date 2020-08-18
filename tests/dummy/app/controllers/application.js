@@ -1,23 +1,24 @@
 import { action, computed } from '@ember/object';
 import Controller from '@ember/controller';
 import config from '../config/environment';
+import { tracked } from '@glimmer/tracking';
 
 export default class ApplicationController extends Controller {
   appVersion = config.APP.appVersion;
 
-  format = 'CODE128';
-  width = 2;
-  height = 100;
-  displayValue = true;
-  fontSize = 20;
-  fontOption = null;
-  font = 'monospace';
-  textAlign = 'center';
-  textPosition = 'bottom';
-  background = '#ffffff';
-  lineColor = '#000000';
-  validCode = false;
-  testValue = '96385074';
+  @tracked format = 'CODE128';
+  @tracked width = 2;
+  @tracked height = 100;
+  @tracked displayValue = true;
+  @tracked fontSize = 20;
+  @tracked fontOption = null;
+  @tracked font = 'monospace';
+  @tracked textAlign = 'center';
+  @tracked textPosition = 'bottom';
+  @tracked background = '#ffffff';
+  @tracked lineColor = '#000000';
+  @tracked validCode = false;
+  @tracked testValue = '96385074';
 
   formats = [
     { value: 'CODE128', code: '123456', selected: true },
@@ -113,22 +114,65 @@ export default class ApplicationController extends Controller {
   )
   get demoOptions() {
     return {
-      format:       this.format || 'CODE128',
-      width:        this.width || 2,
-      height:       this.height || 100,
+      format: this.format || 'CODE128',
+      width: this.width || 2,
+      height: this.height || 100,
       displayValue: this.displayValue || true,
-      fontSize:     this.fontSize || 20,
-      fontOptions:  this.fontOption || '',
-      font:         this.font || 'monospace',
-      textAlign:    this.textAlign || 'center',
+      fontSize: this.fontSize || 20,
+      fontOptions: this.fontOption || '',
+      font: this.font || 'monospace',
+      textAlign: this.textAlign || 'center',
       textPosition: this.textPosition || 'bottom',
-      background:   this.background || '#ffffff',
-      lineColor:     this.lineColor || '#000000'
+      background: this.background || '#ffffff',
+      lineColor: this.lineColor || '#000000'
     };
   }
 
   @action
   checkValid(status) {
     this.set('validCode', status);
+  }
+
+  @action
+  updateValue(label, event) {
+    const value = event.target.value;
+
+    switch (label) {
+      case 'Format':
+        this.format = value;
+        break;
+
+      case 'Width':
+        this.width = value;
+        break;
+
+      case 'Height':
+        this.height = value;
+        break;
+
+      case 'Value':
+        this.displayValue = value;
+        break;
+
+      case 'Font Size':
+        this.fontSize = value;
+        break;
+
+      case 'Font Opt':
+        this.fontOption = value;
+        break;
+
+      case 'Font':
+        this.font = value;
+        break;
+
+      case 'Align':
+        this.textAlign = value;
+        break;
+
+      case 'Position':
+        this.textPosition = value;
+        break;
+    }
   }
 }

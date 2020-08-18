@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto"></ul>
     v
-    {{appVersion}}
+    {{this.appVersion}}
     <a href="https://github.com/maxwondercorn/ember-cli-barcode">
       <img
         class="github"
@@ -31,15 +31,15 @@
     <div class="row">
 
       <div class="offset-md-1 col">
-        <SelectorGroup @label="Format" @items={{this.formats}} @value={{this.format}} />
-        <SelectorGroup @label="Width" @items={{this.widths}} @value={{this.width}} /> 
-        <SelectorGroup @label="Height" @items={{this.heights}} @value={{this.height}} /> 
-        <SelectorGroup @label="Value" @items={{this.dispalyValues}} @value={{this.displayValue}} /> 
-        <SelectorGroup @label="Font Size" @items={{this.fontSizes}} @value={{this.fontSize}} /> 
-        <SelectorGroup @label="Font Opt" @items={{this.fontOptions}} @value={{this.fontOption}} /> 
-        <SelectorGroup @label="Font" @items={{this.fonts}} @value={{this.font}} /> 
-        <SelectorGroup @label="Align" @items={{this.alignOptions}} @value={{this.textAlign}} /> 
-        <SelectorGroup @label="Position" @items={{this.positions}} @value={{this.textPosition}} /> 
+        <SelectorGroup @label="Format" @items={{this.formats}} @value={{this.format}} @update={{this.updateValue}} />
+        <SelectorGroup @label="Width" @items={{this.widths}} @value={{this.width}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Height" @items={{this.heights}} @value={{this.height}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Value" @items={{this.dispalyValues}} @value={{this.displayValue}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Font Size" @items={{this.fontSizes}} @value={{this.fontSize}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Font Opt" @items={{this.fontOptions}} @value={{this.fontOption}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Font" @items={{this.fonts}} @value={{this.font}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Align" @items={{this.alignOptions}} @value={{this.textAlign}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Position" @items={{this.positions}} @value={{this.textPosition}} @update={{this.updateValue}} /> 
 
         <div class="form-group float-left">
           <label class="text-info">
@@ -94,8 +94,8 @@
     <div class="options justify-content-center">
       options = {
       <div class="params">
-        {{#each-in demoOptions as |name values|}}
-          {{name}}:{{values}},<br />
+        {{#each-in this.demoOptions as |name values|}}
+          {{name}}: <span class="text-info">{{values}}</span>,<br />
         {{/each-in}}
       </div>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
@@ -116,7 +116,7 @@
       <Input @type="text" @value={{this.testValue}} />
       <br />
       <span class="text-danger">
-        {{if validCode "" "Code Invalid"}}
+        {{if this.validCode "" "Code Invalid"}}
       </span>
     </div>
     <div class="col-5 col-sm-2">
@@ -124,7 +124,7 @@
         @value={{this.testValue}}
         @format="EAN8"
         @tagName="svg"
-        @valid={{action this.checkValid}}
+        @valid={{fn this.checkValid}}
       />
     </div>
   </div>
