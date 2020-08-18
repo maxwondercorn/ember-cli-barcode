@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [v1.0.0](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.13...v1.0.0) - 2020-08-18
+
+### Merged
+
+- Breaking: Ember 3.16, drop node 8 support [`#24`](https://github.com/maxwondercorn/ember-cli-barcode/pull/24)
+- Bump lodash from 4.17.15 to 4.17.19 [`#23`](https://github.com/maxwondercorn/ember-cli-barcode/pull/23)
+
+### Commits
+
+- chore: update addon dependencies [`aa1b8ab`](https://github.com/maxwondercorn/ember-cli-barcode/commit/aa1b8abb486da2aa7c784a078b427127c61c9039)
+- v3.12.0...v3.16.2 [`147ee4e`](https://github.com/maxwondercorn/ember-cli-barcode/commit/147ee4e8cbc3c776e80243663795168835573bce)
+- chore: update dummy app to Octane example [`13d67e6`](https://github.com/maxwondercorn/ember-cli-barcode/commit/13d67e653fdb3714140618c679e98f4d5613daf7)
+- doc: change ember-cli to Ember in readme [`dd71cfa`](https://github.com/maxwondercorn/ember-cli-barcode/commit/dd71cfaeb0328e42f9f96009a6cce874e125a3f0)
+
 ## [v0.3.13](https://github.com/maxwondercorn/ember-cli-barcode/compare/v0.3.12...v0.3.13) - 2020-06-11
 
 ### Merged

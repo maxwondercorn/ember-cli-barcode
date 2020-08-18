@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-barcode",
-  "version": "0.3.13",
+  "version": "1.0.0",
   "description": "Ember barcode generator using the JSBarcode library.",
   "keywords": [
     "ember-addon",
