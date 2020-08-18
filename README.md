@@ -20,7 +20,7 @@
 
 # ember-cli-barcode
 
-A ember-cli addon to render barcodes using the [JsBarcode](https://github.com/lindell/JsBarcode) library. See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/) to experiment with many of the barcode options.
+An Ember addon to render barcodes using the [JsBarcode](https://github.com/lindell/JsBarcode) library. See the [demo](https://maxwondercorn.github.io/ember-cli-barcode/) to experiment with many of the barcode options.
 
 The addon adds accessibility attributes and elements to the generated barcodes. See the [Accessibility](#Accessibility) section below.
 
