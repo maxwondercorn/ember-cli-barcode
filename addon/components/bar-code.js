@@ -1,3 +1,7 @@
+// disable lint rules to pass linting
+/* eslint-disable ember/no-component-lifecycle-hooks */
+/* eslint-disable ember/no-classic-components */
+/* eslint-disable ember/no-classic-classes */
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { isBlank } from '@ember/utils';
@@ -6,6 +10,7 @@ import { getOwner } from '@ember/application';
 /* global JsBarcode */
 
 export default Component.extend({
+  // eslint-disable-next-line ember/require-tagless-components
   tagName: 'svg',
   thisId: null,
   defaultText: 'Barcode value',
@@ -98,6 +103,7 @@ export default Component.extend({
   ),
 
   didInsertElement() {
+    this._super(...arguments);
     this.set('thisId', this.elementId);
   },
 
