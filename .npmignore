@@ -29,6 +29,7 @@
 /changelog-template.hbs
 /images
 /CHANGELOG.md
+/.github
 
 # ember-try
 /.node_modules.ember-try/
