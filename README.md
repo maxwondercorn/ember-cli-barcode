@@ -1,5 +1,5 @@
 [![Latest NPM release][npm-badge]][npm-badge-url]
-[![TravisCI Build Status][travis-badge]][travis-badge-url]
+![ci workflow](https://github.com/maxwondercorn/ember-cli-barcode/actions/workflows/ci.yml/badge.svg)
 [![License][license-badge]][license-badge-url]
 [![Dependencies][dependencies-badge]][dependencies-badge-url]
 [![Dev Dependencies][devdependencies-badge]][devdependencies-badge-url]
@@ -7,8 +7,6 @@
 
 [npm-badge]: https://img.shields.io/npm/v/ember-cli-barcode.svg
 [npm-badge-url]: https://www.npmjs.com/package/ember-cli-barcode
-[travis-badge]: https://img.shields.io/travis/maxwondercorn/ember-cli-barcode/master.svg?label=TravisCI
-[travis-badge-url]: https://travis-ci.org/maxwondercorn/ember-cli-barcode
 [ember-observer-badge]: http://emberobserver.com/badges/ember-cli-barcode.svg
 [ember-observer-badge-url]: http://emberobserver.com/addons/ember-cli-barcode
 [license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
