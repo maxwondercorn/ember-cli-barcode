@@ -38,8 +38,7 @@ name: CI
 on:
   push:
     branches:
-      # - master
-      - github-actions
+      - master
   pull_request:
 
 env:
