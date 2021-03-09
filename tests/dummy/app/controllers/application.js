@@ -1,4 +1,5 @@
-import { action, computed } from '@ember/object';
+// eslint-disable-next-line ember/no-computed-properties-in-native-classes
+import { action, computed, set } from '@ember/object';
 import Controller from '@ember/controller';
 import config from '../config/environment';
 import { tracked } from '@glimmer/tracking';
@@ -130,7 +131,7 @@ export default class ApplicationController extends Controller {
 
   @action
   checkValid(status) {
-    this.set('validCode', status);
+    set(this, 'validCode', status);
   }
 
   @action
