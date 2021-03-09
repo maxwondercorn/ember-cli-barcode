@@ -43,7 +43,8 @@
     "output": "CHANGELOG.md",
     "template": "changelog-template.hbs",
     "unreleased": true,
-    "commitLimit": false
+    "commitLimit": false,
+    "sortCommits": "date"
   },
   "dependencies": {
     "broccoli-funnel": "^3.0.3",
