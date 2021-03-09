@@ -26,7 +26,6 @@
 /yarn.lock
 .gitkeep
 /.vscode
-/.snyk
 /changelog-template.hbs
 /images
 /CHANGELOG.md
