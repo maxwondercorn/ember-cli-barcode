@@ -29,6 +29,10 @@
 #$     allowedToFail: false
 #$   - scenario: ember-classic
 #$     allowedToFail: false
+#$   - scenario: embroider-safe
+#$     allowedToFail: true
+#$   - scenario: embroider-optimized
+#$     allowedToFail: true
 #$ nodeVersion: 12.x
 #$ packageManager: yarn
 #
@@ -185,7 +189,9 @@ jobs:
           ember-beta,
           ember-canary,
           ember-default-with-jquery,
-          ember-classic
+          ember-classic,
+          embroider-safe,
+          embroider-optimized
         ]
 
     steps:
