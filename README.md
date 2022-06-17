@@ -1,8 +1,6 @@
 [![Latest NPM release][npm-badge]][npm-badge-url]
 ![ci workflow](https://github.com/maxwondercorn/ember-cli-barcode/actions/workflows/ci.yml/badge.svg)
 [![License][license-badge]][license-badge-url]
-[![Dependencies][dependencies-badge]][dependencies-badge-url]
-[![Dev Dependencies][devdependencies-badge]][devdependencies-badge-url]
 [![Ember Observer Score](https://emberobserver.com/badges/ember-cli-barcode.svg)](https://emberobserver.com/addons/ember-cli-barcode)
 
 [npm-badge]: https://img.shields.io/npm/v/ember-cli-barcode.svg
