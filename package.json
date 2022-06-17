@@ -83,7 +83,7 @@
     "popper.js": "1.16.1",
     "qunit": "2.19.1",
     "qunit-dom": "1.6.0",
-    "sass": "1.32.8",
+    "sass": "1.52.3",
     "standard-version": "9.5.0"
   },
   "engines": {
