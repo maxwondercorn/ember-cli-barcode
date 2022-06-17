@@ -29,7 +29,7 @@
 #$     allowedToFail: false
 #$   - scenario: ember-classic
 #$     allowedToFail: false
-#$ nodeVersion: 10.x
+#$ nodeVersion: 12.x
 #$ packageManager: yarn
 #
 
@@ -172,7 +172,7 @@ jobs:
   try-scenarios:
     name: Tests - ${{ matrix.ember-try-scenario }}
     runs-on: ubuntu-latest
-    continue-on-error: ${{ matrix.allow-failure }}
+    continue-on-error: true
     needs: test
 
     strategy:
@@ -183,16 +183,13 @@ jobs:
           ember-lts-3.16,
           ember-release,
           ember-beta,
+          ember-canary,
           ember-default-with-jquery,
           ember-classic
         ]
-        allow-failure: [false]
-        include:
-          - ember-try-scenario: ember-canary
-            allow-failure: true
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
       with:
         fetch-depth: 1
 
