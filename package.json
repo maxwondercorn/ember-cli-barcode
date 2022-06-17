@@ -30,7 +30,6 @@
   },
   "scripts": {
     "build": "ember build --environment=production",
-    "changelog": "npx auto-changelog -u --output CHANGELOG.md --commit-limit false",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*",
     "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
@@ -39,14 +38,7 @@
     "test:ember": "ember test",
     "test:ember-compatibility": "ember try:each",
     "deploy": "ember build && ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\" && git push origin gh-pages:gh-pages",
-    "version": "auto-changelog -p && git add CHANGELOG.md"
-  },
-  "auto-changelog": {
-    "output": "CHANGELOG.md",
-    "template": "changelog-template.hbs",
-    "unreleased": true,
-    "commitLimit": false,
-    "sortCommits": "date"
+    "release": "standard-version && git push --follow-tags"
   },
   "dependencies": {
     "broccoli-funnel": "3.0.8",
@@ -60,7 +52,6 @@
     "@ember/test-helpers": "2.7.0",
     "@glimmer/component": "1.1.2",
     "@glimmer/tracking": "1.1.2",
-    "auto-changelog": "2.4.0",
     "babel-eslint": "10.1.0",
     "bootstrap": "4.6.1",
     "broccoli-asset-rev": "3.0.0",
@@ -92,7 +83,8 @@
     "popper.js": "1.16.1",
     "qunit": "2.14.0",
     "qunit-dom": "1.6.0",
-    "sass": "1.32.8"
+    "sass": "1.32.8",
+    "standard-version": "^9.5.0"
   },
   "engines": {
     "node": "10.* || >= 12"
