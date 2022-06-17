@@ -84,7 +84,7 @@
     "qunit": "2.19.1",
     "qunit-dom": "1.6.0",
     "sass": "1.32.8",
-    "standard-version": "^9.5.0"
+    "standard-version": "9.5.0"
   },
   "engines": {
     "node": "10.* || >= 12"
