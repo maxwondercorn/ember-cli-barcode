@@ -76,7 +76,7 @@
     "ember-source": "https://s3.amazonaws.com/builds.emberjs.com/release/shas/4626ef8ee5e37d9d82c420c7c9ebea4c10631f96.tgz",
     "ember-source-channel-url": "3.0.0",
     "ember-try": "1.4.0",
-    "eslint-plugin-ember": "10.2.0",
+    "eslint-plugin-ember": "10.6.1",
     "eslint-plugin-node": "11.1.0",
     "loader.js": "4.7.0",
     "npm-run-all": "4.1.5",
