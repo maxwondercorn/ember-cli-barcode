@@ -47,13 +47,8 @@ The simplest form to render a barcode is to pass in a value and the default opti
 
 which renders:
 
-![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/abc123456.png "CODE128 Barcode")
+![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/main/images/abc123456.png "CODE128 Barcode")
 
-The example above using classic component invocation would be:
-
-```handlebars
-{{bar-code value="abc123456"}}
-```
 
 By default, barcodes are rendered using the `svg` element. The element can be changed to `img` or `canvas` using the tagName property:
 
