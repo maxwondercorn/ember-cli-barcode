@@ -89,7 +89,7 @@ If you pass an invalid value based on the format, the barcode will not render. T
 ```handlebars
 // app/templates/application.hbs
 // pass invalid code for EAN8 barcodes
- <BarCode @format="EAN8" @value="9638" @valid={{action 'checkValid'}} />
+ <BarCode @format="EAN8" @value="9638" @valid={{fn this.checkValid}} />
 
 {{if validCode "Valid" "Invalid"}}
 ```
@@ -97,14 +97,14 @@ If you pass an invalid value based on the format, the barcode will not render. T
 ```javascript
 // app/controllers/application.js
 import Controller from "@ember/controller";
+import { action } from '@ember/object';
 
 export default Controller.extend({
   validCode: false,
 
-  actions: {
-    checkValid(status) {
-      this.set("validCode", status);
-    }
+  @aciton
+  checkValid(status) {
+    this.validCode = status
   }
 });
 ```
