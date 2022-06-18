@@ -1,5 +1,5 @@
 // eslint-disable-next-line ember/no-computed-properties-in-native-classes
-import { action, computed, set } from '@ember/object';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 import config from '../config/environment';
 import { tracked } from '@glimmer/tracking';
@@ -31,11 +31,11 @@ export default class ApplicationController extends Controller {
     { value: 'CODE39', code: 'CODE39' },
     { value: 'ITF14', code: '12345678901231' },
     { value: 'MSI', code: '1234' },
-    { value: 'MSI10', code: '1234' },
-    { value: 'MSI11', code: '1234' },
-    { value: 'MSI1010', code: '1234' },
-    { value: 'MSI1110', code: '1234' },
-    { value: 'pharmacode', code: '1234' },
+    { value: 'MSI10', code: '5678' },
+    { value: 'MSI11', code: '8765' },
+    { value: 'MSI1010', code: '4321' },
+    { value: 'MSI1110', code: '1212' },
+    { value: 'pharmacode', code: '3434' },
     { value: 'codabar', code: '1234567890' }
   ];
 
@@ -88,8 +88,6 @@ export default class ApplicationController extends Controller {
 
   positions = [{ value: 'bottom', selected: true }, { value: 'top' }];
 
-  // eslint-disable-next-line ember/require-computed-property-dependencies
-  @computed('format')
   get currentValue() {
     let self = this;
 
@@ -100,19 +98,6 @@ export default class ApplicationController extends Controller {
     }).code;
   }
 
-  @computed(
-    'format',
-    'width',
-    'height',
-    'displayValue',
-    'fontSize',
-    'fontOption',
-    'font',
-    'textAlign',
-    'textPosition',
-    'background',
-    'lineColor'
-  )
   get demoOptions() {
     return {
       format: this.format || 'CODE128',
@@ -131,7 +116,7 @@ export default class ApplicationController extends Controller {
 
   @action
   checkValid(status) {
-    set(this, 'validCode', status);
+    this.validCode = status;
   }
 
   @action
