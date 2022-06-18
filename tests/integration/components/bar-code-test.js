@@ -127,7 +127,7 @@ module("Integration | Component | bar code", function(hooks) {
 
     this.set("code", "1234567");
 
-    await render(hbs`{{bar-code value=code valid=(action checkValid)}}`);
+    await render(hbs`<BarCode @value={{this.code}} @valid={{this.checkValid}} />`);
   });
 
   test("it sends false for invalid invalid code", async function(assert) {
@@ -139,6 +139,6 @@ module("Integration | Component | bar code", function(hooks) {
 
     this.set("code", "1234");
 
-    await render(hbs`<BarCode @value={{this.code}} @format="EAN8" @valid={{action checkValid}} />`);
+    await render(hbs`<BarCode @value={{this.code}} @format="EAN8" @valid={{this.checkValid}} />`);
   });
 });
