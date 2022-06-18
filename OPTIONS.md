@@ -12,7 +12,7 @@ Change the barcode format by passing the format name into the component. To disp
   />
 ```
 
-![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/upc.png "UPC Barcode")
+![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/main/images/upc.png "UPC Barcode")
 
 &nbsp;
 
@@ -25,7 +25,7 @@ The color of the barcode or it's background can be changed:
   />
 ```
 
-![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/redlines.png "Colored Barcode")
+![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/main/images/redlines.png "Colored Barcode")
 
 &nbsp;
 
@@ -39,7 +39,7 @@ background color changed:
   />
 ```
 
-![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/background.png "Barcode with colored background")
+![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/main/images/background.png "Barcode with colored background")
 
 &nbsp;
 
@@ -72,7 +72,7 @@ If you have many options, pass an object using the `options` property instead of
   />
 ```
 
-![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/master/images/linecolorff3399.png "Barcode line color ff3399")
+![alt text](https://github.com/maxwondercorn/ember-cli-barcode/raw/main/images/linecolorff3399.png "Barcode line color ff3399")
 
 &nbsp;
 
