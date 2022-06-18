@@ -39,7 +39,7 @@ By default all barcode types are added to your app. See the [build configuration
 
 ## Simple Usage
 
-The simplest form to render a barcode is to pass in a value and the default options will generate a CODE128 barcode:
+To render a barcode provide the barcode value and the default options will generate a CODE128 barcode:
 
 ```handlebars
 <BarCode @value="abc123456" />
