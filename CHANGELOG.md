@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/maxwondercorn/ember-cli-barcode/compare/v1.0.1...v1.0.3) (2022-06-18)
+
+
+### Bug Fixes
+
+* **package.json:** Fix ember-source version ([afb8ab0](https://github.com/maxwondercorn/ember-cli-barcode/commit/afb8ab0ca1a24be52d78e53a3239130488f31cce))
+
 ### [1.0.2](https://github.com/maxwondercorn/ember-cli-barcode/compare/v1.0.1...v1.0.2) (2022-06-18)
 
 
