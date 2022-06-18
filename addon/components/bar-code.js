@@ -126,7 +126,8 @@ export default Component.extend({
 
     let env = this.envConfig;
 
-    // if they want to hide them, apply and exit
+    // Can only set arria hidden in enviroment file.
+    // If they want to hide aria, apply and exit
     if (env.ariaHidden) {
       this.element.setAttribute('aria-hidden', 'true');
       return;
@@ -134,7 +135,7 @@ export default Component.extend({
 
     let text = `${this.altText || env.altText || this.defaultText}`;
 
-    // exclude the value from the alt text?
+    // Exclude the value from the alt text?
     if (!env.excludeAltValue) text = `${text} ${this.value}`;
 
     switch (this.element.nodeName) {
