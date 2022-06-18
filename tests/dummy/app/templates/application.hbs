@@ -42,17 +42,17 @@
         <SelectorGroup @label="Position" @items={{this.positions}} @value={{this.textPosition}} @update={{this.updateValue}} /> 
 
         <div class="form-group float-left">
-          <label class="text-info">
+          <label for="background" class="text-info">
             Background
           </label>
-          <Input @class="normal-height" @type="text" @value={{this.background}} />
+          <Input id="background" class="normal-height" @type="text" @value={{this.background}} />
         </div>
 
         <div class="form-group float-left">
-          <label class="text-info">
+          <label for="color" class="text-info">
             Color
           </label>
-          <Input @class="normal-height" @type="text" @value={{this.lineColor}} />
+          <Input id="color" class="normal-height" @type="text" @value={{this.lineColor}} />
         </div>
       </div>
     </div>
@@ -110,10 +110,10 @@
   </div>
   <div class="row mt-4 justify-content-center">
     <div class="col-5 col-sm-2">
-      <label class="text-info">
+      <label for="value" class="text-info">
         Value
       </label>
-      <Input @type="text" @value={{this.testValue}} />
+      <Input id="value" @type="text" @value={{this.testValue}} />
       <br />
       <span class="text-danger">
         {{if this.validCode "" "Code Invalid"}}
@@ -124,7 +124,7 @@
         @value={{this.testValue}}
         @format="EAN8"
         @tagName="svg"
-        @valid={{fn this.checkValid}}
+        @valid={{this.checkValid}}
       />
     </div>
   </div>

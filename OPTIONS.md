@@ -89,7 +89,7 @@ If you pass an invalid value based on the format, the barcode will not render. T
 ```handlebars
 // app/templates/application.hbs
 // pass invalid code for EAN8 barcodes
- <BarCode @format="EAN8" @value="9638" @valid={{fn this.checkValid}} />
+ <BarCode @format="EAN8" @value="9638" @valid={{this.checkValid}} />
 
 {{if validCode "Valid" "Invalid"}}
 ```
