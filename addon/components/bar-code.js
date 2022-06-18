@@ -20,7 +20,7 @@ export default Component.extend({
 
   // get config from enviroment.js
   // https://stackoverflow.com/questions/42002664/accessing-ember-environment-config-env-from-addon
-  config: computed(function () {
+  envConfig: computed(function () {
     return (
       getOwner(this).resolveRegistration('config:environment')[
         'ember-cli-barcode'
@@ -33,7 +33,7 @@ export default Component.extend({
 
   defaults: computed(
     'background',
-    'config',
+    'envConfig',
     'displayValue',
     'flat',
     'font',
@@ -55,49 +55,49 @@ export default Component.extend({
     'width',
     
     function () {
-      let cfg = this.config;
+      let env = this.envConfig;
 
       return {
-        format: this.format || cfg.format || 'CODE128',
-        mod43:  this.mod43 || cfg.mod43 || false, // only used with code39 barcodes
-        width:  this.width || cfg.width || 2,
-        height: this.height || cfg.height || 100,
+        format: this.format || env.format || 'CODE128',
+        mod43:  this.mod43 || env.mod43 || false, // only used with code39 barcodes
+        width:  this.width || env.width || 2,
+        height: this.height || env.height || 100,
 
         displayValue: isBlank(this.displayValue)
-          ? isBlank(cfg.displayValue)
+          ? isBlank(env.displayValue)
             ? true
-            : cfg.displayValue
+            : env.displayValue
           : true,
 
         // prettier-ignore
-        fontOptions:  this.fontOptions || cfg.fontOptions || '',
-        font:         this.font || cfg.font || 'monospace',
-        textAlign:    this.textAlign || cfg.textAlign || 'center',
-        textPosition: this.textPosition || cfg.textPosition || 'bottom',
-        textMargin:   this.textMargin || cfg.textMargin || 2,
-        fontSize:     this.fontSize || cfg.fontSize || 20,
-        background:   this.background || cfg.background || '#ffffff',
-        lineColor:    this.lineColor || cfg.lineColor || '#000000',
+        fontOptions:  this.fontOptions || env.fontOptions || '',
+        font:         this.font || env.font || 'monospace',
+        textAlign:    this.textAlign || env.textAlign || 'center',
+        textPosition: this.textPosition || env.textPosition || 'bottom',
+        textMargin:   this.textMargin || env.textMargin || 2,
+        fontSize:     this.fontSize || env.fontSize || 20,
+        background:   this.background || env.background || '#ffffff',
+        lineColor:    this.lineColor || env.lineColor || '#000000',
         margin:       isBlank(this.margin) ? 10 : this.margin,
 
         marginTop: isBlank(this.marginTop)
-          ? cfg.marginTop || undefined
+          ? env.marginTop || undefined
           : this.marginTop,
 
         marginBottom: isBlank(this.marginBottom)
-          ? cfg.marginBottom || undefined
+          ? env.marginBottom || undefined
           : this.marginBottom,
 
         marginLeft: isBlank(this.marginLeft)
-          ? cfg.marginLeft || undefined
+          ? env.marginLeft || undefined
           : this.marginLeft,
 
         marginRight: isBlank(this.marginRight)
-          ? cfg.marginRight || undefined
+          ? env.marginRight || undefined
           : this.marginRight,
 
-        flat: this.flat || cfg.flat || false,
-        lastChar: this.lastChar || cfg.lastChar || ''
+        flat: this.flat || env.flat || false,
+        lastChar: this.lastChar || env.lastChar || ''
       };
     }
   ),
@@ -124,18 +124,18 @@ export default Component.extend({
     // do after render because svg is cleared by jsbarcode
     // https://medium.com/statuscode/getting-started-with-website-accessibility-5586c7febc92
 
-    let cfg = this.config;
+    let env = this.envConfig;
 
     // if they want to hide them, apply and exit
-    if (cfg.ariaHidden) {
+    if (env.ariaHidden) {
       this.element.setAttribute('aria-hidden', 'true');
       return;
     }
 
-    let text = `${this.altText || cfg.altText || this.defaultText}`;
+    let text = `${this.altText || env.altText || this.defaultText}`;
 
     // exclude the value from the alt text?
-    if (!cfg.excludeAltValue) text = `${text} ${this.value}`;
+    if (!env.excludeAltValue) text = `${text} ${this.value}`;
 
     switch (this.element.nodeName) {
       // add alt text attribute
@@ -161,7 +161,7 @@ export default Component.extend({
         this.element.setAttribute('aria-label', text);
         break;
     }
-    if (cfg.setTitle) {
+    if (env.setTitle) {
       // redundant on svg, but it doens't hurt
       this.element.setAttribute('title', text);
     }
