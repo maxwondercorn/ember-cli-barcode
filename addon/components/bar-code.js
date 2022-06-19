@@ -17,6 +17,7 @@ export default Component.extend({
   altText: null,
   excludeAltValue: false,
   svgns: 'http://www.w3.org/2000/svg',
+  barcode: null,
 
   // get config from enviroment.js
   // https://stackoverflow.com/questions/42002664/accessing-ember-environment-config-env-from-addon
@@ -53,14 +54,14 @@ export default Component.extend({
     'textMargin',
     'textPosition',
     'width',
-    
+
     function () {
       let env = this.envConfig;
 
       return {
         format: this.format || env.format || 'CODE128',
-        mod43:  this.mod43 || env.mod43 || false, // only used with code39 barcodes
-        width:  this.width || env.width || 2,
+        mod43: this.mod43 || env.mod43 || false, // only used with code39 barcodes
+        width: this.width || env.width || 2,
         height: this.height || env.height || 100,
 
         displayValue: isBlank(this.displayValue)
@@ -71,14 +72,14 @@ export default Component.extend({
 
         // prettier-ignore
         fontOptions:  this.fontOptions || env.fontOptions || '',
-        font:         this.font || env.font || 'monospace',
-        textAlign:    this.textAlign || env.textAlign || 'center',
+        font: this.font || env.font || 'monospace',
+        textAlign: this.textAlign || env.textAlign || 'center',
         textPosition: this.textPosition || env.textPosition || 'bottom',
-        textMargin:   this.textMargin || env.textMargin || 2,
-        fontSize:     this.fontSize || env.fontSize || 20,
-        background:   this.background || env.background || '#ffffff',
-        lineColor:    this.lineColor || env.lineColor || '#000000',
-        margin:       isBlank(this.margin) ? 10 : this.margin,
+        textMargin: this.textMargin || env.textMargin || 2,
+        fontSize: this.fontSize || env.fontSize || 20,
+        background: this.background || env.background || '#ffffff',
+        lineColor: this.lineColor || env.lineColor || '#000000',
+        margin: isBlank(this.margin) ? 10 : this.margin,
 
         marginTop: isBlank(this.marginTop)
           ? env.marginTop || undefined
@@ -114,11 +115,15 @@ export default Component.extend({
     // if options object is passed in, use it
     let options = this.options || this.defaults;
 
-    // set the call back on options
+    // Set the JsBarcode status option callback.
     options['valid'] = (status) => this.valid && this.valid(status);
 
-    // now render the barcode
-    JsBarcode(`#${this.thisId}`, this.value, options);
+    // Render the barcode.
+    this.barcode = JsBarcode(`#${this.thisId}`, this.value, options);
+
+    // Private API for testing!
+    // provide barcode obj - args is proxy, no optional chaining
+    if (this.jsbarcode) this.jsbarcode(this.barcode);
 
     // add accessability to barcode
     // do after render because svg is cleared by jsbarcode
@@ -166,5 +171,10 @@ export default Component.extend({
       // redundant on svg, but it doens't hurt
       this.element.setAttribute('title', text);
     }
-  }
+
+    // Private api for testing.
+    options['_defaultsTest'] = () => {
+      this.defaults;
+    };
+  },
 });

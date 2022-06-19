@@ -2,9 +2,16 @@ import { find, findAll, render } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from "ember-qunit";
 import hbs from "htmlbars-inline-precompile";
+import { getOwner } from '@ember/application';
 
 module("Integration | Component | bar code", function(hooks) {
   setupRenderingTest(hooks);
+
+  // Clear enviroment options.
+  hooks.beforeEach(function () {
+    const env = getOwner(this).resolveRegistration("config:environment");
+    env["ember-cli-barcode"] = {};
+  });
 
   test("it renders, but not displaye", async function(assert) {
     assert.expect(1);
@@ -53,11 +60,7 @@ module("Integration | Component | bar code", function(hooks) {
 
     // render barcode as a image
     await render(hbs`<BarCode @tagName="img" @value={{this.code}} />`);
-    assert.equal(
-      find("img").src
-        .substr(0, 10),
-      "data:image"
-    );
+    assert.equal(find("img").src.substr(0, 10), "data:image");
 
     // verify the alt attribute is set
     assert.equal(find("img").getAttribute("alt"), "Barcode value 1234567");
@@ -97,25 +100,58 @@ module("Integration | Component | bar code", function(hooks) {
     assert.equal(find("g").getAttribute("style"), "fill:blue;");
   });
 
-  test("it renders with options, not options", async function(assert) {
+  test("it renders with options, not options", async function (assert) {
     assert.expect(1);
-
-    // `getOwner(this).resolveRegistration('config:environment')` 
-    // then in your test
-    // 's `beforeEach()` you can do 
-    // `this.owner.resolveRegistration('config:environment').foo = 'bar'`
-
     this.set("code", "1234567");
 
     this.set("options", {
       format: "CODE39",
       textPosition: "top",
-      lineColor: "#eeeeeee"
+      lineColor: "#eeeeeee",
     });
 
     // render using options which overrides other options
-    await render(hbs`<BarCode @value={{this.code}} @options={{this.options}} @lineColor="green" />`);
+    await render(
+      hbs`<BarCode @value={{this.code}} @options={{this.options}} @lineColor="green" />`
+    );
     assert.equal(find("g").getAttribute("style"), "fill:#eeeeeee;");
+  });
+
+  test("it uses the corect options, defaults", async function (assert) {
+    assert.expect(21);
+
+    // Action called with barcode options.
+    this.getBarcode = async (barcode) => {
+
+      assert.equal(barcode._encodings[0][0].text, '1234', 'text value is corrects');
+      const enc = barcode._encodings[0][0].options;
+
+      assert.equal(enc.background, '#ffffff', 'background is correct');
+      assert.equal(enc.displayValue, true, 'displayValue is correct');
+      assert.equal(enc.flat, false, 'flat is correct');
+      assert.equal(enc.font, 'monospace', 'font is correct');
+      assert.equal(enc.fontOptions, '', 'fontOptions is correct');
+      assert.equal(enc.fontSize, 20, 'fontSize is correct');
+      assert.equal(enc.format, 'CODE128', 'format is correct');
+      assert.equal(enc.height, 100, 'height is correct');
+      assert.equal(enc.lastChar, '', 'lastChar is correct');
+      assert.equal(enc.lineColor, '#000000', 'lineColor is correct');
+      assert.equal(enc.margin, 10, 'margin is correct');
+      assert.equal(enc.marginBottom, 10, 'marginBottom is correct');
+      assert.equal(enc.marginLeft, 10, 'marginLeft is correct');
+      assert.equal(enc.marginRight, 10, 'marginRight is correct');
+      assert.equal(enc.marginTop, 10), 'marginTop is correct';
+      assert.equal(enc.mod43, false, 'mod43 is correct');
+      assert.equal(enc.text, undefined, 'text is correct');
+      assert.equal(enc.textAlign, 'center', 'textAlign is correct');
+      assert.equal(enc.textMargin, 2, 'textMargin is correct');
+      assert.equal(enc.textPosition, 'bottom', 'textPosition is correct');
+    };
+
+    // Render with default options.
+    await render(
+      hbs`<BarCode @value="1234" @jsbarcode={{this.getBarcode}} />`
+    );
   });
 
   test("it sends the valid status to the action", async function(assert) {
