@@ -17,7 +17,7 @@ export default Component.extend({
   excludeAltValue: false,
   svgns: 'http://www.w3.org/2000/svg',
   barcode: null,
-  defaults: {},
+  defaults: null,
 
   // Get values stored in enviroment.js.
   get envConfig() {
