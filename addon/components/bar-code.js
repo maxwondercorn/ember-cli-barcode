@@ -3,7 +3,6 @@
 /* eslint-disable ember/no-classic-components */
 /* eslint-disable ember/no-classic-classes */
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 import { isBlank } from '@ember/utils';
 import { getOwner } from '@ember/application';
 
@@ -20,15 +19,14 @@ export default Component.extend({
   barcode: null,
   defaults: {},
 
-  // get config from enviroment.js
-  // https://stackoverflow.com/questions/42002664/accessing-ember-environment-config-env-from-addon
-  envConfig: computed(function () {
+  // Get values stored in enviroment.js.
+  get envConfig() {
     return (
       getOwner(this).resolveRegistration('config:environment')[
         'ember-cli-barcode'
       ] || {}
     );
-  }),
+  },
 
   init() {
     this._super(...arguments);
@@ -40,42 +38,51 @@ export default Component.extend({
     def.width = this.width || env.width || 2;
     def.height = this.height || env.height || 100;
 
-    def.displayValue = isBlank(this.displayValue)
-      ? isBlank(env.displayValue)
-        ? true
-        : env.displayValue
-      : true;
+    // displayValue - default true.
+    def.displayValue = true;
 
-    // prettier-ignore
-    def.fontOptions =   this.fontOptions || env.fontOptions || '';
+    if (!isBlank(this.displayValue)) {
+      def.displayValue = this.displayValue;
+    } else if (!isBlank(env.displayValue)) {
+      def.displayValue = env.displayValue;
+    }
+
+    // Fonts.
     def.font = this.font || env.font || 'monospace';
+    def.fontOptions = this.fontOptions || env.fontOptions || '';
+    def.fontSize = this.fontSize || env.fontSize || 20;
+
+    // Text.
     def.textAlign = this.textAlign || env.textAlign || 'center';
     def.textPosition = this.textPosition || env.textPosition || 'bottom';
     def.textMargin = this.textMargin || env.textMargin || 2;
-    def.fontSize = this.fontSize || env.fontSize || 20;
+
+    // Colors and Misc.
     def.background = this.background || env.background || '#ffffff';
     def.lineColor = this.lineColor || env.lineColor || '#000000';
-    def.margin = this.margin ?? 10;
-
-    def.marginTop = isBlank(this.marginTop)
-      ? env.marginTop || undefined
-      : this.marginTop;
-
-    def.marginBottom = isBlank(this.marginBottom)
-      ? env.marginBottom || undefined
-      : this.marginBottom;
-
-    def.marginLeft = isBlank(this.marginLeft)
-      ? env.marginLeft || undefined
-      : this.marginLeft;
-
-    def.marginRight = isBlank(this.marginRight)
-      ? env.marginRight || undefined
-      : this.marginRight;
-
     def.flat = this.flat || env.flat || false;
     def.lastChar = this.lastChar || env.lastChar || '';
 
+    // Margins.
+    def.margin = this.margin ?? 10;
+
+    def.marginTop = this.marginTop;
+    if (isBlank(def.marginTop)) 
+      def.marginTop = env.marginTop;
+
+    def.marginBottom = this.marginBottom;
+    if (isBlank(def.marginBottom)) 
+      def.marginBottom = env.marginBottom;
+
+    def.marginLeft = this.marginLeft;
+    if (isBlank(def.marginLeft)) 
+      def.marginLeft = env.marginLeft;
+
+    def.marginRight = this.marginRight;
+    if (isBlank(def.marginRight)) 
+      def.marginRight = env.marginRight;
+
+    // Set component defaults.
     this.defaults = def;
   },
 
@@ -107,8 +114,8 @@ export default Component.extend({
 
     let env = this.envConfig;
 
-    // Can only set arria hidden in enviroment file.
-    // If they want to hide aria, apply and exit
+    // Can only set aria hidden in enviroment file.
+    // Set aria-hidden to true;
     if (env.ariaHidden) {
       this.element.setAttribute('aria-hidden', 'true');
       return;
