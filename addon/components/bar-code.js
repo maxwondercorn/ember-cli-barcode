@@ -18,6 +18,7 @@ export default Component.extend({
   excludeAltValue: false,
   svgns: 'http://www.w3.org/2000/svg',
   barcode: null,
+  defaults: {},
 
   // get config from enviroment.js
   // https://stackoverflow.com/questions/42002664/accessing-ember-environment-config-env-from-addon
@@ -29,79 +30,54 @@ export default Component.extend({
     );
   }),
 
-  // jsbarcode options
-  // https://github.com/lindell/JsBarcode/wiki/Options#format
+  init() {
+    this._super(...arguments);
+    let def = {};
+    let env = this.envConfig;
 
-  defaults: computed(
-    'background',
-    'envConfig',
-    'displayValue',
-    'flat',
-    'font',
-    'fontOptions',
-    'fontSize',
-    'format',
-    'height',
-    'lastChar',
-    'lineColor',
-    'margin',
-    'marginBottom',
-    'marginLeft',
-    'marginRight',
-    'marginTop',
-    'mod43',
-    'textAlign',
-    'textMargin',
-    'textPosition',
-    'width',
+    def.format = this.format || env.format || 'CODE128';
+    def.mod43 = this.mod43 || env.mod43 || false; // only used with code39 barcodes
+    def.width = this.width || env.width || 2;
+    def.height = this.height || env.height || 100;
 
-    function () {
-      let env = this.envConfig;
+    def.displayValue = isBlank(this.displayValue)
+      ? isBlank(env.displayValue)
+        ? true
+        : env.displayValue
+      : true;
 
-      return {
-        format: this.format || env.format || 'CODE128',
-        mod43: this.mod43 || env.mod43 || false, // only used with code39 barcodes
-        width: this.width || env.width || 2,
-        height: this.height || env.height || 100,
+    // prettier-ignore
+    def.fontOptions =   this.fontOptions || env.fontOptions || '';
+    def.font = this.font || env.font || 'monospace';
+    def.textAlign = this.textAlign || env.textAlign || 'center';
+    def.textPosition = this.textPosition || env.textPosition || 'bottom';
+    def.textMargin = this.textMargin || env.textMargin || 2;
+    def.fontSize = this.fontSize || env.fontSize || 20;
+    def.background = this.background || env.background || '#ffffff';
+    def.lineColor = this.lineColor || env.lineColor || '#000000';
+    def.margin = this.margin ?? 10;
 
-        displayValue: isBlank(this.displayValue)
-          ? isBlank(env.displayValue)
-            ? true
-            : env.displayValue
-          : true,
+    def.marginTop = isBlank(this.marginTop)
+      ? env.marginTop || undefined
+      : this.marginTop;
 
-        // prettier-ignore
-        fontOptions:  this.fontOptions || env.fontOptions || '',
-        font: this.font || env.font || 'monospace',
-        textAlign: this.textAlign || env.textAlign || 'center',
-        textPosition: this.textPosition || env.textPosition || 'bottom',
-        textMargin: this.textMargin || env.textMargin || 2,
-        fontSize: this.fontSize || env.fontSize || 20,
-        background: this.background || env.background || '#ffffff',
-        lineColor: this.lineColor || env.lineColor || '#000000',
-        margin: isBlank(this.margin) ? 10 : this.margin,
+    def.marginBottom = isBlank(this.marginBottom)
+      ? env.marginBottom || undefined
+      : this.marginBottom;
 
-        marginTop: isBlank(this.marginTop)
-          ? env.marginTop || undefined
-          : this.marginTop,
+    def.marginLeft = isBlank(this.marginLeft)
+      ? env.marginLeft || undefined
+      : this.marginLeft;
 
-        marginBottom: isBlank(this.marginBottom)
-          ? env.marginBottom || undefined
-          : this.marginBottom,
+    def.marginRight = isBlank(this.marginRight)
+      ? env.marginRight || undefined
+      : this.marginRight;
 
-        marginLeft: isBlank(this.marginLeft)
-          ? env.marginLeft || undefined
-          : this.marginLeft,
+    def.flat = this.flat || env.flat || false;
+    def.lastChar = this.lastChar || env.lastChar || '';
 
-        marginRight: isBlank(this.marginRight)
-          ? env.marginRight || undefined
-          : this.marginRight,
-
-        flat: this.flat || env.flat || false,
-        lastChar: this.lastChar || env.lastChar || ''
-      };
-    }
-  ),
+    this.defaults = def;
+  },
 
   didInsertElement() {
     this._super(...arguments);
