@@ -1,23 +1,25 @@
 // disable lint rules to pass linting
 /* eslint-disable ember/no-component-lifecycle-hooks */
 /* eslint-disable ember/no-classic-components */
-/* eslint-disable ember/no-classic-classes */
+
 import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
 import { isBlank } from '@ember/utils';
 import { getOwner } from '@ember/application';
 
 /* global JsBarcode */
 
-export default Component.extend({
+@classic
+export default class BarCodeComponent extends Component {
   // eslint-disable-next-line ember/require-tagless-components
-  tagName: 'svg',
-  thisId: null,
-  defaultText: 'Barcode value',
-  altText: null,
-  excludeAltValue: false,
-  svgns: 'http://www.w3.org/2000/svg',
-  barcode: null,
-  defaults: null,
+  tagName = 'svg';
+  thisId = null;
+  defaultText = 'Barcode value';
+  altText = null;
+  excludeAltValue = false;
+  svgns = 'http://www.w3.org/2000/svg';
+  barcode = null;
+  defaults = null;
 
   // Get values stored in enviroment.js.
   get envConfig() {
@@ -26,12 +28,13 @@ export default Component.extend({
         'ember-cli-barcode'
       ] || {}
     );
-  },
+  };
 
   init() {
-    this._super(...arguments);
-    let def = {};
-    let env = this.envConfig;
+    super.init(...arguments);
+
+    const def = {};
+    const env = this.envConfig;
 
     def.format = this.format || env.format || 'CODE128';
     def.mod43 = this.mod43 || env.mod43 || false; // only used with code39 barcodes
@@ -84,19 +87,19 @@ export default Component.extend({
 
     // Set component defaults.
     this.defaults = def;
-  },
+  };
 
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     this.set('thisId', this.elementId);
-  },
+  };
 
   didRender() {
-    this._super(...arguments);
+    super.didRender(...arguments);
     let title;
 
-    // if options object is passed in, use it
-    let options = this.options || this.defaults;
+    // If options object is supplied, use it and override other properties.
+    const options = this.options || this.defaults;
 
     // Set the JsBarcode status option callback.
     options['valid'] = (status) => this.valid && this.valid(status);
@@ -105,17 +108,17 @@ export default Component.extend({
     this.barcode = JsBarcode(`#${this.thisId}`, this.value, options);
 
     // Private API for testing!
-    // provide barcode obj - args is proxy, no optional chaining
+    // Provide barcode obj - args is proxy, no optional chaining
     if (this.jsbarcode) this.jsbarcode(this.barcode);
 
-    // add accessability to barcode
-    // do after render because svg is cleared by jsbarcode
+    // Add a11y to barcode.
+    // Add after render because svg element is cleared by jsbarcode.
     // https://medium.com/statuscode/getting-started-with-website-accessibility-5586c7febc92
 
-    let env = this.envConfig;
+    const env = this.envConfig;
 
     // Can only set aria hidden in enviroment file.
-    // Set aria-hidden to true;
+    // Set aria-hidden to true.
     if (env.ariaHidden) {
       this.element.setAttribute('aria-hidden', 'true');
       return;
@@ -127,13 +130,13 @@ export default Component.extend({
     if (!env.excludeAltValue) text = `${text} ${this.value}`;
 
     switch (this.element.nodeName) {
-      // add alt text attribute
+      // Add alt text attribute.
       // http://a11y-style-guide.com/style-guide/section-media.html#kssref-media-images
       case 'IMG':
         this.element.setAttribute('alt', text);
         break;
 
-      // add title and aria-labelledby attritubte
+      // Add title and aria-labelledby attritubte.
       // http://a11y-style-guide.com/style-guide/section-media.html#kssref-media-svgs
       case 'svg':
         this.element.setAttribute('aria-labelledby', 'title');
@@ -142,7 +145,7 @@ export default Component.extend({
         this.element.appendChild(title);
         break;
 
-      // what do you do to canvas?
+      // What do you do to canvas?
       // https://www.w3.org/Talks/2014/0510-canvas-a11y/#1
       // http://pauljadam.com/demos/canvas.html
       case 'CANVAS':
@@ -154,10 +157,5 @@ export default Component.extend({
       // redundant on svg, but it doens't hurt
       this.element.setAttribute('title', text);
     }
-
-    // Private api for testing.
-    options['_defaultsTest'] = () => {
-      this.defaults;
-    };
-  },
-});
+  };
+}
