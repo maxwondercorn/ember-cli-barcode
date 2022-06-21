@@ -54,15 +54,15 @@ module.exports = {
 
   included() {
     this._super.included.apply(this, arguments);
-    let findHost = this._findHost || findHostShim;
-    let app = findHost.call(this);
-    let options = Object.assign(defaultOptions, app.options['ember-cli-barcode']);
-    let file = generateFilePath(options['include']);
+    const findHost = this._findHost || findHostShim;
+    const app = findHost.call(this);
+    const options = Object.assign(defaultOptions, app.options['ember-cli-barcode']);
+    const file = generateFilePath(options['include']);
     this.import(`vendor/ember-cli-barcode/${file}`);
   },
 
   treeForVendor(/* vendorTree */) {
-    let paths = generateJSbarcodePaths(includedFiles);
+    const paths = generateJSbarcodePaths(includedFiles);
     paths.push('JsBarcode.all.min.js');
     var barcodeTree = new Funnel(path.dirname(require.resolve('jsbarcode/dist/JsBarcode.all.min.js')), {
       destDir: 'ember-cli-barcode',

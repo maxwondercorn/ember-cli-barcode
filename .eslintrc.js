@@ -22,7 +22,24 @@ module.exports = {
   },
   rules: {
     'ember/classic-decorator-hooks': 'error',
-    'ember/classic-decorator-no-classic-methods': 'error'
+    'ember/classic-decorator-no-classic-methods': 'error',
+    'no-unused-vars': [
+      'error',
+      { vars: 'all', args: 'after-used', ignoreRestSiblings: true },
+    ],
+    'arrow-body-style': 'off',
+    'prefer-arrow-callback': 'off',
+    'eol-last': ['error', 'always'],
+    'no-else-return': 'warn',
+    'no-lonely-if': 'warn',
+    'no-unneeded-ternary': 'warn',
+    'prefer-const': [
+      'error',
+      {
+        destructuring: 'any',
+        ignoreReadBeforeAssign: false,
+      },
+    ],
   },
   overrides: [
     // node files
