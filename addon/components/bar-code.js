@@ -28,7 +28,7 @@ export default class BarCodeComponent extends Component {
         'ember-cli-barcode'
       ] || {}
     );
-  };
+  }
 
   init() {
     super.init(...arguments);
@@ -87,12 +87,12 @@ export default class BarCodeComponent extends Component {
 
     // Set component defaults.
     this.defaults = def;
-  };
+  }
 
   didInsertElement() {
     super.didInsertElement(...arguments);
     this.set('thisId', this.elementId);
-  };
+  }
 
   didRender() {
     super.didRender(...arguments);
@@ -157,5 +157,5 @@ export default class BarCodeComponent extends Component {
       // redundant on svg, but it doens't hurt
       this.element.setAttribute('title', text);
     }
-  };
+  }
 }
