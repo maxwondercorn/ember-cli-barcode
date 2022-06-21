@@ -4,7 +4,7 @@ import Controller from '@ember/controller';
 import config from '../config/environment';
 import { tracked } from '@glimmer/tracking';
 
-export default class ApplicationController extends Controller {
+export default class IndexController extends Controller {
   appVersion = config.APP.appVersion;
 
   @tracked format = 'CODE128';

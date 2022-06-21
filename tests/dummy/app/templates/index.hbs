@@ -1,0 +1,131 @@
+{{! template-lint-disable self-closing-void-elements }}
+{{! template-lint-disable no-inline-styles }}
+<nav class="navbar navbar-expand-lg bg-primary text-white">
+  <a href="#" class="navbar-brand text-white">
+    ember-cli-barcode
+  </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto"></ul>
+    v
+    {{this.appVersion}}
+    <a href="https://github.com/maxwondercorn/ember-cli-barcode">
+      <img
+        class="github"
+        alt="presentation"
+        src="assets/images/GitHub-Mark-Light-32px.png"
+      />
+    </a>
+  </div>
+</nav>
+<div class="container-fluid">
+  <p class="container mt-4 mb-3 lead">
+    This demo shows a subset of jsbarcode's
+    <a href="https://github.com/lindell/JsBarcode/wiki/Options">
+      options
+    </a>
+    . Each barcode format has different rules on what characters and lengths are allowed
+    to generate a valid barcode. The demo loads valid barcode values when the barcode formats are changed.
+  </p>
+  <hr />
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="offset-md-1 col">
+        <SelectorGroup @label="Format" @items={{this.formats}} @value={{this.format}} @update={{this.updateValue}} />
+        <SelectorGroup @label="Width" @items={{this.widths}} @value={{this.width}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Height" @items={{this.heights}} @value={{this.height}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Value" @items={{this.dispalyValues}} @value={{this.displayValue}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Font Size" @items={{this.fontSizes}} @value={{this.fontSize}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Font Opt" @items={{this.fontOptions}} @value={{this.fontOption}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Font" @items={{this.fonts}} @value={{this.font}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Align" @items={{this.alignOptions}} @value={{this.textAlign}} @update={{this.updateValue}} /> 
+        <SelectorGroup @label="Position" @items={{this.positions}} @value={{this.textPosition}} @update={{this.updateValue}} /> 
+
+        <div class="form-group float-left">
+          <label for="background" class="text-info">
+            Background
+          </label>
+          <Input id="background" class="normal-height" @type="text" @value={{this.background}} />
+        </div>
+
+        <div class="form-group float-left">
+          <label for="color" class="text-info">
+            Color
+          </label>
+          <Input id="color" class="normal-height" @type="text" @value={{this.lineColor}} />
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row justify-content-center">
+    <div class="offset-lg-1 col-6">
+      <div class="float-left barcode">
+        <label class="text-info">
+          SVG
+        </label>
+        <BarCode
+          @value={{this.currentValue}}
+          @tagName="svg"
+          @options={{this.demoOptions}}
+        />
+      </div>
+      <div class="float-left hide barcode">
+        <label class="text-info">
+          IMG
+        </label>
+        <BarCode
+          @value={{this.currentValue}}
+          @tagName="img"
+          @options={{this.demoOptions}}
+        />
+      </div>
+      <div class="float-left hide barcode">
+        <label class="text-info">
+          CANVAS
+        </label>
+        <BarCode
+          @value={{this.currentValue}}
+          @tagName="canvas"
+          @options={{this.demoOptions}}
+        />
+      </div>
+    </div>
+    <div class="options justify-content-center">
+      options = {
+      <div class="params">
+        {{#each-in this.demoOptions as |name values|}}
+          {{name}}: <span class="text-info">{{values}}</span>,<br />
+        {{/each-in}}
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+    </div>
+  </div>
+  <hr />
+  <div class="row mt-4 justify-content-center">
+    <div class="col-12 col-md-6">
+      This section demonstrates the `valid` parameter. The EAN8 barcode value must be numeric and eight characters long. 
+      Deleting and/or modifying the value will trigger the action when the code becomes invalid.
+    </div>
+  </div>
+  <div class="row mt-4 justify-content-center">
+    <div class="col-5 col-sm-2">
+      <label for="value" class="text-info">
+        Value
+      </label>
+      <Input id="value" @type="text" @value={{this.testValue}} />
+      <br />
+      <span class="text-danger">
+        {{if this.validCode "" "Code Invalid"}}
+      </span>
+    </div>
+    <div class="col-5 col-sm-2">
+      <BarCode
+        @value={{this.testValue}}
+        @format="EAN8"
+        @tagName="svg"
+        @valid={{this.checkValid}}
+      />
+    </div>
+  </div>
+</div>
