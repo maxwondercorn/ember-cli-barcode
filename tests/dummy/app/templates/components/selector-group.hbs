@@ -2,7 +2,7 @@
   <label for="selector" class="text-info">
     {{@label}}
   </label>
-  <select id="selector" {{on 'change' (fn @update @label)}}>
+  <select id="selector" class="p-1" {{on 'change' (fn @update @label)}}>
     {{#each @items as |item|}}
       <option value={{item.value}} selected={{item.selected}}>
         {{item.value}}

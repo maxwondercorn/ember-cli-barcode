@@ -8,8 +8,8 @@ export default class DownloadController extends Controller {
   types = [
     { value: 'jpeg' },
     { value: 'png' },
-    { value: 'webp (Chrome only)' },
     { value: 'svg', selected: true },
+    { value: 'webp (Chrome only)' },
   ];
 
   save2() {
@@ -44,19 +44,20 @@ export default class DownloadController extends Controller {
 
     // Determine file type, set href and download name...
 
-    if (fileType == 'jpeg') {
-      a.href = jpeg;
-      a.download = `image.${fileType}`;
-    }
+    switch (fileType) {
+      case 'jpeg':
+        a.href = jpeg;
+        a.download = 'image.jpeg';
+        break;
 
-    if (fileType == 'png') {
-      a.href = png;
-      a.download = `image.${fileType}`;
-    }
+      case 'png':
+        a.href = png;
+        a.download = 'image.png';
+        break;
 
-    if (fileType == 'webp (Chrome only)') {
-      a.href = webp;
-      a.download = `image.webp`;
+      case 'webp (Chrome only)':
+        a.href = webp;
+        a.download = `image.webp`;
     }
 
     a.click();
