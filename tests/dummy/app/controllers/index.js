@@ -1,12 +1,9 @@
 // eslint-disable-next-line ember/no-computed-properties-in-native-classes
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
-import config from '../config/environment';
 import { tracked } from '@glimmer/tracking';
 
 export default class IndexController extends Controller {
-  appVersion = config.APP.appVersion;
-
   @tracked format = 'CODE128';
   @tracked width = 2;
   @tracked height = 100;
@@ -36,7 +33,7 @@ export default class IndexController extends Controller {
     { value: 'MSI1010', code: '4321' },
     { value: 'MSI1110', code: '1212' },
     { value: 'pharmacode', code: '3434' },
-    { value: 'codabar', code: '1234567890' }
+    { value: 'codabar', code: '1234567890' },
   ];
 
   widths = [{ value: '1' }, { value: '2', selected: true }, { value: '3' }];
@@ -44,7 +41,7 @@ export default class IndexController extends Controller {
   heights = [
     { value: '50' },
     { value: '100', selected: true },
-    { value: '200' }
+    { value: '200' },
   ];
 
   dispalyValues = [{ value: true, selected: true }, { value: false }];
@@ -55,7 +52,7 @@ export default class IndexController extends Controller {
     { value: '15' },
     { value: '20', selected: true },
     { value: '25' },
-    { value: '30' }
+    { value: '30' },
   ];
 
   fontOptions = [
@@ -63,7 +60,7 @@ export default class IndexController extends Controller {
     { value: 'italic' },
     { value: 'bold' },
     { value: 'oblique' },
-    { value: 'bold, italic' }
+    { value: 'bold, italic' },
   ];
 
   fonts = [
@@ -77,13 +74,13 @@ export default class IndexController extends Controller {
     { value: 'Courier' },
     { value: 'Verdana' },
     { value: 'Georgia' },
-    { value: 'Comic Sans MS' }
+    { value: 'Comic Sans MS' },
   ];
 
   alignOptions = [
     { value: 'center', selected: true },
     { value: 'left' },
-    { value: 'right' }
+    { value: 'right' },
   ];
 
   positions = [{ value: 'bottom', selected: true }, { value: 'top' }];
@@ -110,7 +107,7 @@ export default class IndexController extends Controller {
       textAlign: this.textAlign || 'center',
       textPosition: this.textPosition || 'bottom',
       background: this.background || '#ffffff',
-      lineColor: this.lineColor || '#000000'
+      lineColor: this.lineColor || '#000000',
     };
   }
 
