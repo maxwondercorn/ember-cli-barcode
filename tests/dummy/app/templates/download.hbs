@@ -1,0 +1,48 @@
+<nav aria-label='breadcrumb'>
+  <ol class='breadcrumb'>
+    <LinkTo @route='index' class='breadcrumb-item'>Home</LinkTo>
+    <LinkTo @route='download' class='breadcrumb-item'>Download Example</LinkTo>
+  </ol>
+</nav>
+
+<div class='container-fluid'>
+  <p class='container mt-4 mb-3 lead'>
+    This demostrates how to download a barcode in selected file formats. There
+    are actually two barcodes n this page. One using the
+    <em>canvas</em>
+    element and the other using an
+    <em>svg</em>
+    element. The svg based barcode is hidden.
+
+    <div class='mt-3'>
+      The canvas element is used to download png or jpeg files. The svg element
+      is used for svg file downloads.
+    </div>
+  </p>
+  <hr />
+  <div class='container-fluid'>
+    <div class='row mt-4 justify-content-center'>
+
+      <div class='col-5 col-sm-2'>
+        <SelectorGroup
+          @label='File Format'
+          @items={{this.types}}
+          @value={{this.ftype}}
+          @update={{this.setFileType}}
+        />
+  
+        <div class='mt-3'>
+          <button type='button' {{on 'click' (fn this.download this.ftype)}}>
+            Download File
+          </button>
+        </div>
+      </div>
+
+      <div class='col-5 col-sm-2'>
+        <BarCode @value='1234' @tagName='canvas' />
+        <BarCode @value='1234' @tagName='svg' hidden />
+      </div>
+    </div>
+
+  </div>
+</div>
