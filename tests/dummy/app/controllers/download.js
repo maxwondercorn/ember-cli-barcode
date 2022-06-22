@@ -12,18 +12,6 @@ export default class DownloadController extends Controller {
     { value: 'webp (Chrome only)' },
   ];
 
-  save2() {
-    window.open(canvas.toDataURL('image/png'));
-    var gh = canvas.toDataURL('png');
-
-    var a = document.createElement('a');
-    a.href = gh;
-    a.download = 'image.png';
-
-    a.click();
-    a.remove();
-  }
-
   @action
   download(fileType) {
     const canv = document.getElementsByTagName('canvas')[0];
