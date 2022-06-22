@@ -1,0 +1,81 @@
+import Component from "@glimmer/component";
+import classic from "ember-classic-decorator";
+import { getOwner } from "@ember/application";
+import { isBlank } from "@ember/utils";
+// import { tagName } from '@ember-decorators/component';
+
+// get config from enviroment.js
+// https://stackoverflow.com/questions/42002664/accessing-ember-environment-config-env-from-addon
+function getEnvConfig() {
+  return (
+    getOwner(this).resolveRegistration("config:environment")[
+      "ember-cli-barcode"
+    ] || {}
+  );
+}
+
+@classic
+export default class BarCodeComponent extends Component {
+  tagName = "svg";
+  thisId = null;
+  defaultText = "Barcode value";
+  altText = null;
+  excludeAlValue = false;
+  svgns = "http://www.w3.org/2000/svg";
+
+  defaults = {};
+
+  // prettier-ignore
+  init() {
+    super(...arguments);
+
+    const env = getEnvConfig();
+
+    this.defaults.format = this.arg.format  || env.format || "CODE128";
+    this.defaults.mod43 = this.args.mod43   || env.mod43  || false; // only used with code39 barcodes
+    this.defaults.width = this.arg.width    || env.width  || 2;
+    this.defaults.height = this.arg.height  || env.height || 100;
+   
+    // displayValue - default true.
+    this.defaults.displayValue = true;
+
+    if (!isBlank(this.args.displayValue)) {
+      this.defaults.displayValue = this.args.displayValue;
+    } else if (!isBlank(env.displayValue)) {
+      this.defaults.displayValue = env.displayValue;
+    }
+
+    // Fonts.
+    this.defaults.font = this.arg.font || env.font || "monospace";
+    this.defaults.fontSize = this.arg.fontSize || env.fontSize || 20;
+    this.defaults.fontOptions=  this.arg.fontOptions || env.fontOptions || '';
+
+    // Text.
+    this.defaults.textAlign = this.arg.textAlign || env.textAlign || "center";
+    this.defaults.textPosition = this.arg.textPosition || env.textPosition || "bottom";
+    this.defaults.textMargin = this.arg.textMargin || env.textMargin || 2;
+
+    this.defaults.background = this.arg.background || env.background || "#ffffff";
+    this.defaults.lineColor = this.arg.lineColor || env.lineColor || "#000000";
+
+    this.defaults.flat = this.arg.flat || env.flat || false;
+    this.defaults.lastChar = this.arg.lastChar || env.lastChar || "";
+
+    //  Margins.
+    this.defaults.margin = this.arg.margin ?? 10;
+
+    this.defaults.marginTop = isBlank(this.arg.marginTop) ? env.marginTop || undefined : this.marginTop;
+
+    this.defaults.marginBottom = isBlank(this.arg.marginBottom)
+      ? env.marginBottom || undefined
+      : this.marginBottom;
+
+    this.defaults.marginLeft = isBlank(this.arg.marginLeft)
+      ? env.marginLeft || undefined
+      : this.marginLeft;
+
+    this.defaults.marginRight = isBlank(this.arg.marginRight)
+      ? env.marginRight || undefined
+      : this.marginRight;
+  }
+}
