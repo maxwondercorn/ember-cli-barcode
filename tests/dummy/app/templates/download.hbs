@@ -12,18 +12,18 @@
     <em>canvas</em>
     element and the other using an
     <em>svg</em>
-    element. The svg based barcode is hidden.
+    element. The svg element barcode is hidden.
 
     <div class='mt-3'>
-      The canvas element is used to download png or jpeg files. The svg element
-      is used for svg file downloads.
+      The canvas element is used to create png and jpeg files. The svg element
+      is used for svg files.
     </div>
   </p>
   <hr />
   <div class='container-fluid'>
     <div class='row mt-4 justify-content-center'>
 
-      <div class='col-5 col-sm-2'>
+      <div class='col-5 col-sm-2 d-flex flex-column'>
         <SelectorGroup
           @label='File Format'
           @items={{this.types}}

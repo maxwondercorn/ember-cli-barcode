@@ -14,44 +14,47 @@ export default class DownloadController extends Controller {
 
   @action
   download(fileType) {
+    let isSvg = false;
+    let svgUrl;
+
     const canv = document.getElementsByTagName('canvas')[0];
-    const png = canv.toDataURL('image/png');
-    const jpeg = canv.toDataURL('image/jpeg', 1);
-    const webp = canv.toDataURL('image/webp', 1);
-
-    // https://stackoverflow.com/questions/23218174/how-do-i-save-export-an-svg-file-after-creating-an-svg-with-d3-js-ie-safari-an
-    const svg = document.getElementsByTagName('svg')[0].outerHTML;
-    const svgBlob = new Blob([svg], { type: 'image/svg+xml;charset=utf-8' });
-    const svgUrl = URL.createObjectURL(svgBlob);
-
     const a = document.createElement('a');
-
-    // Default to SVG format,
-    a.href = svgUrl;
-    a.download = 'image.svg';
-
-    // Determine file type, set href and download name...
 
     switch (fileType) {
       case 'jpeg':
+        const jpeg = canv.toDataURL('image/jpeg', 1);
         a.href = jpeg;
         a.download = 'image.jpeg';
         break;
 
       case 'png':
+        const png = canv.toDataURL('image/png');
         a.href = png;
         a.download = 'image.png';
         break;
 
       case 'webp (Chrome only)':
+        const webp = canv.toDataURL('image/webp', 1);
         a.href = webp;
         a.download = `image.webp`;
+        break;
+
+      // Default to SVG format
+      default:
+        // https://stackoverflow.com/questions/23218174/how-do-i-save-export-an-svg-file-after-creating-an-svg-with-d3-js-ie-safari-an
+        const svg = document.getElementsByTagName('svg')[0].outerHTML;
+        const svgBlob = new Blob([svg], {type: 'image/svg+xml;charset=utf-8',});
+        svgUrl = URL.createObjectURL(svgBlob);
+        isSvg = true;
+
+        a.href = svgUrl;
+        a.download = 'image.svg';
     }
 
     a.click();
     a.remove();
 
-    URL.revokeObjectURL(svgUrl);
+    if (isSvg) URL.revokeObjectURL(svgUrl);
   }
 
   @action
