@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/maxwondercorn/ember-cli-barcode/compare/v1.0.3...v1.1.0) (2022-06-23)
+
+
+### Features
+
+* Add barcode download example to demo ([cdae8a8](https://github.com/maxwondercorn/ember-cli-barcode/commit/cdae8a8dd78b42f57eb9a0a11c3bcf5f9003dfff))
+
 ### [1.0.3](https://github.com/maxwondercorn/ember-cli-barcode/compare/v1.0.1...v1.0.3) (2022-06-18)
 
 
